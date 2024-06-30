@@ -1,0 +1,25 @@
+{
+  "name": "familymarkup",
+  "displayName": "familymarkup",
+  "description": "Language server for familymarkup",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "familymarkup",
+      "aliases": ["FamilyMarkup", "familymarkup"],
+      "extensions": [".fm",".family"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "familymarkup",
+      "scopeName": "source.family",
+      "path": "./syntaxes/familymarkup.tmLanguage.json"
+    }]
+  }
+}
