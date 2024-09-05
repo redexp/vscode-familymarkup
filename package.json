@@ -2,7 +2,8 @@
   "name": "familymarkup",
   "displayName": "familymarkup",
   "description": "Language server for familymarkup",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "main": "./client/extension",
   "engines": {
     "vscode": "^1.90.0"
   },
@@ -10,16 +11,53 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "familymarkup",
-      "aliases": ["FamilyMarkup", "familymarkup"],
-      "extensions": [".fm",".family"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "familymarkup",
-      "scopeName": "source.family",
-      "path": "./syntaxes/familymarkup.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "familymarkup",
+        "aliases": [
+          "FamilyMarkup",
+          "familymarkup"
+        ],
+        "extensions": [
+          ".fm",
+          ".fml",
+          ".family"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "familymarkup",
+        "scopeName": "source.family",
+        "path": "./syntaxes/familymarkup.tmLanguage.json"
+      }
+    ],
+    "semanticTokenScopes": [
+      {
+        "language": "familymarkup",
+        "scopes": {
+          "constant.family_name": ["entity.name.section"]
+        }
+      }
+    ],
+    "themes": [
+      {
+        "label": "FamilyMarkup Light",
+        "uiTheme": "vs",
+        "path": "./themes/familymarkup-color-theme.json"
+      }
+    ]
+  },
+  "configurationDefaults": {
+    "[familymarkup]": {
+      "editor.semanticHighlighting.enabled": true
+    }
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.90.0"
   }
 }

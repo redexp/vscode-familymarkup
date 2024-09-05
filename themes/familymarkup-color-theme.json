@@ -1,0 +1,33 @@
+{
+    "name": "FamilyMarkup Light",
+    "type": "light",
+    "tokenColors": [
+        {
+            "scope": "comment",
+            "settings": {
+                "foreground": "#7f848e"
+            }
+        },
+        {
+            "scope": "number",
+            "settings": {
+                "foreground": "#90be6d"
+            }
+        }
+    ],
+    "semanticHighlighting": true,
+    "semanticTokenColors": {
+        "variable.family_name": {
+            "fontStyle": "bold",
+            "foreground": "#b3a53c"
+        },
+        "variable.family_name.alias": {
+            "fontStyle": "",
+            "foreground": "#b3a53c"
+        },
+        "string.unknown": "#f3722c",
+        "string.label": {
+            "fontStyle": "bold"
+        }
+    }
+}
