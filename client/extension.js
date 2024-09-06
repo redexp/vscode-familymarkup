@@ -1,5 +1,7 @@
 const {join} = require('path');
 const {LanguageClient, TransportKind} = require('vscode-languageclient/node');
+const {window} = require('vscode');
+const FamilyTree = require('./FamilyTree');
 
 /** @type {LanguageClient} */
 let client;
@@ -35,6 +37,8 @@ exports.activate = function (ctx) {
 	);
 
 	client.start();
+
+	window.registerTreeDataProvider('families', new FamilyTree(client));
 };
 
 exports.deactivate = function () {

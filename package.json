@@ -47,7 +47,15 @@
         "uiTheme": "vs",
         "path": "./themes/familymarkup-color-theme.json"
       }
-    ]
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "families",
+          "name": "Families"
+        }
+      ]
+    }
   },
   "configurationDefaults": {
     "[familymarkup]": {
