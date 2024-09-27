@@ -1,10 +1,11 @@
-const {TreeItem, EventEmitter} = require('vscode');
+const {TreeItem, EventEmitter, commands, Uri, Selection} = require('vscode');
 
 class FamilyTree {
 	/**
+	 * @param {import('vscode-languageclient/node').ExtensionContext} ctx
 	 * @param {import('vscode-languageclient/node').LanguageClient} client
 	 */
-	constructor(client) {
+	constructor(ctx, client) {
 		this.client = client;
 
 		const reloadEmitter = new EventEmitter()
@@ -14,6 +15,16 @@ class FamilyTree {
 		client.onNotification('tree/reload', function () {
 			reloadEmitter.fire();
 		});
+
+		ctx.subscriptions.push(
+			commands.registerCommand('familytree.open', async (item) => {
+				const pos = await this.request('tree/location', item);
+
+				commands.executeCommand('vscode.open', Uri.parse(item.uri), {
+					selection: new Selection(pos, pos),
+				});
+			})
+		);
 	}
 
 	request(method, params) {
@@ -43,7 +54,19 @@ class FamilyTree {
 	 * @returns {import('vscode').TreeItem}
 	 */
 	getTreeItem(item) {
-		return new TreeItem(item.label || item.name, item.type === "member" ? 0 : 1);
+		const ti = new TreeItem(item.label || item.name, item.type === "member" ? 0 : 1);
+
+		ti.command = {
+			title: 'show',
+			command: 'familytree.open',
+			arguments: [{
+				uri: item.uri || item.family.uri,
+				row: item.row,
+				column: item.column,
+			}],
+		};
+
+		return ti;
 	}
 
 	/**
@@ -59,11 +82,15 @@ class FamilyTree {
 	 * @returns {Promise<TreeRelation[]>}
 	 */
 	async getRelations(family) {
-		const list = await this.request('tree/relations', {family_id: family.id});
+		const list = await this.request('tree/relations', {
+			uri: family.uri,
+			family_name: family.name,
+			row: family.row,
+		});
 
 		return assignToAll(list.filter(r => r.arrow === "="), {
 			type: "relation",
-			family_id: family.id,
+			family,
 		});
 	}
 
@@ -71,13 +98,17 @@ class FamilyTree {
 	 * @param {TreeRelation} relation
 	 * @returns {Promise<TreeMember[]>}
 	 */
-	async getMembers(relation) {
+	async getMembers({family, row}) {
 		const list = await this.request('tree/members', {
-			family_id: relation.family_id,
-			relation_id: relation.id,
+			uri: family.uri,
+			family_name: family.name,
+			row,
 		});
 
-		return addType(list, "member");
+		return assignToAll(list, {
+			type: "member",
+			family,
+		});
 	}
 }
 

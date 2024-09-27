@@ -1,20 +1,26 @@
-type TreeFamily = {
-	type: "family",
-	id: string,
+type NamedTreeItem = {
 	name: string,
 	aliases: string[],
 }
 
-type TreeRelation = {
+type TreeItemPoint = {
+	row: number,
+	column: number,
+}
+
+type TreeFamily = NamedTreeItem & TreeItemPoint & {
+	type: "family",
+	uri: string,
+}
+
+type TreeRelation = TreeItemPoint & {
 	type: "relation",
-	id: string,
-	family_id: TreeFamily['id'],z
 	label: string,
 	arrow: string,
+	family: TreeFamily,
 }
 
-type TreeMember = {
+type TreeMember = NamedTreeItem & TreeItemPoint & {
 	type: "member",
-	name: string,
-	aliases: string[],
+	family: TreeFamily,
 }
