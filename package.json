@@ -55,6 +55,22 @@
           "name": "Families"
         }
       ]
+    },
+    "configuration": {
+      "title": "FamilyMarkup",
+      "properties": {
+        "familymarkup.locale": {
+          "type": "string",
+          "default": "editor",
+          "enum": ["editor", "uk", "ru", "en"],
+          "enumItemLabels": [
+            "Current editor locale",
+            "Українська",
+            "Русский",
+            "English"
+          ]
+        }
+      }
     }
   },
   "configurationDefaults": {
