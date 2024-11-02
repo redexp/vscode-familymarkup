@@ -10,6 +10,8 @@ let client;
  * @param {import('vscode').ExtensionContext} ctx 
  */
 exports.activate = function (ctx) {
+	const locale = getLocale();
+
 	const binPath = ctx.asAbsolutePath(
 		join('server', 'main')
 	);
@@ -37,17 +39,33 @@ exports.activate = function (ctx) {
 				language: 'familymarkup',
 			}],
 			initializationOptions: {
-				locale: getLocale(),
+				locale,
 			},
 		}
 	);
 
 	client.start();
 
-	window.registerTreeDataProvider('families', new FamilyTree(ctx, client));
+	const treeView = window.createTreeView('families', {
+		treeDataProvider: new FamilyTree(ctx, client),
+	});
+
+	const updateTreeTitle = () => {
+		treeView.title = (
+			locale === 'uk' ?
+				'Сімʼї' :
+			locale === 'ru' ?
+				'Семъи' :
+				'Families'
+		);
+	};
+
+	updateTreeTitle();
 
 	workspace.onDidChangeConfiguration(event => {
 		if (!event.affectsConfiguration('familymarkup.locale')) return;
+
+		updateTreeTitle();
 
 		client.sendNotification('config/change', {
 			locale: getLocale(),
