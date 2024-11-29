@@ -13,8 +13,9 @@ exports.activate = function (ctx) {
 	const locale = getLocale();
 
 	const binPath = ctx.asAbsolutePath(
-		join('server', 'main')
+		join('server', process.platform === 'win32' ? 'main.exe' : 'main')
 	);
+
 	const logPath = ctx.asAbsolutePath(
 		join('server', 'debug.log')
 	);
@@ -60,16 +61,17 @@ exports.activate = function (ctx) {
 		);
 	};
 
-	updateTreeTitle();
-
-	workspace.onDidChangeConfiguration(event => {
-		if (!event.affectsConfiguration('familymarkup.locale')) return;
-
-		updateTreeTitle();
-
-		client.sendNotification('config/change', {
+	const sendConfig = () => {
+		return client.sendNotification('config/change', {
 			locale: getLocale(),
 		});
+	}
+
+	updateTreeTitle();
+
+	onConfiguration('locale', () => {
+		updateTreeTitle();
+		sendConfig();
 	});
 };
 
@@ -79,12 +81,24 @@ exports.deactivate = function () {
 	}
 };
 
+function getConfig() {
+	return workspace.getConfiguration("familymarkup");
+}
+
 function getLocale() {
-	let locale = workspace.getConfiguration("familymarkup").get("locale")
+	let locale = getConfig().get("locale")
 
 	if (locale === "editor") {
 		locale = env.language.replace(/^([a-z]{2}).+$/, '$1');
 	}
 
 	return locale;
+}
+
+function onConfiguration(selector, cb) {
+	workspace.onDidChangeConfiguration(e => {
+		if (!e.affectsConfiguration('familymarkup.' + selector)) return;
+
+		cb();
+	});
 }
