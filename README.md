@@ -1,49 +1,40 @@
-# familymarkup README
+# FamilyMarkup
 
-This is the README for your extension "familymarkup". After writing up a brief description, we recommend including the following sections.
+This extension provides support for [FamilyMarkup language](https://github.com/redexp/familymarkup-lsp).
+
+## Settings
+
+- Language: for errors and hints
+- Surname Position: before or after given name
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- [x] Support [FamilyMarkup Language Server](https://github.com/redexp/familymarkup-lsp).
+- [x] TreeView of all famalies
+- [ ] Syntax highlighting for Markdown
+- [ ] "Surname after given name" as default for English locale
 
-For example if there is an image subfolder under your extension project workspace:
+## Syntax Example
 
-\!\[feature X\]\(images/feature-x.png\)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+```familymarkup
+Potter
 
-## Requirements
+James + Lily Evans =
+Harry
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
 
-## Extension Settings
+Weasley
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Arthur + Molly? =
+Fred
+George
+Ronald
+girl?
 
-For example:
+Fred and George - twins
 
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Ronald and Harry Potter - best friends
+```
+In this example question marks after names shows that we don't remember maiden name of Molly and don't remember name of last child, only that it's a girl. Last two line shows relation between Fred and George, Ronald and Harry
 
