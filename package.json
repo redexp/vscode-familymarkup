@@ -1,8 +1,9 @@
 {
   "name": "familymarkup",
-  "displayName": "familymarkup",
-  "description": "Language server for familymarkup",
+  "displayName": "FamilyMarkup",
+  "description": "Language server for FamilyMarkup",
   "version": "1.0.0",
+  "repository": "github:redexp/vscode-familymarkup",
   "main": "./client/extension",
   "engines": {
     "vscode": "^1.90.0"
@@ -19,7 +20,6 @@
           "familymarkup"
         ],
         "extensions": [
-          ".fm",
           ".fml",
           ".family"
         ],
@@ -31,21 +31,6 @@
         "language": "familymarkup",
         "scopeName": "source.family",
         "path": "./syntaxes/familymarkup.tmLanguage.json"
-      }
-    ],
-    "semanticTokenScopes": [
-      {
-        "language": "familymarkup",
-        "scopes": {
-          "constant.family_name": ["entity.name.section"]
-        }
-      }
-    ],
-    "themes": [
-      {
-        "label": "FamilyMarkup Light",
-        "uiTheme": "vs",
-        "path": "./themes/familymarkup-color-theme.json"
       }
     ],
     "views": {
@@ -62,7 +47,12 @@
         "familymarkup.locale": {
           "type": "string",
           "default": "editor",
-          "enum": ["editor", "uk", "ru", "en"],
+          "enum": [
+            "editor",
+            "uk",
+            "ru",
+            "en"
+          ],
           "enumItemLabels": [
             "Current editor locale",
             "Українська",
