@@ -1,4 +1,4 @@
-const {join, resolve} = require('path');
+const {join} = require('path');
 const {LanguageClient, TransportKind} = require('vscode-languageclient/node');
 const {window, workspace, env} = require('vscode');
 const FamilyTree = require('./FamilyTree');
