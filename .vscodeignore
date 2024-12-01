@@ -1,6 +1,7 @@
 .vscode/**
 .vscode-test/**
 .idea/**
-.gitignore
-vsc-extension-quickstart.md
 tests/**
+.gitignore
+server/*.log
+*.sh

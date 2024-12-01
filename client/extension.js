@@ -1,7 +1,8 @@
-const {join} = require('path');
+const {join, resolve} = require('path');
 const {LanguageClient, TransportKind} = require('vscode-languageclient/node');
 const {window, workspace, env} = require('vscode');
 const FamilyTree = require('./FamilyTree');
+const highlight = require('./highlight');
 
 /** @type {LanguageClient} */
 let client;
@@ -9,7 +10,7 @@ let client;
 /**
  * @param {import('vscode').ExtensionContext} ctx 
  */
-exports.activate = function (ctx) {
+exports.activate = async function (ctx) {
 	const locale = getLocale();
 
 	const binPath = ctx.asAbsolutePath(
@@ -73,6 +74,18 @@ exports.activate = function (ctx) {
 		updateTreeTitle();
 		sendConfig();
 	});
+
+	await highlight.init({
+		locateFamilyMarkupWasm(name) {
+			return ctx.asAbsolutePath(join('node_modules', 'highlight-familymarkup', name));
+		}
+	});
+
+	return {
+		extendMarkdownIt(md) {
+			return md.use(highlight);
+		}
+	};
 };
 
 exports.deactivate = function () {
