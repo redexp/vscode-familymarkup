@@ -1,7 +1,62 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "FamilyMarkup",
-	"patterns": [],
-	"repository": {},
-	"scopeName": "source.family"
+	"scopeName": "source.family",
+	"repository": {
+		"comment": {
+			"name": "comment.line.family",
+			"match": "^(?:/|#|\\*).*$"
+		}
+	},
+	"patterns": [
+		{
+			"include": "#comment"
+		},
+		{
+			"name": "string.question.family",
+			"match": "\\p{L}[\\p{L}\\-\\d' ]*\\?"
+		},
+		{
+			"name": "string.question.family",
+			"match": "\\?"
+		},
+		{
+			"name": "keyword.operator.family",
+			"match": "[+=-]"
+		},
+		{
+			"name": "entity.name.class.family",
+			"begin": "^ *$",
+			"while": "^\\p{Lu}[\\p{L}\\-\\d']* *$",
+			"end": "^ *$"
+		},
+		{
+			"name": "entity.name.class.family",
+			"begin": "\\A\\p{Lu}[\\p{L}\\-\\d']* *$",
+			"end": "^ *$",
+			"patterns": [
+				{"include": "#comment"}
+			]
+		},
+		{
+			"name": "variable.property.family",
+			"match": "\\b(\\p{Lu}[\\p{L}\\-\\d']*) +(\\p{Lu}[\\p{L}\\-\\d']*)\\b",
+			"captures": {
+				"1": {
+					"name": "variable.property.family"
+				},
+				"2": {
+					"name": "entity.name.class.family"
+				}
+			}
+		},
+		{
+			"name": "variable.property.family",
+			"match": "\\b(\\p{Lu}[\\p{L}\\-\\d'\"]*)\\b"
+		},
+		{
+			"name": "constant.numeric",
+			"match": "^ *\\d+"
+		}
+	]
 }

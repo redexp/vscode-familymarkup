@@ -1,8 +1,8 @@
 {
   "name": "familymarkup",
   "displayName": "FamilyMarkup",
-  "description": "Language server for FamilyMarkup",
-  "version": "1.1.0",
+  "description": "Full-featured support of FamilyMarkup language",
+  "version": "1.2.0",
   "repository": "github:redexp/vscode-familymarkup",
   "main": "./client/extension",
   "engines": {
@@ -18,13 +18,17 @@
         "id": "familymarkup",
         "aliases": [
           "FamilyMarkup",
-          "familymarkup"
+          "family",
+          "FML"
         ],
         "extensions": [
           ".fml",
           ".family"
         ],
         "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "familymarkup-markdown-injection"
       }
     ],
     "grammars": [
@@ -32,6 +36,17 @@
         "language": "familymarkup",
         "scopeName": "source.family",
         "path": "./syntaxes/familymarkup.tmLanguage.json"
+      },
+      {
+        "language": "familymarkup-markdown-injection",
+        "scopeName": "markdown.family.codeblock",
+        "path": "./syntaxes/familymarkup-markdown-injection.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.family": "familymarkup"
+        }
       }
     ],
     "views": {

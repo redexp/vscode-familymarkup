@@ -8,10 +8,11 @@ This extension provides support for [FamilyMarkup language](https://github.com/r
 
 ## Features
 
-- [x] Support [FamilyMarkup Language Server](https://github.com/redexp/familymarkup-lsp).
+- [x] Full support of [FamilyMarkup Language Server](https://github.com/redexp/familymarkup-lsp).
 - [x] [TreeView](https://code.visualstudio.com/api/extension-guides/tree-view#treeview) of all families
 - [x] Syntax highlighting for Markdown files preview
-- [ ] Syntax highlighting with TextMate syntax
+- [x] Syntax highlighting (limited) with TextMate syntax for faster first time rendering
+  - [x] Syntax highlight in `md` files inside `fml` or `family` code blocks
 
 ## Syntax Example
 
