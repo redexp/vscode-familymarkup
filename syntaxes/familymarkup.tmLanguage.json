@@ -13,16 +13,24 @@
 			"include": "#comment"
 		},
 		{
-			"name": "string.question.family",
+			"name": "string.unknown.family",
 			"match": "\\p{L}[\\p{L}\\-\\d' ]*\\?"
 		},
 		{
-			"name": "string.question.family",
+			"name": "string.unknown.family",
 			"match": "\\?"
 		},
 		{
+			"name": "string.family",
+			"match": "([\\-=]) *(\\p{Ll}[\\p{Ll}' ]*)\\b",
+			"captures": {
+				"1": {"name": "keyword.operator.family"},
+				"2": {"name": "string.family strong"}
+			}
+		},
+		{
 			"name": "keyword.operator.family",
-			"match": "[+=-]"
+			"match": "[+=\\-]"
 		},
 		{
 			"name": "entity.name.class.family",
