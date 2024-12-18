@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.4.0] - 2024-12-18
+
+### Changed
+
+- License from **BSD 4-Clause** to **MIT with Attribution**
+
+### Added
+
+- Icon
+
 ## [1.3.0] - 2024-12-09
 
 ### Added
