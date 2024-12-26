@@ -21,6 +21,18 @@ exports.activate = async function (ctx) {
 		join('server', 'debug.log')
 	);
 
+	const debugConfig = (
+		process.env.IPC_WS_PROXY ?
+			{
+				module: ctx.asAbsolutePath(join('client', 'ipc-ws-proxy.js')),
+				transport: TransportKind.ipc,
+			} : {
+				command: binPath,
+				argv: ["--log-file=" + logPath, "--log-level=2", "--log-clear"],
+				transport: TransportKind.stdio,
+			}
+	);
+
 	client = new LanguageClient(
 		'familymarkup',
 		'FamilyMarkup',
@@ -29,11 +41,7 @@ exports.activate = async function (ctx) {
 				command: binPath,
 				transport: TransportKind.stdio,
 			},
-			debug: {
-				command: binPath,
-				args: [`--log-file=${logPath}`, '--log-clear', `--log-level=2`],
-				transport: TransportKind.stdio,
-			},
+			debug: debugConfig,
 		},
 		{
 			documentSelector: [{

@@ -6,7 +6,18 @@
 	"version": "0.2.0",
     "configurations": [
         {
-            "name": "Extension",
+            "name": "IPC to WS proxy",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "env": {
+                "IPC_WS_PROXY": "true"
+            }
+        },
+        {
+            "name": "Bin",
             "type": "extensionHost",
             "request": "launch",
             "args": [
