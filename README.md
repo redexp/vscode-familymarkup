@@ -1,6 +1,6 @@
 # FamilyMarkup
 
-This extension provides support for [FamilyMarkup Language](https://github.com/redexp/familymarkup-lsp).
+This extension provides support for [FamilyMarkup Language](https://familymarkup.site).
 
 ## Settings
 
