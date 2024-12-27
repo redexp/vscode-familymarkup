@@ -3,9 +3,13 @@
   "displayName": "FamilyMarkup",
   "description": "Full-featured support of FamilyMarkup language",
   "icon": "icon.png",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "repository": "github:redexp/vscode-familymarkup",
   "main": "./client/extension",
+  "license": "BSD-4-Clause",
+  "scripts": {
+    "build": "vsce package"
+  },
   "engines": {
     "vscode": "^1.90.0"
   },

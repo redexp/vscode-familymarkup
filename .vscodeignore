@@ -3,5 +3,6 @@
 .idea/**
 tests/**
 .gitignore
+client/ipc-ws-proxy.js
 server/*.log
 *.sh
