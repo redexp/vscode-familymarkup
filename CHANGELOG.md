@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.6.1] - 2024-12-27
+
+### Changed
+
+- Update language server to **v1.4.1**
+
 ## [1.6.0] - 2024-12-27
 
 ### Changed
