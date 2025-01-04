@@ -11,8 +11,6 @@ let client;
  * @param {import('vscode').ExtensionContext} ctx 
  */
 exports.activate = async function (ctx) {
-	const locale = getLocale();
-
 	const binPath = ctx.asAbsolutePath(
 		join('server', process.platform === 'win32' ? 'main.exe' : 'main')
 	);
@@ -48,9 +46,7 @@ exports.activate = async function (ctx) {
 				scheme: 'file',
 				language: 'familymarkup',
 			}],
-			initializationOptions: {
-				locale,
-			},
+			initializationOptions: getSettings(),
 		}
 	);
 
@@ -61,6 +57,8 @@ exports.activate = async function (ctx) {
 	});
 
 	const updateTreeTitle = () => {
+		const locale = getLocale();
+
 		treeView.title = (
 			locale === 'uk' ?
 				'Сімʼї' :
@@ -71,10 +69,8 @@ exports.activate = async function (ctx) {
 	};
 
 	const sendConfig = () => {
-		return client.sendNotification('config/change', {
-			locale: getLocale(),
-		});
-	}
+		return client.sendNotification('config/change', getSettings());
+	};
 
 	updateTreeTitle();
 
@@ -82,6 +78,8 @@ exports.activate = async function (ctx) {
 		updateTreeTitle();
 		sendConfig();
 	});
+
+	onConfiguration('childrenWithoutRelationships', sendConfig);
 
 	await highlight.init({
 		locateFamilyMarkupWasm(name) {
@@ -114,6 +112,13 @@ function getLocale() {
 	}
 
 	return locale;
+}
+
+function getSettings() {
+	return {
+		locale: getLocale(),
+		warnChildrenWithoutRelations: getConfig().get('childrenWithoutRelationships'),
+	};
 }
 
 function onConfiguration(selector, cb) {

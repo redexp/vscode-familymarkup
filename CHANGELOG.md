@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.7.0] - 2025-01-04
+
+### Added
+
+- Setting "Children Without Relationships"
+
+### Changed
+
+- Update language server to **v1.5.0**
+
 ## [1.6.2] - 2024-12-28
 
 ### Changed

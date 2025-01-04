@@ -4,7 +4,8 @@ This extension provides support for [FamilyMarkup Language](https://familymarkup
 
 ## Settings
 
-- Language: for errors and hints
+- **Locale** (defaults to current editor locale) for errors and hints
+- **Children Without Relationships** (enabled by default). Usually, when a family starts with a large number of siblings, it’s easy to overlook describing the branch of one of them. This feature will highlight all children who lack family connections, allowing you to check whether a person truly did not continue the lineage or if you simply forgot to describe their branch.
 
 ## Features
 
