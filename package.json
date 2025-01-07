@@ -3,7 +3,7 @@
   "displayName": "FamilyMarkup",
   "description": "Full-featured support of FamilyMarkup language",
   "icon": "icon.png",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "repository": "github:redexp/vscode-familymarkup",
   "main": "./client/extension",
   "license": "BSD-4-Clause",
@@ -91,7 +91,8 @@
   },
   "configurationDefaults": {
     "[familymarkup]": {
-      "editor.semanticHighlighting.enabled": true
+      "editor.semanticHighlighting.enabled": true,
+      "editor.formatOnType": true
     }
   },
   "dependencies": {

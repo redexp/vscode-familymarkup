@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.8.0] - 2025-01-07
+
+### Added
+
+- **editor.formatingOnType** enabled for familymarkup files by default
+
+### Changed
+
+- Update language server to **v1.6.0**
+
 ## [1.7.0] - 2025-01-04
 
 ### Added
