@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.9.0] - 2025-01-15
+
+### Added
+
+- **editor.quickSuggestions** is `on` for `strings` which enables completion for labels after `=` sign
+
+### Changed
+
+- Update language server to **v1.7.0**
+
 ## [1.8.0] - 2025-01-07
 
 ### Added

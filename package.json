@@ -3,7 +3,7 @@
   "displayName": "FamilyMarkup",
   "description": "Full-featured support of FamilyMarkup language",
   "icon": "icon.png",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "repository": "github:redexp/vscode-familymarkup",
   "main": "./client/extension",
   "license": "BSD-4-Clause",
@@ -87,12 +87,15 @@
           "description": "Usually, when a family starts with a large number of siblings, it’s easy to overlook describing the branch of one of them. This feature will highlight all children who lack family connections, allowing you to check whether a person truly did not continue the lineage or if you simply forgot to describe their branch."
         }
       }
-    }
-  },
-  "configurationDefaults": {
-    "[familymarkup]": {
-      "editor.semanticHighlighting.enabled": true,
-      "editor.formatOnType": true
+    },
+    "configurationDefaults": {
+      "[familymarkup]": {
+        "editor.semanticHighlighting.enabled": true,
+        "editor.formatOnType": true,
+        "editor.quickSuggestions": {
+          "strings": true
+        }
+      }
     }
   },
   "dependencies": {
