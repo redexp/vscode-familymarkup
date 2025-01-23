@@ -6,3 +6,4 @@ tests/**
 client/ipc-ws-proxy.js
 server/*.log
 *.sh
+webpack.config.js

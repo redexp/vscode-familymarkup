@@ -4,6 +4,7 @@
 
 ### Added
 
+- Web support
 - Check if language server exe file is available for current platform
 - Added rule for "changed surname" to TextMate syntax file
 

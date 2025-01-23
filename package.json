@@ -3,12 +3,17 @@
   "displayName": "FamilyMarkup",
   "description": "Full-featured support of FamilyMarkup language",
   "icon": "icon.png",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "repository": "github:redexp/vscode-familymarkup",
   "main": "./client/extension",
+  "browser": "./dist/web.js",
   "license": "BSD-4-Clause",
+  "publisher": "FamilyMarkup",
   "scripts": {
-    "build": "vsce package"
+    "build": "vsce package",
+    "compile-web": "webpack",
+    "watch-web": "webpack --watch",
+    "package-web": "webpack --mode production --devtool hidden-source-map"
   },
   "engines": {
     "vscode": "^1.90.0"
@@ -104,6 +109,9 @@
   },
   "devDependencies": {
     "@types/vscode": "^1.90.0",
+    "process": "^0.11.10",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
     "ws": "^8.18.0"
   }
 }

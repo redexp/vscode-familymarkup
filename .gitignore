@@ -1,6 +1,7 @@
 .idea
 node_modules
 tests
+dist
 
 *.log
 /*.sh
