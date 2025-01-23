@@ -60,6 +60,18 @@
 		},
 		{
 			"name": "variable.property.family",
+			"match": "\\b(\\p{Lu}[\\p{L}\\-\\d']*) *\\([^\\)\\n]*\\) *(\\p{Lu}[\\p{L}\\-\\d']*)\\b",
+			"captures": {
+				"1": {
+					"name": "variable.property.family"
+				},
+				"2": {
+					"name": "entity.name.class.family"
+				}
+			}
+		},
+		{
+			"name": "variable.property.family",
 			"match": "\\b(\\p{Lu}[\\p{L}\\-\\d'\"]*)\\b"
 		},
 		{

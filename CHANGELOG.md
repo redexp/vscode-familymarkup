@@ -5,6 +5,7 @@
 ### Added
 
 - Check if language server exe file is available for current platform
+- Added rule for "changed surname" to TextMate syntax file
 
 ## [1.9.0] - 2025-01-15
 
