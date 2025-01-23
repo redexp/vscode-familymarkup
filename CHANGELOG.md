@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.10.0] - 2025-01-23
+
+### Added
+
+- Check if language server exe file is available for current platform
+
 ## [1.9.0] - 2025-01-15
 
 ### Added
