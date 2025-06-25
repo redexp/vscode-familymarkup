@@ -17,10 +17,10 @@ class FamilyTree {
 		});
 
 		ctx.subscriptions.push(
-			commands.registerCommand('familytree.open', async (item) => {
-				const pos = await this.request('tree/location', item);
+			commands.registerCommand('familytree.open', ({uri, ...pos}) => {
+				uri = this.client.protocol2CodeConverter.asUri(uri);
 
-				commands.executeCommand('vscode.open', Uri.parse(item.uri), {
+				commands.executeCommand('vscode.open', uri, {
 					selection: new Selection(pos, pos),
 				});
 			})
@@ -56,13 +56,15 @@ class FamilyTree {
 	getTreeItem(item) {
 		const ti = new TreeItem(item.label || item.name, item.type === "member" ? 0 : 1);
 
+		ti.id = item.id;
+
 		ti.command = {
 			title: 'show',
 			command: 'familytree.open',
 			arguments: [{
 				uri: item.uri || item.family.uri,
-				row: item.row,
-				column: item.column,
+				line: item.line,
+				character: item.char,
 			}],
 		};
 
@@ -74,6 +76,19 @@ class FamilyTree {
 	 */
 	async getFamilies() {
 		const list = await this.request('tree/families');
+		const names = new Map();
+
+		for (const item of list) {
+			if (names.has(item.name)) {
+				names.set(item.name, names.get(item.name) + 1);
+			}
+			else {
+				names.set(item.name, 1);
+			}
+
+			item.id = item.name + ":" + names.get(item.name);
+		}
+
 		return addType(list, "family");
 	}
 
@@ -85,7 +100,7 @@ class FamilyTree {
 		const list = await this.request('tree/relations', {
 			uri: family.uri,
 			family_name: family.name,
-			row: family.row,
+			line: family.line,
 		});
 
 		return assignToAll(list.filter(r => r.arrow === "="), {
@@ -98,11 +113,11 @@ class FamilyTree {
 	 * @param {TreeRelation} relation
 	 * @returns {Promise<TreeMember[]>}
 	 */
-	async getMembers({family, row}) {
+	async getMembers({family, line}) {
 		const list = await this.request('tree/members', {
 			uri: family.uri,
 			family_name: family.name,
-			row,
+			line,
 		});
 
 		return assignToAll(list, {

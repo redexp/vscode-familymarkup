@@ -16,7 +16,7 @@
 			"script": "watch-web",
 			"group": "build",
 			"isBackground": true,
-			"problemMatcher": [],
+			"problemMatcher": ["$ts-webpack-watch", "$tslint-webpack-watch"]
 		}
 	]
 }

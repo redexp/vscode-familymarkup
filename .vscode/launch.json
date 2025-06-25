@@ -13,7 +13,18 @@
                 "--extensionDevelopmentPath=${workspaceFolder}"
             ],
             "env": {
-                "IPC_WS_PROXY": "true"
+                "TRANSPORT": "ws"
+            }
+        },
+        {
+            "name": "Wasm",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "env": {
+                "TRANSPORT": "wasm"
             }
         },
         {

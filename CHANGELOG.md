@@ -1,5 +1,11 @@
 # Change Log
 
+## [2.0.0] - 2025-06-25
+
+### Changed
+
+- Migrate from binary language server to wasm language server
+
 ## [1.10.0] - 2025-01-23
 
 ### Added
