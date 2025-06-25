@@ -33,7 +33,10 @@
             "request": "launch",
             "args": [
                 "--extensionDevelopmentPath=${workspaceFolder}"
-            ]
+            ],
+            "env": {
+                "TRANSPORT": "bin"
+            }
         },
         {
 			"name": "Web Extension",

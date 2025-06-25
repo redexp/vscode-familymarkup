@@ -8,24 +8,7 @@ const createLanguageClient = require('./createLanguageClient');
  * @param {import('vscode').ExtensionContext} ctx 
  */
 module.exports.initClient = async function (ctx) {
-    const {platform, arch} = process;
-
-	const filename = platform + '-' + arch + (platform === 'win32' ? '.exe' : '');
-
-	const binPath = ctx.asAbsolutePath(
-		join('server', filename)
-	);
-
-	let serverOptions = {
-		run: {
-			command: binPath,
-			transport: TransportKind.stdio,
-		},
-		debug: {
-			command: binPath,
-			transport: TransportKind.stdio,
-		},
-	};
+	let serverOptions = {};
 
 	const clientOptions = {
 		documentSelector: [{
@@ -36,17 +19,31 @@ module.exports.initClient = async function (ctx) {
 	};
 
 	switch (process.env.TRANSPORT) {
-		case 'ws':
-			serverOptions.debug = {
-				module: ctx.asAbsolutePath(join('client', 'ipc-ws-proxy.js')),
-				transport: TransportKind.ipc,
-			};
-			break;
-		
-		case 'wasm':
-			serverOptions = () => wasmOptions(ctx);
-			clientOptions.uriConverters = createUriConverters();
-			break;
+	case 'ws':
+		serverOptions.debug = {
+			module: ctx.asAbsolutePath(join('client', 'ipc-ws-proxy.js')),
+			transport: TransportKind.ipc,
+		};
+		break;
+
+	case 'bin':
+		const {platform, arch} = process;
+
+		const filename = platform + '-' + arch + (platform === 'win32' ? '.exe' : '');
+
+		const binPath = ctx.asAbsolutePath(
+			join('server', filename)
+		);
+
+		serverOptions.debug = {
+			command: binPath,
+			transport: TransportKind.stdio,
+		};
+		break;
+
+	default: // wasm
+		serverOptions = () => wasmOptions(ctx);
+		clientOptions.uriConverters = createUriConverters();
 	}
 
 	return createLanguageClient({
