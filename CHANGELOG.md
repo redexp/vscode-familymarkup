@@ -1,5 +1,11 @@
 # Change Log
 
+## [2.1.0] - 2025-06-28
+
+### Changed
+
+- FamilyMarkup-LSP **v2.2.0**
+
 ## [2.0.0] - 2025-06-25
 
 ### Changed
