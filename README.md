@@ -21,17 +21,15 @@ This extension provides support for [FamilyMarkup Language](https://familymarkup
 ```family
 Potter
 
-James + Lily Evans =
-Harry
-
+James + Lily Evans = Harry
 
 Weasley
 
 Arthur + Molly? =
-Fred
-George
-Ronald
-girl?
+1. Fred
+2. George
+3. Ronald
+4. girl
 
 Fred and George - twins
 

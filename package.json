@@ -11,6 +11,7 @@
   "publisher": "FamilyMarkup",
   "scripts": {
     "build": "vsce package",
+    "publish": "vsce publish",
     "compile-web": "webpack",
     "watch-web": "webpack --watch",
     "package-web": "webpack --mode production --devtool hidden-source-map"
