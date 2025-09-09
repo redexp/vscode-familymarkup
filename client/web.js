@@ -1,5 +1,5 @@
 const createLspWeb = require('./lsp-web');
-const createTreeView = require('./treeview/createTreeView');
+const createTreeView = require('./treeview/create');
 const initWebView = require('./webview/init');
 
 let lsp;
