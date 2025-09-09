@@ -2,12 +2,12 @@ const {join} = require('path');
 const {LanguageClient, TransportKind} = require('vscode-languageclient/node');
 const {getSettings} = require('./config');
 const {wasmOptions, createUriConverters} = require('./wasm');
-const createLanguageClient = require('./createLanguageClient');
 
 /**
- * @param {import('vscode').ExtensionContext} ctx 
+ * @param {import('vscode').ExtensionContext} ext
+ * @returns {import('vscode-languageclient').LanguageClient}
  */
-module.exports.initClient = async function (ctx) {
+module.exports = function createLspNode(ext) {
 	let serverOptions = {};
 
 	const clientOptions = {
@@ -21,7 +21,7 @@ module.exports.initClient = async function (ctx) {
 	switch (process.env.TRANSPORT) {
 	case 'ws':
 		serverOptions.debug = {
-			module: ctx.asAbsolutePath(join('client', 'ipc-ws-proxy.js')),
+			module: ext.asAbsolutePath(join('client', 'ipc-ws-proxy.js')),
 			transport: TransportKind.ipc,
 		};
 		break;
@@ -31,7 +31,7 @@ module.exports.initClient = async function (ctx) {
 
 		const filename = platform + '-' + arch + (platform === 'win32' ? '.exe' : '');
 
-		const binPath = ctx.asAbsolutePath(
+		const binPath = ext.asAbsolutePath(
 			join('server', filename)
 		);
 
@@ -42,14 +42,14 @@ module.exports.initClient = async function (ctx) {
 		break;
 
 	default: // wasm
-		serverOptions = () => wasmOptions(ctx);
+		serverOptions = () => wasmOptions(ext);
 		clientOptions.uriConverters = createUriConverters();
 	}
 
-	return createLanguageClient({
-		ctx,
-		Constructor: LanguageClient,
+	return new LanguageClient(
+		'familymarkup',
+		'FamilyMarkup',
 		serverOptions,
-		clientOptions,
-	});
+		clientOptions
+	);
 };

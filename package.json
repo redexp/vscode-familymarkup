@@ -23,7 +23,7 @@
     "Programming Languages"
   ],
   "contributes": {
-    "markdown.markdownItPlugins": true,
+    "markdown.markdownItPlugins": false,
     "languages": [
       {
         "id": "familymarkup",
@@ -36,7 +36,11 @@
           ".fml",
           ".family"
         ],
-        "configuration": "./language-configuration.json"
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/file-light.png",
+          "dark": "./icons/file-dark.png"
+        }
       },
       {
         "id": "familymarkup-markdown-injection"
@@ -102,6 +106,22 @@
           "strings": true
         }
       }
+    },
+    "commands": [
+      {
+        "command": "familymarkup.showGraph",
+        "title": "Open Family Tree View",
+        "icon": "$(open-preview)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "familymarkup.showGraph",
+          "group": "navigation",
+          "when": "editorLangId == familymarkup"
+        }
+      ]
     }
   },
   "extensionDependencies": [
@@ -112,8 +132,17 @@
     "vscode-languageclient": "^10.0.0-next.12"
   },
   "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^6.1.4",
+    "@tsconfig/svelte": "^5.0.5",
+    "@types/d3-hierarchy": "^3.1.7",
     "@types/vscode": "^1.90.0",
+    "@types/vscode-webview": "^1.57.5",
+    "d3-flextree": "^2.1.2",
+    "less": "^4.4.1",
     "process": "^0.11.10",
+    "svelte": "^5.38.7",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.4",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
     "ws": "^8.18.0"

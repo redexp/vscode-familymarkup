@@ -1,31 +1,30 @@
-// const {join} = require('path');
-const {initClient} = require('./lsp');
-// const highlight = require('./highlight');
+const createLsp = require('./lsp-node');
+const createTreeView = require('./treeview/create');
+const initWebView = require('./webview/init');
 
-let client;
+let lsp;
 
 /**
- * @param {import('vscode').ExtensionContext} ctx 
+ * @typedef {{ext: import('vscode').ExtensionContext, lsp: import('vscode-languageclient').LanguageClient}} Ctx
  */
-exports.activate = async function (ctx) {
-	await Promise.all([
-		initClient(ctx).then(c => (client = c)),
-		// highlight.init({
-		// 	locateFamilyMarkupWasm(name) {
-		// 		return ctx.asAbsolutePath(join('node_modules', 'highlight-familymarkup', name));
-		// 	}
-		// }),
-	]);
 
-	// return {
-	// 	extendMarkdownIt(md) {
-	// 		return md.use(highlight);
-	// 	}
-	// };
+/**
+ * @param {import('vscode').ExtensionContext} ext
+ */
+exports.activate = async function (ext) {
+	lsp = createLsp(ext);
+
+	await lsp.start();
+
+	/** @type {Ctx} */
+	const ctx = {ext, lsp};
+
+	createTreeView(ctx);
+	initWebView(ctx);
 };
 
 exports.deactivate = function () {
-	if (client) {
-		return client.stop();
+	if (lsp) {
+		return lsp.stop();
 	}
 };

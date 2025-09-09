@@ -1,28 +1,26 @@
-const {LanguageClient} = require('vscode-languageclient/browser');
-const {getSettings} = require('./config');
-const {wasmOptions, createUriConverters} = require('./wasm');
-const createLanguageClient = require('./createLanguageClient');
+const createLspWeb = require('./lsp-web');
+const createTreeView = require('./treeview/createTreeView');
+const initWebView = require('./webview/init');
 
-let client;
+let lsp;
 
-exports.activate = async function (ctx) {
-	client = await createLanguageClient({
-		ctx,
-		Constructor: LanguageClient,
-		serverOptions: () => wasmOptions(ctx),
-		clientOptions: {
-			documentSelector: [{
-				scheme: 'file',
-				language: 'familymarkup',
-			}],
-			initializationOptions: getSettings(),
-			uriConverters: createUriConverters(),
-		},
-	});
+/**
+ * @param {import('vscode').ExtensionContext} ext
+ */
+exports.activate = async function (ext) {
+	lsp = createLspWeb(ext);
+
+	await lsp.start();
+
+	/** @type {Ctx} */
+	const ctx = {ext, lsp};
+
+	createTreeView(ctx);
+	initWebView(ctx);
 };
 
 exports.deactivate = function () {
-	if (client) {
-		return client.stop();
+	if (lsp) {
+		return lsp.stop();
 	}
 };

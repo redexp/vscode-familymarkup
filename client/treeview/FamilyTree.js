@@ -1,34 +1,34 @@
-const {TreeItem, EventEmitter, commands, Uri, Selection} = require('vscode');
+const {TreeItem, EventEmitter, commands, Selection} = require('vscode');
 
 class FamilyTree {
 	/**
-	 * @param {import('vscode-languageclient/node').ExtensionContext} ctx
-	 * @param {import('vscode-languageclient/node').LanguageClient} client
+	 * @param {Ctx} ctx
 	 */
-	constructor(ctx, client) {
-		this.client = client;
+	constructor({lsp, ext}) {
+		this.lsp = lsp;
 
 		const reloadEmitter = new EventEmitter()
 
+		// noinspection JSUnusedGlobalSymbols
 		this.onDidChangeTreeData = reloadEmitter.event;
 
-		client.onNotification('tree/reload', function () {
+		lsp.onNotification('tree/reload', function () {
 			reloadEmitter.fire();
 		});
 
-		ctx.subscriptions.push(
-			commands.registerCommand('familytree.open', ({uri, ...pos}) => {
-				uri = this.client.protocol2CodeConverter.asUri(uri);
+		const command = commands.registerCommand('familytree.open', ({uri, ...pos}) => {
+			uri = lsp.protocol2CodeConverter.asUri(uri);
 
-				commands.executeCommand('vscode.open', uri, {
-					selection: new Selection(pos, pos),
-				});
-			})
-		);
+			commands.executeCommand('vscode.open', uri, {
+				selection: new Selection(pos, pos),
+			});
+		});
+
+		ext.subscriptions.push(command);
 	}
 
 	request(method, params) {
-		return this.client.sendRequest(method, params);
+		return this.lsp.sendRequest(method, params);
 	}
 
 	/**

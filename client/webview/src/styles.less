@@ -1,0 +1,57 @@
+:root {
+	--color: #4a90e2;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+svg {
+	display: block;
+	width: 100%;
+	height: 100vh;
+	user-select: none;
+}
+
+.family {
+	> text {
+		font-family: monospace;
+		text-anchor: middle;
+		dominant-baseline: hanging;
+	}
+
+	.bg {
+		fill: #fafdff;
+		stroke: var(--color);
+		stroke-width: 2px;
+		stroke-dasharray: 4;
+		rx: 8px;
+		ry: 8px;
+		filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+	}
+}
+
+.person {
+	rect {
+		fill: #fff;
+		stroke: var(--color);
+		stroke-width: 2px;
+		rx: 6px;
+		ry: 6px;
+		filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+	}
+
+	text {
+		pointer-events: none;
+		font-size: 12px;
+		fill: #000;
+		font-family: monospace;
+	}
+}
+
+.line {
+	fill: none;
+	stroke: #4a90e2;
+	stroke-width: 2px;
+}
