@@ -1,5 +1,6 @@
 import {flextree} from 'd3-flextree';
-import type {GraphItem, FlexTree, GraphFamily, SvgFamily, Rect, Link} from '../types';
+import {roundCommands, type SVGCommand} from "svg-round-corners";
+import type {GraphItem, FlexTree, GraphFamily, SvgFamily, Rect, Link, BoundingPath, Row} from '../types';
 
 export const style = {
 	family: {
@@ -45,6 +46,7 @@ export function createTree(treeData: GraphItem): FlexTree {
 }
 
 export function createSvgFamilies(families: GraphFamily[]): SvgFamily[] {
+	const rowHeight = style.person.height + style.family.padding.y;
 	let fTop = 0;
 
 	return families.map(f => {
@@ -91,7 +93,7 @@ export function createSvgFamilies(families: GraphFamily[]): SvgFamily[] {
 				const row = rows.get(top);
 
 				if (!row) {
-					rows.set(top, {top, left, right});
+					rows.set(top, {top, left, right, bottom: top + rowHeight});
 					continue;
 				}
 
@@ -125,17 +127,13 @@ export function createSvgFamilies(families: GraphFamily[]): SvgFamily[] {
 			height: style.family.title.fontSize,
 		};
 
+		data.boundingPath = createBoundingPath(data.rows);
+
 		fTop += data.height;
 
 		return data;
 	});
 }
-
-type Row = {
-	top: number,
-	left: number,
-	right: number,
-};
 
 function alignRows(name: string, rows: Row[]): Row[] {
 	const first = rows[0];
@@ -145,6 +143,7 @@ function alignRows(name: string, rows: Row[]): Row[] {
 		top: first.top - style.family.title.fontSize,
 		left: first.left + (first.right - first.left) / 2 - nameWidth / 2,
 		right: nameWidth,
+		bottom: first.top,
 	};
 
 	title.right += title.left;
@@ -248,4 +247,82 @@ function alignRows(name: string, rows: Row[]): Row[] {
 	}
 
 	return rows;
+}
+
+function createBoundingPath(rows: Row[]): BoundingPath {
+	const points: SVGCommand[] = [];
+
+	for (let i = 0; i < rows.length; i++) {
+		const row = rows[i];
+		const next = rows[i + 1];
+		const prevY = i == 0 ? row.top : points[points.length - 1].values.y;
+
+		points.push({
+			marker: 'L',
+			values: {
+				x: row.left,
+				y: prevY,
+			},
+		});
+
+		if (next && next.left <= row.left) {
+			points.push({
+				marker: 'L',
+				values: {
+					x: row.left,
+					y: next.top,
+				},
+			});
+		}
+		else {
+			points.push({
+				marker: 'L',
+				values: {
+					x: row.left,
+					y: row.bottom,
+				},
+			});
+		}
+	}
+
+	for (let i = rows.length - 1; i >= 0; i--) {
+		const row = rows[i];
+		const next = rows[i - 1];
+		const prevY = points[points.length - 1].values.y;
+
+		points.push({
+			marker: 'L',
+			values: {
+				x: row.right,
+				y: prevY,
+			},
+		});
+
+		if (next && row.right <= next.right) {
+			points.push({
+				marker: 'L',
+				values: {
+					x: row.right,
+					y: next.bottom,
+				},
+			});
+		}
+		else {
+			points.push({
+				marker: 'L',
+				values: {
+					x: row.right,
+					y: row.top,
+				},
+			});
+		}
+	}
+
+	const first = points[0];
+
+	first.marker = 'M';
+
+	points.push({...first, marker: 'Z'});
+
+	return roundCommands(points, 10);
 }

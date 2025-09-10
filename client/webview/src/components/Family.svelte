@@ -13,27 +13,14 @@ let {family}: Props = $props();
 </script>
 
 <G class="family" top={family.top}>
-    <rect
-        x={0}
-        y={0}
-        width={family.width}
-        height={family.height}
-        class="bg"
-    />
-
     <G
         top={style.family.padding.y + style.family.title.fontSize}
         left={style.family.padding.x}
     >
-        {#each family.rows as row}
-            <rect
-                x={row.left}
-                y={row.top}
-                width={row.right - row.left}
-                height={style.person.height + style.family.padding.y * 2}
-                fill="#ccc"
-            />
-        {/each}
+        <path
+            d={family.boundingPath.path}
+            class="bounding"
+        />
 
         <text
             x={family.title.x + family.title.width / 2}

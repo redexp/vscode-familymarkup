@@ -1,5 +1,5 @@
 import type {HierarchyNode} from 'd3-hierarchy';
-import type {SVGCommand} from 'svg-round-corners';
+import {roundCommands} from 'svg-round-corners';
 
 export type TreeData = {
 	name: string,
@@ -45,12 +45,19 @@ export type SvgFamily = {
 	top: number,
 	width: number,
 	height: number,
-	boundingPath?: SVGCommand[],
-	rows: Array<{ top: number, left: number, right: number }>,
+	boundingPath: BoundingPath,
+	rows: Row[],
 	roots: Array<Rect & {
 		nodes: Node[],
 		links: Link[],
 	}>,
+};
+
+export type Row = {
+	top: number,
+	left: number,
+	right: number,
+	bottom: number,
 };
 
 export type Rect = {
@@ -63,3 +70,5 @@ export type Rect = {
 export type Node = Rect & {name: string};
 
 export type Link = {source: Node, target: Node};
+
+export type BoundingPath = ReturnType<typeof roundCommands>;

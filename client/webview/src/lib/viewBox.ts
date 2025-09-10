@@ -13,7 +13,7 @@ function init(node: SVGElement) {
 function updateViewBox() {
 	svg.setAttribute(
 		'viewBox',
-		curRect.x + ' ' + curRect.y + ' ' + curRect.width + ' ' + curRect.height
+		curRect.x.toFixed(2) + ' ' + curRect.y.toFixed(2) + ' ' + curRect.width.toFixed(2) + ' ' + curRect.height.toFixed(2)
 	);
 }
 
