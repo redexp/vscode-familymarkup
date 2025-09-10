@@ -1,25 +1,24 @@
 <script lang="ts">
-    import {send} from '../lib/api';
+import {send} from '../lib/api';
+import type {Rect} from '../types';
 
-    interface Props {
-		id?: any,
-		name: string,
-		x: number,
-		y: number,
-		width: number,
-		height: number,
-	}
+interface Props {
+    id?: any,
+    name: string,
+    rect: Rect,
+}
 
-    let {id, x, y, width, height, name}: Props = $props();
+const {id, name, rect}: Props = $props();
+const {x, y, width, height} = rect;
 
-	function onClick() {
-        send("person", {id});
-	}
+function onClick() {
+    send("person", {id});
+}
 </script>
 
 <g
     class="person"
-    transform={`translate(${x - width / 2},${y - height / 2})`}
+    transform={`translate(${x},${y})`}
     onclick={onClick}
     role="button"
     tabindex="0"

@@ -21,14 +21,28 @@ let {family}: Props = $props();
         class="bg"
     />
 
-    <text
-        x={family.width / 2}
-        y={style.family.padding.y}
-        font-size={style.family.title.fontSize}
-    >{family.name}</text>
+    <G
+        top={style.family.padding.y + style.family.title.fontSize}
+        left={style.family.padding.x}
+    >
+        {#each family.rows as row}
+            <rect
+                x={row.left}
+                y={row.top}
+                width={row.right - row.left}
+                height={style.person.height + style.family.padding.y * 2}
+                fill="#ccc"
+            />
+        {/each}
 
-    {#each family.roots as root}
-        <G top={root.top} left={root.left}>
+        <text
+            x={family.title.x + family.title.width / 2}
+            y={family.title.y}
+            font-size={style.family.title.fontSize}
+            class="title"
+        >{family.title.name}</text>
+
+        {#each family.roots as root}
             {#each root.links as {source, target}}
                 <Bezier
                     class="line"
@@ -37,15 +51,12 @@ let {family}: Props = $props();
                 />
             {/each}
 
-            {#each root.nodes as d}
+            {#each root.nodes as node}
                 <Person
-                    x={d.x}
-                    y={d.y}
-                    width={d.data.width}
-                    height={d.data.height}
-                    name={d.data.name}
+                    rect={node}
+                    name={node.name}
                 />
             {/each}
-        </G>
-    {/each}
+        {/each}
+    </G>
 </G>

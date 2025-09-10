@@ -15,7 +15,7 @@ svg {
 }
 
 .family {
-	> text {
+	.title {
 		font-family: monospace;
 		text-anchor: middle;
 		dominant-baseline: hanging;
@@ -29,6 +29,13 @@ svg {
 		rx: 8px;
 		ry: 8px;
 		filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+	}
+
+	.row {
+		fill: #cccccc;
+		stroke: var(--color);
+		stroke-width: 2px;
+		stroke-dasharray: 4;
 	}
 }
 

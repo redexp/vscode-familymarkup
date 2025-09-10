@@ -1,4 +1,5 @@
-import type {HierarchyNode, HierarchyLink} from 'd3-hierarchy';
+import type {HierarchyNode} from 'd3-hierarchy';
+import type {SVGCommand} from 'svg-round-corners';
 
 export type TreeData = {
 	name: string,
@@ -8,8 +9,10 @@ export type TreeData = {
 }
 
 export interface FlexTree extends HierarchyNode<TreeData> {
-	x?: number,
-	y?: number,
+	x: number,
+	y: number,
+	width: number,
+	height: number,
 
 	extents: {
 		left: number,
@@ -35,19 +38,28 @@ export type GraphRelation = {
 	children: GraphPerson[],
 }
 
-export type GraphItem = GraphPerson & {children?: GraphPerson[]};
+export type GraphItem = GraphPerson & { children?: GraphPerson[] };
 
 export type SvgFamily = {
-	name: string,
+	title: Node,
 	top: number,
 	width: number,
 	height: number,
-	roots: Array<{
-		top: number,
-		left: number,
-		width: number,
-		height: number,
-		nodes: FlexTree[],
-		links: HierarchyLink<TreeData>[],
+	boundingPath?: SVGCommand[],
+	rows: Array<{ top: number, left: number, right: number }>,
+	roots: Array<Rect & {
+		nodes: Node[],
+		links: Link[],
 	}>,
 };
+
+export type Rect = {
+	x: number,
+	y: number,
+	width: number,
+	height: number,
+};
+
+export type Node = Rect & {name: string};
+
+export type Link = {source: Node, target: Node};
