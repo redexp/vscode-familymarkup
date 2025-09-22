@@ -1,56 +1,19 @@
-import type {HierarchyNode} from 'd3-hierarchy';
 import {roundCommands} from 'svg-round-corners';
 
-export type TreeData = {
-	name: string,
-	width: number,
-	height: number,
-	size: [number, number],
-}
-
-export interface FlexTree extends HierarchyNode<TreeData> {
-	x: number,
-	y: number,
-	width: number,
-	height: number,
-
-	extents: {
-		left: number,
-		right: number,
-		top: number,
-		bottom: number,
-	},
-}
-
-export type GraphFamily = {
-	name: string,
-	rootPersons: GraphPerson[],
-}
-
-export type GraphPerson = {
-	type: 1 | 2, // 1 - default, 2 - unknown
-	name: string,
-	relations?: GraphRelation[],
-}
-
-export type GraphRelation = {
-	partners: GraphPerson[],
-	children: GraphPerson[],
-}
-
-export type GraphItem = GraphPerson & { children?: GraphPerson[] };
-
-export type SvgFamily = {
+export type SvgFamily = Rect & {
 	title: Node,
-	top: number,
-	width: number,
-	height: number,
 	boundingPath: BoundingPath,
 	rows: Row[],
-	roots: Array<Rect & {
-		nodes: Node[],
-		links: Link[],
-	}>,
+	roots: SvgRoot[],
+};
+
+export type SvgRoot = Rect & {
+	person: SvgPerson,
+};
+
+export type SvgPerson = Rect & {
+	name: string,
+	children: SvgPerson[],
 };
 
 export type Row = {
@@ -68,7 +31,5 @@ export type Rect = {
 };
 
 export type Node = Rect & {name: string};
-
-export type Link = {source: Node, target: Node};
 
 export type BoundingPath = ReturnType<typeof roundCommands>;

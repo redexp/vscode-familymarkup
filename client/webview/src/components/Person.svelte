@@ -1,19 +1,19 @@
 <script lang="ts">
-import {send} from '../lib/api';
-import type {Rect} from '../types';
+    import {send} from '../lib/api';
+    import type {Rect} from '../types';
 
-interface Props {
-    id?: any,
-    name: string,
-    rect: Rect,
-}
+    interface Props {
+        id?: any,
+        name: string,
+        rect: Rect,
+    }
 
-const {id, name, rect}: Props = $props();
-const {x, y, width, height} = rect;
+    const {id, name, rect}: Props = $props();
+    const {x, y, width, height} = rect;
 
-function onClick() {
-    send("person", {id});
-}
+    function onClick() {
+        send("person", {id});
+    }
 </script>
 
 <g
