@@ -2,7 +2,7 @@ import {roundCommands} from 'svg-round-corners';
 
 export type SvgFamily = Rect & {
 	title: Node,
-	boundingPath: BoundingPath,
+	bounding: Pos[],
 	rows: Row[],
 	roots: SvgRoot[],
 };
@@ -16,6 +16,11 @@ export type SvgPerson = Rect & {
 	children: SvgPerson[],
 };
 
+export type Pos = {
+	x: number,
+	y: number,
+};
+
 export type Row = {
 	top: number,
 	left: number,
@@ -23,9 +28,7 @@ export type Row = {
 	bottom: number,
 };
 
-export type Rect = {
-	x: number,
-	y: number,
+export type Rect = Pos & {
 	width: number,
 	height: number,
 };

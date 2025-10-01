@@ -2,6 +2,7 @@
     import Bezier from "./Bezier.svelte";
     import Person from "./Person.svelte";
     import G from './G.svelte';
+	import {createBoundingPath} from '../lib/tree';
     import type {SvgFamily, SvgPerson} from "../types";
 
     interface Props {
@@ -10,6 +11,7 @@
 
     let {family}: Props = $props();
 
+	const path = createBoundingPath(family);
 	const roots = family.roots.map(root => {
 		const nodes: SvgPerson[] = [];
 		const links: Array<{source: SvgPerson, target: SvgPerson}> = [];
@@ -34,14 +36,9 @@
 </script>
 
 <G class="family" left={family.x} top={family.y}>
-    <rect
-        x="0"
-        y="0"
-        width={family.width}
-        height={family.height}
-        fill="#ccc"
-        stroke="#000"
-        stroke-width="1"
+    <path
+        d={path.path}
+        class="bounding"
     />
 
     <text
