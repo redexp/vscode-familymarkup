@@ -4,11 +4,7 @@ export type SvgFamily = Rect & {
 	title: Node,
 	bounding: Pos[],
 	rows: Row[],
-	roots: SvgRoot[],
-};
-
-export type SvgRoot = Rect & {
-	person: SvgPerson,
+	roots: SvgPerson[],
 };
 
 export type SvgPerson = Rect & {

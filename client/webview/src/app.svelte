@@ -17,9 +17,12 @@
 
 	onMount(() => {
 		const data = JSON.parse(document.getElementById('data').innerHTML);
-		const ctx = document.createElement('canvas').getContext('2d');
 
+		document.body.style.fontFamily = data.fontFamily;
+
+		const ctx = document.createElement('canvas').getContext('2d');
         const size = 12;
+
 		ctx.font = size + `px ` + data.fontFamily;
 		const {width} = ctx.measureText('X');
 

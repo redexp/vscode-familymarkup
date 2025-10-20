@@ -26,7 +26,7 @@
 			}
 		};
 
-		walk(root.person);
+		walk(root);
 
 		return {
 			nodes,
@@ -43,7 +43,7 @@
 
     <text
         class="title"
-        x={family.title.x}
+        x={family.title.x + 20}
         y={family.title.y}
     >{family.title.name}</text>
 
