@@ -43,7 +43,7 @@
 
     <text
         class="title"
-        x={family.title.x + 20}
+        x={family.title.x + 10}
         y={family.title.y}
     >{family.title.name}</text>
 
