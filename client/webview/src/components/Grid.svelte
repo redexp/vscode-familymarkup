@@ -15,16 +15,28 @@
 <g class="grid">
     {#each steps as _s, i}
         <line
-            x1={fromX + step * i}
+            x1={step * i}
             y1={fromY}
-            x2={fromX + step * i}
+            x2={step * i}
+            y2={toY}
+        />
+        <line
+            x1={-step * i}
+            y1={fromY}
+            x2={-step * i}
             y2={toY}
         />
         <line
             x1={fromX}
-            y1={fromY + step * i}
+            y1={step * i}
             x2={toX}
-            y2={fromY + step * i}
+            y2={step * i}
+        />
+        <line
+            x1={fromX}
+            y1={-step * i}
+            x2={toX}
+            y2={-step * i}
         />
     {/each}
 </g>
