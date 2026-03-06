@@ -1,358 +1,79 @@
 export const families = [
 	{
-		"name": "Величко",
-		"rootPersons": [
+		"x": 0,
+		"y": 0,
+		"width": 1569,
+		"height": 790,
+		"title": {
+			"x": 1161,
+			"y": 39,
+			"width": 108,
+			"height": 16,
+			"name": "Оржеховські"
+		},
+		"roots": [
 			{
-				"type": 1,
-				"name": "Андріан",
-				"relations": [
+				"x": 947,
+				"y": 80,
+				"width": 84,
+				"height": 30,
+				"name": "батько",
+				"children": [
 					{
-						"partners": [
-							{
-								"type": 2,
-								"name": "Мокрина?"
-							}
-						],
+						"x": 955,
+						"y": 135,
+						"width": 69,
+						"height": 30,
+						"name": "мати",
 						"children": [
 							{
-								"type": 1,
-								"name": "Іван",
-								"relations": [
-									{
-										"partners": [
-											{
-												"type": 1,
-												"name": "Ганна"
-											}
-										],
-										"children": [
-											{
-												"type": 1,
-												"name": "Василій",
-												"relations": [
-													{
-														"partners": [
-															{
-																"type": 1,
-																"name": "Рая"
-															}
-														],
-														"children": [
-															{
-																"type": 1,
-																"name": "Ірина",
-																"children": []
-															},
-															{
-																"type": 1,
-																"name": "Наташа",
-																"children": []
-															}
-														]
-													}
-												],
-												"children": [
-													{
-														"name": "Рая",
-														"children": [
-															{
-																"type": 1,
-																"name": "Ірина",
-																"children": []
-															},
-															{
-																"type": 1,
-																"name": "Наташа",
-																"children": []
-															}
-														]
-													}
-												]
-											},
-											{
-												"type": 1,
-												"name": "Оля",
-												"children": []
-											},
-											{
-												"type": 1,
-												"name": "Варвара",
-												"children": []
-											},
-											{
-												"type": 1,
-												"name": "Петро",
-												"children": []
-											},
-											{
-												"type": 1,
-												"name": "Михайло",
-												"relations": [
-													{
-														"partners": [
-															{
-																"type": 2,
-																"name": "Света?"
-															}
-														],
-														"children": [
-															{
-																"type": 1,
-																"name": "Слава",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Света?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Ваня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
-																"children": [
-																	{
-																		"name": "Света?",
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Ваня",
-																				"children": []
-																			}
-																		]
-																	}
-																]
-															},
-															{
-																"type": 1,
-																"name": "Ігорь",
-																"children": []
-															},
-															{
-																"type": 1,
-																"name": "Альона",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Рома?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Даня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
-																"children": [
-																	{
-																		"name": "Рома?",
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Даня",
-																				"children": []
-																			}
-																		]
-																	}
-																]
-															}
-														]
-													}
-												],
-												"children": [
-													{
-														"name": "Света?",
-														"children": [
-															{
-																"type": 1,
-																"name": "Слава",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Света?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Ваня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
-																"children": [
-																	{
-																		"name": "Света?",
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Ваня",
-																				"children": []
-																			}
-																		]
-																	}
-																]
-															},
-															{
-																"type": 1,
-																"name": "Ігорь",
-																"children": []
-															},
-															{
-																"type": 1,
-																"name": "Альона",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Рома?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Даня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
-																"children": [
-																	{
-																		"name": "Рома?",
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Даня",
-																				"children": []
-																			}
-																		]
-																	}
-																]
-															}
-														]
-													}
-												]
-											}
-										]
-									}
-								],
+								"x": 671,
+								"y": 190,
+								"width": 76,
+								"height": 30,
+								"name": "Йосип",
 								"children": [
 									{
-										"name": "Ганна",
+										"x": 675,
+										"y": 245,
+										"width": 69,
+										"height": 30,
+										"name": "мати",
 										"children": [
 											{
-												"type": 1,
-												"name": "Василій",
-												"relations": [
-													{
-														"partners": [
-															{
-																"type": 1,
-																"name": "Рая"
-															}
-														],
-														"children": [
-															{
-																"type": 1,
-																"name": "Ірина",
-																"children": []
-															},
-															{
-																"type": 1,
-																"name": "Наташа",
-																"children": []
-															}
-														]
-													}
-												],
+												"x": 240,
+												"y": 300,
+												"width": 76,
+												"height": 30,
+												"name": "Федір",
 												"children": [
 													{
-														"name": "Рая",
+														"x": 222,
+														"y": 355,
+														"width": 113,
+														"height": 30,
+														"name": "Анастасія?",
 														"children": [
 															{
-																"type": 1,
-																"name": "Ірина",
-																"children": []
-															},
-															{
-																"type": 1,
-																"name": "Наташа",
-																"children": []
-															}
-														]
-													}
-												]
-											},
-											{
-												"type": 1,
-												"name": "Оля",
-												"children": []
-											},
-											{
-												"type": 1,
-												"name": "Варвара",
-												"children": []
-											},
-											{
-												"type": 1,
-												"name": "Петро",
-												"children": []
-											},
-											{
-												"type": 1,
-												"name": "Михайло",
-												"relations": [
-													{
-														"partners": [
-															{
-																"type": 2,
-																"name": "Света?"
-															}
-														],
-														"children": [
-															{
-																"type": 1,
-																"name": "Слава",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Света?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Ваня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
+																"x": 10,
+																"y": 410,
+																"width": 69,
+																"height": 30,
+																"name": "Іван",
 																"children": [
 																	{
-																		"name": "Света?",
+																		"x": 13,
+																		"y": 465,
+																		"width": 62,
+																		"height": 30,
+																		"name": "Оля",
 																		"children": [
 																			{
-																				"type": 1,
-																				"name": "Ваня",
+																				"x": 10,
+																				"y": 520,
+																				"width": 69,
+																				"height": 30,
+																				"name": "Люда",
 																				"children": []
 																			}
 																		]
@@ -360,77 +81,25 @@ export const families = [
 																]
 															},
 															{
-																"type": 1,
-																"name": "Ігорь",
-																"children": []
-															},
-															{
-																"type": 1,
-																"name": "Альона",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Рома?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Даня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
+																"x": 103,
+																"y": 410,
+																"width": 76,
+																"height": 30,
+																"name": "Гриша",
 																"children": [
 																	{
-																		"name": "Рома?",
+																		"x": 96,
+																		"y": 465,
+																		"width": 91,
+																		"height": 30,
+																		"name": "дружина",
 																		"children": [
 																			{
-																				"type": 1,
-																				"name": "Даня",
-																				"children": []
-																			}
-																		]
-																	}
-																]
-															}
-														]
-													}
-												],
-												"children": [
-													{
-														"name": "Света?",
-														"children": [
-															{
-																"type": 1,
-																"name": "Слава",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Света?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Ваня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
-																"children": [
-																	{
-																		"name": "Света?",
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Ваня",
+																				"x": 103,
+																				"y": 520,
+																				"width": 76,
+																				"height": 30,
+																				"name": "Света",
 																				"children": []
 																			}
 																		]
@@ -438,37 +107,129 @@ export const families = [
 																]
 															},
 															{
-																"type": 1,
-																"name": "Ігорь",
-																"children": []
-															},
-															{
-																"type": 1,
-																"name": "Альона",
-																"relations": [
+																"x": 281,
+																"y": 410,
+																"width": 91,
+																"height": 30,
+																"name": "Михайло",
+																"children": [
 																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Рома?"
-																			}
-																		],
+																		"x": 288,
+																		"y": 465,
+																		"width": 76,
+																		"height": 30,
+																		"name": "Ніна?",
 																		"children": [
 																			{
-																				"type": 1,
-																				"name": "Даня",
-																				"children": []
+																				"x": 200,
+																				"y": 520,
+																				"width": 84,
+																				"height": 30,
+																				"name": "Віктор",
+																				"children": [
+																					{
+																						"x": 204,
+																						"y": 575,
+																						"width": 76,
+																						"height": 30,
+																						"name": "Ольга",
+																						"children": [
+																							{
+																								"x": 167,
+																								"y": 630,
+																								"width": 54,
+																								"height": 30,
+																								"name": "Ян",
+																								"children": []
+																							},
+																							{
+																								"x": 241,
+																								"y": 630,
+																								"width": 76,
+																								"height": 30,
+																								"name": "Назар",
+																								"children": []
+																							}
+																						]
+																					}
+																				]
+																			},
+																			{
+																				"x": 383,
+																				"y": 520,
+																				"width": 69,
+																				"height": 30,
+																				"name": "Ніна",
+																				"children": [
+																					{
+																						"x": 379,
+																						"y": 575,
+																						"width": 76,
+																						"height": 30,
+																						"name": "Петя?",
+																						"children": [
+																							{
+																								"x": 338,
+																								"y": 630,
+																								"width": 62,
+																								"height": 30,
+																								"name": "Юра",
+																								"children": [
+																									{
+																										"x": 335,
+																										"y": 685,
+																										"width": 69,
+																										"height": 30,
+																										"name": "Аня?",
+																										"children": [
+																											{
+																												"x": 327,
+																												"y": 740,
+																												"width": 84,
+																												"height": 30,
+																												"name": "Максим",
+																												"children": []
+																											}
+																										]
+																									}
+																								]
+																							},
+																							{
+																								"x": 420,
+																								"y": 630,
+																								"width": 76,
+																								"height": 30,
+																								"name": "Денис",
+																								"children": []
+																							}
+																						]
+																					}
+																				]
 																			}
 																		]
 																	}
-																],
+																]
+															},
+															{
+																"x": 461,
+																"y": 410,
+																"width": 84,
+																"height": 30,
+																"name": "Микола",
 																"children": [
 																	{
-																		"name": "Рома?",
+																		"x": 458,
+																		"y": 465,
+																		"width": 91,
+																		"height": 30,
+																		"name": "Дунька?",
 																		"children": [
 																			{
-																				"type": 1,
-																				"name": "Даня",
+																				"x": 472,
+																				"y": 520,
+																				"width": 62,
+																				"height": 30,
+																				"name": "син",
 																				"children": []
 																			}
 																		]
@@ -478,58 +239,279 @@ export const families = [
 														]
 													}
 												]
+											},
+											{
+												"x": 607,
+												"y": 300,
+												"width": 99,
+												"height": 30,
+												"name": "Григорій",
+												"children": [
+													{
+														"x": 614,
+														"y": 355,
+														"width": 84,
+														"height": 30,
+														"name": "Марія?",
+														"children": [
+															{
+																"x": 566,
+																"y": 410,
+																"width": 91,
+																"height": 30,
+																"name": "Людмила",
+																"children": []
+															},
+															{
+																"x": 678,
+																"y": 410,
+																"width": 69,
+																"height": 30,
+																"name": "Алла",
+																"children": []
+															}
+														]
+													}
+												]
+											},
+											{
+												"x": 819,
+												"y": 300,
+												"width": 84,
+												"height": 30,
+												"name": "Андрій",
+												"children": [
+													{
+														"x": 816,
+														"y": 355,
+														"width": 91,
+														"height": 30,
+														"name": "дружина",
+														"children": [
+															{
+																"x": 767,
+																"y": 410,
+																"width": 69,
+																"height": 30,
+																"name": "Іван",
+																"children": []
+															},
+															{
+																"x": 857,
+																"y": 410,
+																"width": 99,
+																"height": 30,
+																"name": "Світлана",
+																"children": []
+															}
+														]
+													}
+												]
+											},
+											{
+												"x": 923,
+												"y": 300,
+												"width": 106,
+												"height": 30,
+												"name": "Олександр",
+												"children": []
+											},
+											{
+												"x": 1050,
+												"y": 300,
+												"width": 128,
+												"height": 30,
+												"name": "Дочка-Йосипа",
+												"children": []
 											}
 										]
 									}
 								]
 							},
 							{
-								"type": 1,
-								"name": "Марія",
-								"children": []
-							},
-							{
-								"type": 1,
-								"name": "Катерина",
-								"children": []
-							},
-							{
-								"type": 1,
-								"name": "Ганна",
-								"relations": [
-									{
-										"partners": [
-											{
-												"type": 2,
-												"name": "чоловік"
-											}
-										],
-										"children": [
-											{
-												"type": 1,
-												"name": "Софія",
-												"children": []
-											},
-											{
-												"type": 1,
-												"name": "Міша",
-												"children": []
-											}
-										]
-									}
-								],
+								"x": 1239,
+								"y": 190,
+								"width": 69,
+								"height": 30,
+								"name": "Наум",
 								"children": [
 									{
-										"name": "чоловік",
+										"x": 1228,
+										"y": 245,
+										"width": 91,
+										"height": 30,
+										"name": "дружина",
 										"children": [
 											{
-												"type": 1,
-												"name": "Софія",
-												"children": []
+												"x": 1197,
+												"y": 300,
+												"width": 84,
+												"height": 30,
+												"name": "Кирило",
+												"children": [
+													{
+														"x": 1194,
+														"y": 355,
+														"width": 91,
+														"height": 30,
+														"name": "дружина",
+														"children": [
+															{
+																"x": 1014,
+																"y": 410,
+																"width": 76,
+																"height": 30,
+																"name": "Гриша",
+																"children": [
+																	{
+																		"x": 1010,
+																		"y": 465,
+																		"width": 84,
+																		"height": 30,
+																		"name": "Марія?",
+																		"children": [
+																			{
+																				"x": 965,
+																				"y": 520,
+																				"width": 84,
+																				"height": 30,
+																				"name": "Василь",
+																				"children": []
+																			},
+																			{
+																				"x": 1070,
+																				"y": 520,
+																				"width": 69,
+																				"height": 30,
+																				"name": "Валя",
+																				"children": []
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"x": 1203,
+																"y": 410,
+																"width": 76,
+																"height": 30,
+																"name": "Марія",
+																"children": [
+																	{
+																		"x": 1192,
+																		"y": 465,
+																		"width": 99,
+																		"height": 30,
+																		"name": "Михайло?",
+																		"children": [
+																			{
+																				"x": 1160,
+																				"y": 520,
+																				"width": 69,
+																				"height": 30,
+																				"name": "Галя",
+																				"children": []
+																			},
+																			{
+																				"x": 1248,
+																				"y": 520,
+																				"width": 76,
+																				"height": 30,
+																				"name": "Льоня",
+																				"children": []
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"x": 1390,
+																"y": 410,
+																"width": 76,
+																"height": 30,
+																"name": "Петро",
+																"children": [
+																	{
+																		"x": 1390,
+																		"y": 465,
+																		"width": 76,
+																		"height": 30,
+																		"name": "Мотря",
+																		"children": [
+																			{
+																				"x": 1345,
+																				"y": 520,
+																				"width": 76,
+																				"height": 30,
+																				"name": "Ольга",
+																				"children": []
+																			},
+																			{
+																				"x": 1442,
+																				"y": 520,
+																				"width": 69,
+																				"height": 30,
+																				"name": "Саша",
+																				"children": [
+																					{
+																						"x": 1427,
+																						"y": 575,
+																						"width": 99,
+																						"height": 30,
+																						"name": "Валенина",
+																						"children": [
+																							{
+																								"x": 1393,
+																								"y": 630,
+																								"width": 84,
+																								"height": 30,
+																								"name": "Сергій",
+																								"children": [
+																									{
+																										"x": 1401,
+																										"y": 685,
+																										"width": 69,
+																										"height": 30,
+																										"name": "Даша",
+																										"children": [
+																											{
+																												"x": 1393,
+																												"y": 740,
+																												"width": 84,
+																												"height": 30,
+																												"name": "Олівія",
+																												"children": []
+																											}
+																										]
+																									}
+																								]
+																							},
+																							{
+																								"x": 1497,
+																								"y": 630,
+																								"width": 62,
+																								"height": 30,
+																								"name": "Іра",
+																								"children": []
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
 											},
 											{
-												"type": 1,
-												"name": "Міша",
+												"x": 1302,
+												"y": 300,
+												"width": 47,
+												"height": 30,
+												"name": "?",
 												"children": []
 											}
 										]
@@ -538,391 +520,774 @@ export const families = [
 							}
 						]
 					}
-				],
+				]
+			},
+			{
+				"x": 1399,
+				"y": 80,
+				"width": 84,
+				"height": 30,
+				"name": "Василь",
 				"children": [
 					{
+						"x": 1403,
+						"y": 135,
+						"width": 76,
+						"height": 30,
+						"name": "Таня?",
+						"children": [
+							{
+								"x": 1328,
+								"y": 190,
+								"width": 99,
+								"height": 30,
+								"name": "Ангеліна",
+								"children": []
+							},
+							{
+								"x": 1447,
+								"y": 190,
+								"width": 106,
+								"height": 30,
+								"name": "Маргарита",
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 1151,
+				"y": 29
+			},
+			{
+				"x": 1151,
+				"y": 70
+			},
+			{
+				"x": 937,
+				"y": 70
+			},
+			{
+				"x": 937,
+				"y": 120
+			},
+			{
+				"x": 945,
+				"y": 120
+			},
+			{
+				"x": 945,
+				"y": 165
+			},
+			{
+				"x": 661,
+				"y": 165
+			},
+			{
+				"x": 661,
+				"y": 230
+			},
+			{
+				"x": 665,
+				"y": 230
+			},
+			{
+				"x": 665,
+				"y": 275
+			},
+			{
+				"x": 230,
+				"y": 275
+			},
+			{
+				"x": 230,
+				"y": 330
+			},
+			{
+				"x": 212,
+				"y": 330
+			},
+			{
+				"x": 212,
+				"y": 385
+			},
+			{
+				"x": 0,
+				"y": 385
+			},
+			{
+				"x": 0,
+				"y": 450
+			},
+			{
+				"x": 3,
+				"y": 450
+			},
+			{
+				"x": 3,
+				"y": 495
+			},
+			{
+				"x": 0,
+				"y": 495
+			},
+			{
+				"x": 0,
+				"y": 560
+			},
+			{
+				"x": 194,
+				"y": 560
+			},
+			{
+				"x": 194,
+				"y": 605
+			},
+			{
+				"x": 157,
+				"y": 605
+			},
+			{
+				"x": 157,
+				"y": 670
+			},
+			{
+				"x": 325,
+				"y": 670
+			},
+			{
+				"x": 325,
+				"y": 715
+			},
+			{
+				"x": 317,
+				"y": 715
+			},
+			{
+				"x": 317,
+				"y": 780
+			},
+			{
+				"x": 421,
+				"y": 780
+			},
+			{
+				"x": 421,
+				"y": 715
+			},
+			{
+				"x": 421,
+				"y": 670
+			},
+			{
+				"x": 506,
+				"y": 670
+			},
+			{
+				"x": 506,
+				"y": 605
+			},
+			{
+				"x": 506,
+				"y": 560
+			},
+			{
+				"x": 544,
+				"y": 560
+			},
+			{
+				"x": 544,
+				"y": 505
+			},
+			{
+				"x": 559,
+				"y": 505
+			},
+			{
+				"x": 559,
+				"y": 450
+			},
+			{
+				"x": 955,
+				"y": 450
+			},
+			{
+				"x": 955,
+				"y": 495
+			},
+			{
+				"x": 955,
+				"y": 560
+			},
+			{
+				"x": 1383,
+				"y": 560
+			},
+			{
+				"x": 1383,
+				"y": 605
+			},
+			{
+				"x": 1383,
+				"y": 660
+			},
+			{
+				"x": 1383,
+				"y": 715
+			},
+			{
+				"x": 1383,
+				"y": 780
+			},
+			{
+				"x": 1487,
+				"y": 780
+			},
+			{
+				"x": 1487,
+				"y": 715
+			},
+			{
+				"x": 1480,
+				"y": 715
+			},
+			{
+				"x": 1480,
+				"y": 670
+			},
+			{
+				"x": 1569,
+				"y": 670
+			},
+			{
+				"x": 1569,
+				"y": 605
+			},
+			{
+				"x": 1536,
+				"y": 605
+			},
+			{
+				"x": 1536,
+				"y": 550
+			},
+			{
+				"x": 1521,
+				"y": 550
+			},
+			{
+				"x": 1521,
+				"y": 495
+			},
+			{
+				"x": 1476,
+				"y": 495
+			},
+			{
+				"x": 1476,
+				"y": 440
+			},
+			{
+				"x": 1476,
+				"y": 385
+			},
+			{
+				"x": 1295,
+				"y": 385
+			},
+			{
+				"x": 1295,
+				"y": 340
+			},
+			{
+				"x": 1359,
+				"y": 340
+			},
+			{
+				"x": 1359,
+				"y": 275
+			},
+			{
+				"x": 1329,
+				"y": 275
+			},
+			{
+				"x": 1329,
+				"y": 230
+			},
+			{
+				"x": 1563,
+				"y": 230
+			},
+			{
+				"x": 1563,
+				"y": 165
+			},
+			{
+				"x": 1489,
+				"y": 165
+			},
+			{
+				"x": 1489,
+				"y": 120
+			},
+			{
+				"x": 1493,
+				"y": 120
+			},
+			{
+				"x": 1493,
+				"y": 70
+			},
+			{
+				"x": 1279,
+				"y": 70
+			},
+			{
+				"x": 1279,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 966,
+		"y": -220,
+		"width": 296,
+		"height": 240,
+		"title": {
+			"x": 119,
+			"y": 39,
+			"width": 59,
+			"height": 16,
+			"name": "Забара"
+		},
+		"roots": [
+			{
+				"x": 103,
+				"y": 80,
+				"width": 91,
+				"height": 30,
+				"name": "чоловік",
+				"children": [
+					{
+						"x": 84,
+						"y": 135,
+						"width": 128,
+						"height": 30,
+						"name": "Дочка-Йосипа",
+						"children": [
+							{
+								"x": 10,
+								"y": 190,
+								"width": 84,
+								"height": 30,
+								"name": "Микола",
+								"children": []
+							},
+							{
+								"x": 113,
+								"y": 190,
+								"width": 76,
+								"height": 30,
+								"name": "Гриша",
+								"children": []
+							},
+							{
+								"x": 210,
+								"y": 190,
+								"width": 76,
+								"height": 30,
+								"name": "Петро",
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 109,
+				"y": 29
+			},
+			{
+				"x": 109,
+				"y": 70
+			},
+			{
+				"x": 93,
+				"y": 70
+			},
+			{
+				"x": 93,
+				"y": 110
+			},
+			{
+				"x": 74,
+				"y": 110
+			},
+			{
+				"x": 74,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 230
+			},
+			{
+				"x": 296,
+				"y": 230
+			},
+			{
+				"x": 296,
+				"y": 165
+			},
+			{
+				"x": 222,
+				"y": 165
+			},
+			{
+				"x": 222,
+				"y": 110
+			},
+			{
+				"x": 204,
+				"y": 110
+			},
+			{
+				"x": 204,
+				"y": 70
+			},
+			{
+				"x": 188,
+				"y": 70
+			},
+			{
+				"x": 188,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 0,
+		"y": 770,
+		"width": 393,
+		"height": 350,
+		"title": {
+			"x": 109,
+			"y": 39,
+			"width": 108,
+			"height": 16,
+			"name": "Головушкины"
+		},
+		"roots": [
+			{
+				"x": 121,
+				"y": 80,
+				"width": 84,
+				"height": 30,
+				"name": "Степан",
+				"children": [
+					{
+						"x": 118,
+						"y": 135,
+						"width": 91,
+						"height": 30,
+						"name": "Надежда",
+						"children": [
+							{
+								"x": 10,
+								"y": 190,
+								"width": 106,
+								"height": 30,
+								"name": "Прасковья",
+								"children": []
+							},
+							{
+								"x": 136,
+								"y": 190,
+								"width": 69,
+								"height": 30,
+								"name": "Анна",
+								"children": []
+							},
+							{
+								"x": 225,
+								"y": 190,
+								"width": 91,
+								"height": 30,
+								"name": "Николай",
+								"children": [
+									{
+										"x": 232,
+										"y": 245,
+										"width": 76,
+										"height": 30,
+										"name": "Елана",
+										"children": [
+											{
+												"x": 158,
+												"y": 300,
+												"width": 99,
+												"height": 30,
+												"name": "Владимир",
+												"children": []
+											},
+											{
+												"x": 277,
+												"y": 300,
+												"width": 106,
+												"height": 30,
+												"name": "Валентина",
+												"children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 99,
+				"y": 29
+			},
+			{
+				"x": 99,
+				"y": 65
+			},
+			{
+				"x": 111,
+				"y": 65
+			},
+			{
+				"x": 111,
+				"y": 110
+			},
+			{
+				"x": 108,
+				"y": 110
+			},
+			{
+				"x": 108,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 230
+			},
+			{
+				"x": 222,
+				"y": 230
+			},
+			{
+				"x": 222,
+				"y": 275
+			},
+			{
+				"x": 148,
+				"y": 275
+			},
+			{
+				"x": 148,
+				"y": 340
+			},
+			{
+				"x": 393,
+				"y": 340
+			},
+			{
+				"x": 393,
+				"y": 275
+			},
+			{
+				"x": 318,
+				"y": 275
+			},
+			{
+				"x": 318,
+				"y": 230
+			},
+			{
+				"x": 326,
+				"y": 230
+			},
+			{
+				"x": 326,
+				"y": 165
+			},
+			{
+				"x": 219,
+				"y": 165
+			},
+			{
+				"x": 219,
+				"y": 110
+			},
+			{
+				"x": 215,
+				"y": 110
+			},
+			{
+				"x": 215,
+				"y": 65
+			},
+			{
+				"x": 227,
+				"y": 65
+			},
+			{
+				"x": 227,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 0,
+		"y": 1100,
+		"width": 744,
+		"height": 570,
+		"title": {
+			"x": 444,
+			"y": 39,
+			"width": 68,
+			"height": 16,
+			"name": "Величко"
+		},
+		"roots": [
+			{
+				"x": 433,
+				"y": 80,
+				"width": 91,
+				"height": 30,
+				"name": "Андріан",
+				"children": [
+					{
+						"x": 429,
+						"y": 135,
+						"width": 99,
+						"height": 30,
 						"name": "Мокрина?",
 						"children": [
 							{
-								"type": 1,
+								"x": 268,
+								"y": 190,
+								"width": 69,
+								"height": 30,
 								"name": "Іван",
-								"relations": [
-									{
-										"partners": [
-											{
-												"type": 1,
-												"name": "Ганна"
-											}
-										],
-										"children": [
-											{
-												"type": 1,
-												"name": "Василій",
-												"relations": [
-													{
-														"partners": [
-															{
-																"type": 1,
-																"name": "Рая"
-															}
-														],
-														"children": [
-															{
-																"type": 1,
-																"name": "Ірина",
-																"children": []
-															},
-															{
-																"type": 1,
-																"name": "Наташа",
-																"children": []
-															}
-														]
-													}
-												],
-												"children": [
-													{
-														"name": "Рая",
-														"children": [
-															{
-																"type": 1,
-																"name": "Ірина",
-																"children": []
-															},
-															{
-																"type": 1,
-																"name": "Наташа",
-																"children": []
-															}
-														]
-													}
-												]
-											},
-											{
-												"type": 1,
-												"name": "Оля",
-												"children": []
-											},
-											{
-												"type": 1,
-												"name": "Варвара",
-												"children": []
-											},
-											{
-												"type": 1,
-												"name": "Петро",
-												"children": []
-											},
-											{
-												"type": 1,
-												"name": "Михайло",
-												"relations": [
-													{
-														"partners": [
-															{
-																"type": 2,
-																"name": "Света?"
-															}
-														],
-														"children": [
-															{
-																"type": 1,
-																"name": "Слава",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Света?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Ваня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
-																"children": [
-																	{
-																		"name": "Света?",
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Ваня",
-																				"children": []
-																			}
-																		]
-																	}
-																]
-															},
-															{
-																"type": 1,
-																"name": "Ігорь",
-																"children": []
-															},
-															{
-																"type": 1,
-																"name": "Альона",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Рома?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Даня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
-																"children": [
-																	{
-																		"name": "Рома?",
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Даня",
-																				"children": []
-																			}
-																		]
-																	}
-																]
-															}
-														]
-													}
-												],
-												"children": [
-													{
-														"name": "Света?",
-														"children": [
-															{
-																"type": 1,
-																"name": "Слава",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Света?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Ваня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
-																"children": [
-																	{
-																		"name": "Света?",
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Ваня",
-																				"children": []
-																			}
-																		]
-																	}
-																]
-															},
-															{
-																"type": 1,
-																"name": "Ігорь",
-																"children": []
-															},
-															{
-																"type": 1,
-																"name": "Альона",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Рома?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Даня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
-																"children": [
-																	{
-																		"name": "Рома?",
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Даня",
-																				"children": []
-																			}
-																		]
-																	}
-																]
-															}
-														]
-													}
-												]
-											}
-										]
-									}
-								],
 								"children": [
 									{
+										"x": 264,
+										"y": 245,
+										"width": 76,
+										"height": 30,
 										"name": "Ганна",
 										"children": [
 											{
-												"type": 1,
+												"x": 55,
+												"y": 300,
+												"width": 91,
+												"height": 30,
 												"name": "Василій",
-												"relations": [
-													{
-														"partners": [
-															{
-																"type": 1,
-																"name": "Рая"
-															}
-														],
-														"children": [
-															{
-																"type": 1,
-																"name": "Ірина",
-																"children": []
-															},
-															{
-																"type": 1,
-																"name": "Наташа",
-																"children": []
-															}
-														]
-													}
-												],
 												"children": [
 													{
+														"x": 69,
+														"y": 355,
+														"width": 62,
+														"height": 30,
 														"name": "Рая",
 														"children": [
 															{
-																"type": 1,
-																"name": "Ірина",
-																"children": [],
-																"width": 56.150000000000006,
+																"x": 10,
+																"y": 410,
+																"width": 76,
 																"height": 30,
-																"size": [
-																	76.15,
-																	50
-																]
+																"name": "Ірина",
+																"children": []
 															},
 															{
-																"type": 1,
-																"name": "Наташа",
-																"children": [],
-																"width": 63.38,
+																"x": 107,
+																"y": 410,
+																"width": 84,
 																"height": 30,
-																"size": [
-																	83.38,
-																	50
-																]
+																"name": "Наташа",
+																"children": []
 															}
-														],
-														"width": 41.69,
-														"height": 30,
-														"size": [
-															61.69,
-															50
 														]
 													}
-												],
-												"width": 70.61,
-												"height": 30,
-												"size": [
-													90.61,
-													50
 												]
 											},
 											{
-												"type": 1,
+												"x": 166,
+												"y": 300,
+												"width": 62,
+												"height": 30,
 												"name": "Оля",
-												"children": [],
-												"width": 41.69,
-												"height": 30,
-												"size": [
-													61.69,
-													50
-												]
+												"children": []
 											},
 											{
-												"type": 1,
+												"x": 249,
+												"y": 300,
+												"width": 91,
+												"height": 30,
 												"name": "Варвара",
-												"children": [],
-												"width": 70.61,
-												"height": 30,
-												"size": [
-													90.61,
-													50
-												]
+												"children": []
 											},
 											{
-												"type": 1,
+												"x": 360,
+												"y": 300,
+												"width": 76,
+												"height": 30,
 												"name": "Петро",
-												"children": [],
-												"width": 56.150000000000006,
-												"height": 30,
-												"size": [
-													76.15,
-													50
-												]
+												"children": []
 											},
 											{
-												"type": 1,
+												"x": 457,
+												"y": 300,
+												"width": 91,
+												"height": 30,
 												"name": "Михайло",
-												"relations": [
+												"children": [
 													{
-														"partners": [
-															{
-																"type": 2,
-																"name": "Света?"
-															}
-														],
+														"x": 460,
+														"y": 355,
+														"width": 84,
+														"height": 30,
+														"name": "Света?",
 														"children": [
 															{
-																"type": 1,
+																"x": 364,
+																"y": 410,
+																"width": 76,
+																"height": 30,
 																"name": "Слава",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Света?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Ваня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
 																"children": [
 																	{
+																		"x": 360,
+																		"y": 465,
+																		"width": 84,
+																		"height": 30,
 																		"name": "Света?",
 																		"children": [
 																			{
-																				"type": 1,
+																				"x": 368,
+																				"y": 520,
+																				"width": 69,
+																				"height": 30,
 																				"name": "Ваня",
 																				"children": []
 																			}
@@ -931,36 +1296,32 @@ export const families = [
 																]
 															},
 															{
-																"type": 1,
+																"x": 460,
+																"y": 410,
+																"width": 76,
+																"height": 30,
 																"name": "Ігорь",
 																"children": []
 															},
 															{
-																"type": 1,
+																"x": 557,
+																"y": 410,
+																"width": 84,
+																"height": 30,
 																"name": "Альона",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Рома?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Даня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
 																"children": [
 																	{
+																		"x": 561,
+																		"y": 465,
+																		"width": 76,
+																		"height": 30,
 																		"name": "Рома?",
 																		"children": [
 																			{
-																				"type": 1,
+																				"x": 565,
+																				"y": 520,
+																				"width": 69,
+																				"height": 30,
 																				"name": "Даня",
 																				"children": []
 																			}
@@ -970,356 +1331,456 @@ export const families = [
 															}
 														]
 													}
-												],
-												"children": [
-													{
-														"name": "Света?",
-														"children": [
-															{
-																"type": 1,
-																"name": "Слава",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Света?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Ваня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
-																"children": [
-																	{
-																		"name": "Света?",
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Ваня",
-																				"children": [],
-																				"width": 48.92,
-																				"height": 30,
-																				"size": [
-																					68.92,
-																					50
-																				]
-																			}
-																		],
-																		"width": 63.38,
-																		"height": 30,
-																		"size": [
-																			83.38,
-																			50
-																		]
-																	}
-																],
-																"width": 56.150000000000006,
-																"height": 30,
-																"size": [
-																	76.15,
-																	50
-																]
-															},
-															{
-																"type": 1,
-																"name": "Ігорь",
-																"children": [],
-																"width": 56.150000000000006,
-																"height": 30,
-																"size": [
-																	76.15,
-																	50
-																]
-															},
-															{
-																"type": 1,
-																"name": "Альона",
-																"relations": [
-																	{
-																		"partners": [
-																			{
-																				"type": 2,
-																				"name": "Рома?"
-																			}
-																		],
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Даня",
-																				"children": []
-																			}
-																		]
-																	}
-																],
-																"children": [
-																	{
-																		"name": "Рома?",
-																		"children": [
-																			{
-																				"type": 1,
-																				"name": "Даня",
-																				"children": [],
-																				"width": 48.92,
-																				"height": 30,
-																				"size": [
-																					68.92,
-																					50
-																				]
-																			}
-																		],
-																		"width": 56.150000000000006,
-																		"height": 30,
-																		"size": [
-																			76.15,
-																			50
-																		]
-																	}
-																],
-																"width": 63.38,
-																"height": 30,
-																"size": [
-																	83.38,
-																	50
-																]
-															}
-														],
-														"width": 63.38,
-														"height": 30,
-														"size": [
-															83.38,
-															50
-														]
-													}
-												],
-												"width": 70.61,
-												"height": 30,
-												"size": [
-													90.61,
-													50
 												]
 											}
-										],
-										"width": 56.150000000000006,
-										"height": 30,
-										"size": [
-											76.15,
-											50
 										]
 									}
-								],
-								"width": 48.92,
-								"height": 30,
-								"size": [
-									68.92,
-									50
 								]
 							},
 							{
-								"type": 1,
+								"x": 370,
+								"y": 190,
+								"width": 76,
+								"height": 30,
 								"name": "Марія",
-								"children": [],
-								"width": 56.150000000000006,
-								"height": 30,
-								"size": [
-									76.15,
-									50
-								]
+								"children": []
 							},
 							{
-								"type": 1,
+								"x": 480,
+								"y": 190,
+								"width": 99,
+								"height": 30,
 								"name": "Катерина",
-								"children": [],
-								"width": 77.84,
-								"height": 30,
-								"size": [
-									97.84,
-									50
-								]
+								"children": []
 							},
 							{
-								"type": 1,
+								"x": 613,
+								"y": 190,
+								"width": 76,
+								"height": 30,
 								"name": "Ганна",
-								"relations": [
-									{
-										"partners": [
-											{
-												"type": 2,
-												"name": "чоловік"
-											}
-										],
-										"children": [
-											{
-												"type": 1,
-												"name": "Софія",
-												"children": []
-											},
-											{
-												"type": 1,
-												"name": "Міша",
-												"children": []
-											}
-										]
-									}
-								],
 								"children": [
 									{
+										"x": 606,
+										"y": 245,
+										"width": 91,
+										"height": 30,
 										"name": "чоловік",
 										"children": [
 											{
-												"type": 1,
-												"name": "Софія",
-												"children": [],
-												"width": 56.150000000000006,
+												"x": 568,
+												"y": 300,
+												"width": 76,
 												"height": 30,
-												"size": [
-													76.15,
-													50
-												]
+												"name": "Софія",
+												"children": []
 											},
 											{
-												"type": 1,
-												"name": "Міша",
-												"children": [],
-												"width": 48.92,
+												"x": 665,
+												"y": 300,
+												"width": 69,
 												"height": 30,
-												"size": [
-													68.92,
-													50
-												]
+												"name": "Міша",
+												"children": []
 											}
-										],
-										"width": 70.61,
-										"height": 30,
-										"size": [
-											90.61,
-											50
 										]
 									}
-								],
-								"width": 56.150000000000006,
-								"height": 30,
-								"size": [
-									76.15,
-									50
 								]
 							}
-						],
-						"width": 77.84,
-						"height": 30,
-						"size": [
-							97.84,
-							50
 						]
 					}
-				],
-				"width": 70.61,
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 434,
+				"y": 29
+			},
+			{
+				"x": 434,
+				"y": 70
+			},
+			{
+				"x": 423,
+				"y": 70
+			},
+			{
+				"x": 423,
+				"y": 110
+			},
+			{
+				"x": 419,
+				"y": 110
+			},
+			{
+				"x": 419,
+				"y": 165
+			},
+			{
+				"x": 258,
+				"y": 165
+			},
+			{
+				"x": 258,
+				"y": 220
+			},
+			{
+				"x": 254,
+				"y": 220
+			},
+			{
+				"x": 254,
+				"y": 275
+			},
+			{
+				"x": 45,
+				"y": 275
+			},
+			{
+				"x": 45,
+				"y": 340
+			},
+			{
+				"x": 59,
+				"y": 340
+			},
+			{
+				"x": 59,
+				"y": 385
+			},
+			{
+				"x": 0,
+				"y": 385
+			},
+			{
+				"x": 0,
+				"y": 450
+			},
+			{
+				"x": 201,
+				"y": 450
+			},
+			{
+				"x": 201,
+				"y": 385
+			},
+			{
+				"x": 201,
+				"y": 340
+			},
+			{
+				"x": 350,
+				"y": 340
+			},
+			{
+				"x": 350,
+				"y": 385
+			},
+			{
+				"x": 350,
+				"y": 440
+			},
+			{
+				"x": 350,
+				"y": 505
+			},
+			{
+				"x": 358,
+				"y": 505
+			},
+			{
+				"x": 358,
+				"y": 560
+			},
+			{
+				"x": 644,
+				"y": 560
+			},
+			{
+				"x": 644,
+				"y": 505
+			},
+			{
+				"x": 647,
+				"y": 505
+			},
+			{
+				"x": 647,
+				"y": 450
+			},
+			{
+				"x": 651,
+				"y": 450
+			},
+			{
+				"x": 651,
+				"y": 385
+			},
+			{
+				"x": 554,
+				"y": 385
+			},
+			{
+				"x": 554,
+				"y": 340
+			},
+			{
+				"x": 744,
+				"y": 340
+			},
+			{
+				"x": 744,
+				"y": 275
+			},
+			{
+				"x": 707,
+				"y": 275
+			},
+			{
+				"x": 707,
+				"y": 220
+			},
+			{
+				"x": 699,
+				"y": 220
+			},
+			{
+				"x": 699,
+				"y": 165
+			},
+			{
+				"x": 538,
+				"y": 165
+			},
+			{
+				"x": 538,
+				"y": 110
+			},
+			{
+				"x": 534,
+				"y": 110
+			},
+			{
+				"x": 534,
+				"y": 70
+			},
+			{
+				"x": 522,
+				"y": 70
+			},
+			{
+				"x": 522,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 707,
+		"y": 1155,
+		"width": 215,
+		"height": 240,
+		"title": {
+			"x": 78,
+			"y": 39,
+			"width": 59,
+			"height": 16,
+			"name": "Забара"
+		},
+		"roots": [
+			{
+				"x": 62,
+				"y": 80,
+				"width": 91,
 				"height": 30,
-				"size": [
-					90.61,
-					50
-				]
-			}
-		]
-	},
-	{
-		"name": "Забара",
-		"rootPersons": [
-			{
-				"type": 2,
 				"name": "чоловік",
-				"relations": [
+				"children": [
 					{
-						"partners": [
-							{
-								"type": 1,
-								"name": "Катерина"
-							}
-						],
+						"x": 58,
+						"y": 135,
+						"width": 99,
+						"height": 30,
+						"name": "Катерина",
 						"children": [
 							{
-								"type": 1,
-								"name": "Марія"
+								"x": 10,
+								"y": 190,
+								"width": 76,
+								"height": 30,
+								"name": "Марія",
+								"children": []
 							},
 							{
-								"type": 1,
-								"name": "Анатолій"
+								"x": 106,
+								"y": 190,
+								"width": 99,
+								"height": 30,
+								"name": "Анатолій",
+								"children": []
 							}
 						]
 					}
 				]
 			}
+		],
+		"bounding": [
+			{
+				"x": 68,
+				"y": 29
+			},
+			{
+				"x": 68,
+				"y": 70
+			},
+			{
+				"x": 52,
+				"y": 70
+			},
+			{
+				"x": 52,
+				"y": 110
+			},
+			{
+				"x": 48,
+				"y": 110
+			},
+			{
+				"x": 48,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 230
+			},
+			{
+				"x": 215,
+				"y": 230
+			},
+			{
+				"x": 215,
+				"y": 165
+			},
+			{
+				"x": 167,
+				"y": 165
+			},
+			{
+				"x": 167,
+				"y": 110
+			},
+			{
+				"x": 163,
+				"y": 110
+			},
+			{
+				"x": 163,
+				"y": 70
+			},
+			{
+				"x": 147,
+				"y": 70
+			},
+			{
+				"x": 147,
+				"y": 29
+			}
 		]
 	},
 	{
-		"name": "Шворінь",
-		"rootPersons": [
+		"x": 159,
+		"y": 1485,
+		"width": 301,
+		"height": 350,
+		"title": {
+			"x": 90,
+			"y": 39,
+			"width": 68,
+			"height": 16,
+			"name": "Шворінь"
+		},
+		"roots": [
 			{
-				"type": 1,
+				"x": 75,
+				"y": 80,
+				"width": 99,
+				"height": 30,
 				"name": "Анатолій",
-				"relations": [
+				"children": [
 					{
-						"partners": [
-							{
-								"type": 1,
-								"name": "Варя"
-							}
-						],
+						"x": 90,
+						"y": 135,
+						"width": 69,
+						"height": 30,
+						"name": "Варя",
 						"children": [
 							{
-								"type": 1,
+								"x": 10,
+								"y": 190,
+								"width": 84,
+								"height": 30,
 								"name": "Андрій",
-								"relations": [
+								"children": [
 									{
-										"partners": [
-											{
-												"type": 2,
-												"name": "Лена?"
-											}
-										],
+										"x": 14,
+										"y": 245,
+										"width": 76,
+										"height": 30,
+										"name": "Лена?",
 										"children": [
 											{
-												"type": 1,
-												"name": "Денис"
+												"x": 14,
+												"y": 300,
+												"width": 76,
+												"height": 30,
+												"name": "Денис",
+												"children": []
 											}
 										]
 									}
 								]
 							},
 							{
-								"type": 1,
+								"x": 162,
+								"y": 190,
+								"width": 76,
+								"height": 30,
 								"name": "Ігорь",
-								"relations": [
+								"children": [
 									{
-										"partners": [
-											{
-												"type": 2,
-												"name": "Наташа?"
-											}
-										],
+										"x": 110,
+										"y": 245,
+										"width": 91,
+										"height": 30,
+										"name": "Наташа?",
 										"children": [
 											{
-												"type": 1,
-												"name": "Даша"
+												"x": 121,
+												"y": 300,
+												"width": 69,
+												"height": 30,
+												"name": "Даша",
+												"children": []
 											}
 										]
 									},
 									{
-										"partners": [
-											{
-												"type": 1,
-												"name": "Леся"
-											}
-										],
+										"x": 222,
+										"y": 245,
+										"width": 69,
+										"height": 30,
+										"name": "Леся",
 										"children": [
 											{
-												"type": 1,
-												"name": "Маша"
+												"x": 222,
+												"y": 300,
+												"width": 69,
+												"height": 30,
+												"name": "Маша",
+												"children": []
 											}
 										]
 									}
@@ -1328,6 +1789,3546 @@ export const families = [
 						]
 					}
 				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 80,
+				"y": 29
+			},
+			{
+				"x": 80,
+				"y": 70
+			},
+			{
+				"x": 65,
+				"y": 70
+			},
+			{
+				"x": 65,
+				"y": 120
+			},
+			{
+				"x": 80,
+				"y": 120
+			},
+			{
+				"x": 80,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 230
+			},
+			{
+				"x": 4,
+				"y": 230
+			},
+			{
+				"x": 4,
+				"y": 275
+			},
+			{
+				"x": 4,
+				"y": 340
+			},
+			{
+				"x": 301,
+				"y": 340
+			},
+			{
+				"x": 301,
+				"y": 275
+			},
+			{
+				"x": 301,
+				"y": 220
+			},
+			{
+				"x": 248,
+				"y": 220
+			},
+			{
+				"x": 248,
+				"y": 165
+			},
+			{
+				"x": 169,
+				"y": 165
+			},
+			{
+				"x": 169,
+				"y": 120
+			},
+			{
+				"x": 184,
+				"y": 120
+			},
+			{
+				"x": 184,
+				"y": 70
+			},
+			{
+				"x": 168,
+				"y": 70
+			},
+			{
+				"x": 168,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 0,
+		"y": 1815,
+		"width": 319,
+		"height": 460,
+		"title": {
+			"x": 164,
+			"y": 39,
+			"width": 68,
+			"height": 16,
+			"name": "Ивановы"
+		},
+		"roots": [
+			{
+				"x": 153,
+				"y": 80,
+				"width": 91,
+				"height": 30,
+				"name": "Николай",
+				"children": [
+					{
+						"x": 153,
+						"y": 135,
+						"width": 91,
+						"height": 30,
+						"name": "Тамара?",
+						"children": [
+							{
+								"x": 97,
+								"y": 190,
+								"width": 76,
+								"height": 30,
+								"name": "Игорь",
+								"children": [
+									{
+										"x": 10,
+										"y": 245,
+										"width": 69,
+										"height": 30,
+										"name": "жена",
+										"children": [
+											{
+												"x": 10,
+												"y": 300,
+												"width": 69,
+												"height": 30,
+												"name": "Иван",
+												"children": []
+											}
+										]
+									},
+									{
+										"x": 147,
+										"y": 245,
+										"width": 113,
+										"height": 30,
+										"name": "Александра",
+										"children": [
+											{
+												"x": 100,
+												"y": 300,
+												"width": 91,
+												"height": 30,
+												"name": "Николай",
+												"children": [
+													{
+														"x": 103,
+														"y": 355,
+														"width": 84,
+														"height": 30,
+														"name": "Натаха",
+														"children": [
+															{
+																"x": 66,
+																"y": 410,
+																"width": 69,
+																"height": 30,
+																"name": "Лина",
+																"children": []
+															},
+															{
+																"x": 155,
+																"y": 410,
+																"width": 69,
+																"height": 30,
+																"name": "Маша",
+																"children": []
+															}
+														]
+													}
+												]
+											},
+											{
+												"x": 210,
+												"y": 300,
+												"width": 99,
+												"height": 30,
+												"name": "Анатолий",
+												"children": []
+											}
+										]
+									}
+								]
+							},
+							{
+								"x": 193,
+								"y": 190,
+								"width": 106,
+								"height": 30,
+								"name": "Александр",
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 154,
+				"y": 29
+			},
+			{
+				"x": 154,
+				"y": 70
+			},
+			{
+				"x": 143,
+				"y": 70
+			},
+			{
+				"x": 143,
+				"y": 110
+			},
+			{
+				"x": 143,
+				"y": 165
+			},
+			{
+				"x": 87,
+				"y": 165
+			},
+			{
+				"x": 87,
+				"y": 220
+			},
+			{
+				"x": 0,
+				"y": 220
+			},
+			{
+				"x": 0,
+				"y": 275
+			},
+			{
+				"x": 0,
+				"y": 340
+			},
+			{
+				"x": 93,
+				"y": 340
+			},
+			{
+				"x": 93,
+				"y": 385
+			},
+			{
+				"x": 56,
+				"y": 385
+			},
+			{
+				"x": 56,
+				"y": 450
+			},
+			{
+				"x": 234,
+				"y": 450
+			},
+			{
+				"x": 234,
+				"y": 385
+			},
+			{
+				"x": 197,
+				"y": 385
+			},
+			{
+				"x": 197,
+				"y": 340
+			},
+			{
+				"x": 319,
+				"y": 340
+			},
+			{
+				"x": 319,
+				"y": 275
+			},
+			{
+				"x": 270,
+				"y": 275
+			},
+			{
+				"x": 270,
+				"y": 230
+			},
+			{
+				"x": 309,
+				"y": 230
+			},
+			{
+				"x": 309,
+				"y": 165
+			},
+			{
+				"x": 254,
+				"y": 165
+			},
+			{
+				"x": 254,
+				"y": 110
+			},
+			{
+				"x": 254,
+				"y": 70
+			},
+			{
+				"x": 242,
+				"y": 70
+			},
+			{
+				"x": 242,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 291,
+		"y": 1870,
+		"width": 133,
+		"height": 240,
+		"title": {
+			"x": 27,
+			"y": 39,
+			"width": 78,
+			"height": 16,
+			"name": "Моторный"
+		},
+		"roots": [
+			{
+				"x": 24,
+				"y": 80,
+				"width": 84,
+				"height": 30,
+				"name": "Микола",
+				"children": [
+					{
+						"x": 28,
+						"y": 135,
+						"width": 76,
+						"height": 30,
+						"name": "Ольга",
+						"children": [
+							{
+								"x": 10,
+								"y": 190,
+								"width": 113,
+								"height": 30,
+								"name": "Александра",
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 17,
+				"y": 29
+			},
+			{
+				"x": 17,
+				"y": 70
+			},
+			{
+				"x": 14,
+				"y": 70
+			},
+			{
+				"x": 14,
+				"y": 120
+			},
+			{
+				"x": 18,
+				"y": 120
+			},
+			{
+				"x": 18,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 230
+			},
+			{
+				"x": 133,
+				"y": 230
+			},
+			{
+				"x": 133,
+				"y": 165
+			},
+			{
+				"x": 114,
+				"y": 165
+			},
+			{
+				"x": 114,
+				"y": 120
+			},
+			{
+				"x": 118,
+				"y": 120
+			},
+			{
+				"x": 118,
+				"y": 70
+			},
+			{
+				"x": 115,
+				"y": 70
+			},
+			{
+				"x": 115,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 409,
+		"y": 1815,
+		"width": 111,
+		"height": 240,
+		"title": {
+			"x": 21,
+			"y": 39,
+			"width": 68,
+			"height": 16,
+			"name": "Яроцькі"
+		},
+		"roots": [
+			{
+				"x": 17,
+				"y": 80,
+				"width": 76,
+				"height": 30,
+				"name": "Марко",
+				"children": [
+					{
+						"x": 10,
+						"y": 135,
+						"width": 91,
+						"height": 30,
+						"name": "дружина",
+						"children": [
+							{
+								"x": 17,
+								"y": 190,
+								"width": 76,
+								"height": 30,
+								"name": "Ольга",
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 11,
+				"y": 29
+			},
+			{
+				"x": 11,
+				"y": 70
+			},
+			{
+				"x": 7,
+				"y": 70
+			},
+			{
+				"x": 7,
+				"y": 110
+			},
+			{
+				"x": 0,
+				"y": 110
+			},
+			{
+				"x": 0,
+				"y": 175
+			},
+			{
+				"x": 7,
+				"y": 175
+			},
+			{
+				"x": 7,
+				"y": 230
+			},
+			{
+				"x": 103,
+				"y": 230
+			},
+			{
+				"x": 103,
+				"y": 175
+			},
+			{
+				"x": 111,
+				"y": 175
+			},
+			{
+				"x": 111,
+				"y": 110
+			},
+			{
+				"x": 103,
+				"y": 110
+			},
+			{
+				"x": 103,
+				"y": 70
+			},
+			{
+				"x": 99,
+				"y": 70
+			},
+			{
+				"x": 99,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 0,
+		"y": 2255,
+		"width": 318,
+		"height": 240,
+		"title": {
+			"x": 135,
+			"y": 39,
+			"width": 49,
+			"height": 16,
+			"name": "Савіч"
+		},
+		"roots": [
+			{
+				"x": 114,
+				"y": 80,
+				"width": 91,
+				"height": 30,
+				"name": "Тимофій",
+				"children": [
+					{
+						"x": 117,
+						"y": 135,
+						"width": 84,
+						"height": 30,
+						"name": "Ганна?",
+						"children": [
+							{
+								"x": 10,
+								"y": 190,
+								"width": 91,
+								"height": 30,
+								"name": "Николай",
+								"children": []
+							},
+							{
+								"x": 120,
+								"y": 190,
+								"width": 84,
+								"height": 30,
+								"name": "Леонид",
+								"children": []
+							},
+							{
+								"x": 224,
+								"y": 190,
+								"width": 84,
+								"height": 30,
+								"name": "Марина",
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 125,
+				"y": 29
+			},
+			{
+				"x": 125,
+				"y": 70
+			},
+			{
+				"x": 104,
+				"y": 70
+			},
+			{
+				"x": 104,
+				"y": 120
+			},
+			{
+				"x": 107,
+				"y": 120
+			},
+			{
+				"x": 107,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 230
+			},
+			{
+				"x": 318,
+				"y": 230
+			},
+			{
+				"x": 318,
+				"y": 165
+			},
+			{
+				"x": 211,
+				"y": 165
+			},
+			{
+				"x": 211,
+				"y": 120
+			},
+			{
+				"x": 215,
+				"y": 120
+			},
+			{
+				"x": 215,
+				"y": 70
+			},
+			{
+				"x": 194,
+				"y": 70
+			},
+			{
+				"x": 194,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 0,
+		"y": 2530,
+		"width": 408,
+		"height": 570,
+		"title": {
+			"x": 170,
+			"y": 39,
+			"width": 68,
+			"height": 16,
+			"name": "Ключник"
+		},
+		"roots": [
+			{
+				"x": 159,
+				"y": 80,
+				"width": 91,
+				"height": 30,
+				"name": "Панкрат",
+				"children": [
+					{
+						"x": 181,
+						"y": 135,
+						"width": 47,
+						"height": 30,
+						"name": "?",
+						"children": [
+							{
+								"x": 170,
+								"y": 190,
+								"width": 69,
+								"height": 30,
+								"name": "Иван",
+								"children": [
+									{
+										"x": 170,
+										"y": 245,
+										"width": 69,
+										"height": 30,
+										"name": "Шура",
+										"children": [
+											{
+												"x": 70,
+												"y": 300,
+												"width": 69,
+												"height": 30,
+												"name": "Олег",
+												"children": [
+													{
+														"x": 62,
+														"y": 355,
+														"width": 84,
+														"height": 30,
+														"name": "Лариса",
+														"children": [
+															{
+																"x": 10,
+																"y": 410,
+																"width": 99,
+																"height": 30,
+																"name": "Валентин",
+																"children": []
+															},
+															{
+																"x": 129,
+																"y": 410,
+																"width": 69,
+																"height": 30,
+																"name": "Маша",
+																"children": []
+															}
+														]
+													}
+												]
+											},
+											{
+												"x": 277,
+												"y": 300,
+												"width": 62,
+												"height": 30,
+												"name": "Юра",
+												"children": [
+													{
+														"x": 255,
+														"y": 355,
+														"width": 106,
+														"height": 30,
+														"name": "Валентина",
+														"children": [
+															{
+																"x": 218,
+																"y": 410,
+																"width": 76,
+																"height": 30,
+																"name": "Света",
+																"children": []
+															},
+															{
+																"x": 314,
+																"y": 410,
+																"width": 84,
+																"height": 30,
+																"name": "Сергей",
+																"children": [
+																	{
+																		"x": 322,
+																		"y": 465,
+																		"width": 69,
+																		"height": 30,
+																		"name": "Катя",
+																		"children": [
+																			{
+																				"x": 325,
+																				"y": 520,
+																				"width": 62,
+																				"height": 30,
+																				"name": "Лев",
+																				"children": []
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 160,
+				"y": 29
+			},
+			{
+				"x": 160,
+				"y": 70
+			},
+			{
+				"x": 149,
+				"y": 70
+			},
+			{
+				"x": 149,
+				"y": 120
+			},
+			{
+				"x": 171,
+				"y": 120
+			},
+			{
+				"x": 171,
+				"y": 165
+			},
+			{
+				"x": 160,
+				"y": 165
+			},
+			{
+				"x": 160,
+				"y": 220
+			},
+			{
+				"x": 160,
+				"y": 275
+			},
+			{
+				"x": 60,
+				"y": 275
+			},
+			{
+				"x": 60,
+				"y": 330
+			},
+			{
+				"x": 52,
+				"y": 330
+			},
+			{
+				"x": 52,
+				"y": 385
+			},
+			{
+				"x": 0,
+				"y": 385
+			},
+			{
+				"x": 0,
+				"y": 450
+			},
+			{
+				"x": 312,
+				"y": 450
+			},
+			{
+				"x": 312,
+				"y": 505
+			},
+			{
+				"x": 315,
+				"y": 505
+			},
+			{
+				"x": 315,
+				"y": 560
+			},
+			{
+				"x": 397,
+				"y": 560
+			},
+			{
+				"x": 397,
+				"y": 505
+			},
+			{
+				"x": 401,
+				"y": 505
+			},
+			{
+				"x": 401,
+				"y": 450
+			},
+			{
+				"x": 408,
+				"y": 450
+			},
+			{
+				"x": 408,
+				"y": 385
+			},
+			{
+				"x": 371,
+				"y": 385
+			},
+			{
+				"x": 371,
+				"y": 330
+			},
+			{
+				"x": 349,
+				"y": 330
+			},
+			{
+				"x": 349,
+				"y": 275
+			},
+			{
+				"x": 249,
+				"y": 275
+			},
+			{
+				"x": 249,
+				"y": 220
+			},
+			{
+				"x": 249,
+				"y": 165
+			},
+			{
+				"x": 238,
+				"y": 165
+			},
+			{
+				"x": 238,
+				"y": 120
+			},
+			{
+				"x": 260,
+				"y": 120
+			},
+			{
+				"x": 260,
+				"y": 70
+			},
+			{
+				"x": 248,
+				"y": 70
+			},
+			{
+				"x": 248,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 249,
+		"y": 2475,
+		"width": 437,
+		"height": 350,
+		"title": {
+			"x": 189,
+			"y": 39,
+			"width": 59,
+			"height": 16,
+			"name": "Кривец"
+		},
+		"roots": [
+			{
+				"x": 173,
+				"y": 80,
+				"width": 91,
+				"height": 30,
+				"name": "Федосий",
+				"children": [
+					{
+						"x": 195,
+						"y": 135,
+						"width": 47,
+						"height": 30,
+						"name": "?",
+						"children": [
+							{
+								"x": 184,
+								"y": 190,
+								"width": 69,
+								"height": 30,
+								"name": "Пётр",
+								"children": [
+									{
+										"x": 176,
+										"y": 245,
+										"width": 84,
+										"height": 30,
+										"name": "Мария?",
+										"children": [
+											{
+												"x": 10,
+												"y": 300,
+												"width": 113,
+												"height": 30,
+												"name": "Александра",
+												"children": []
+											},
+											{
+												"x": 143,
+												"y": 300,
+												"width": 69,
+												"height": 30,
+												"name": "Петя",
+												"children": []
+											},
+											{
+												"x": 231,
+												"y": 300,
+												"width": 84,
+												"height": 30,
+												"name": "Татяна",
+												"children": []
+											},
+											{
+												"x": 336,
+												"y": 300,
+												"width": 91,
+												"height": 30,
+												"name": "Николай",
+												"children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 179,
+				"y": 29
+			},
+			{
+				"x": 179,
+				"y": 70
+			},
+			{
+				"x": 163,
+				"y": 70
+			},
+			{
+				"x": 163,
+				"y": 120
+			},
+			{
+				"x": 185,
+				"y": 120
+			},
+			{
+				"x": 185,
+				"y": 165
+			},
+			{
+				"x": 174,
+				"y": 165
+			},
+			{
+				"x": 174,
+				"y": 220
+			},
+			{
+				"x": 166,
+				"y": 220
+			},
+			{
+				"x": 166,
+				"y": 275
+			},
+			{
+				"x": 0,
+				"y": 275
+			},
+			{
+				"x": 0,
+				"y": 340
+			},
+			{
+				"x": 437,
+				"y": 340
+			},
+			{
+				"x": 437,
+				"y": 275
+			},
+			{
+				"x": 270,
+				"y": 275
+			},
+			{
+				"x": 270,
+				"y": 220
+			},
+			{
+				"x": 263,
+				"y": 220
+			},
+			{
+				"x": 263,
+				"y": 165
+			},
+			{
+				"x": 252,
+				"y": 165
+			},
+			{
+				"x": 252,
+				"y": 120
+			},
+			{
+				"x": 274,
+				"y": 120
+			},
+			{
+				"x": 274,
+				"y": 70
+			},
+			{
+				"x": 258,
+				"y": 70
+			},
+			{
+				"x": 258,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 415,
+		"y": 2805,
+		"width": 215,
+		"height": 240,
+		"title": {
+			"x": 63,
+			"y": 39,
+			"width": 88,
+			"height": 16,
+			"name": "Парфёновы"
+		},
+		"roots": [
+			{
+				"x": 65,
+				"y": 80,
+				"width": 84,
+				"height": 30,
+				"name": "Виктор",
+				"children": [
+					{
+						"x": 65,
+						"y": 135,
+						"width": 84,
+						"height": 30,
+						"name": "Татяна",
+						"children": [
+							{
+								"x": 10,
+								"y": 190,
+								"width": 76,
+								"height": 30,
+								"name": "Игорь",
+								"children": []
+							},
+							{
+								"x": 106,
+								"y": 190,
+								"width": 99,
+								"height": 30,
+								"name": "Владимир",
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 53,
+				"y": 29
+			},
+			{
+				"x": 53,
+				"y": 65
+			},
+			{
+				"x": 55,
+				"y": 65
+			},
+			{
+				"x": 55,
+				"y": 110
+			},
+			{
+				"x": 55,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 230
+			},
+			{
+				"x": 215,
+				"y": 230
+			},
+			{
+				"x": 215,
+				"y": 165
+			},
+			{
+				"x": 159,
+				"y": 165
+			},
+			{
+				"x": 159,
+				"y": 110
+			},
+			{
+				"x": 159,
+				"y": 65
+			},
+			{
+				"x": 161,
+				"y": 65
+			},
+			{
+				"x": 161,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": -148,
+		"y": 2695,
+		"width": 200,
+		"height": 240,
+		"title": {
+			"x": 76,
+			"y": 39,
+			"width": 49,
+			"height": 16,
+			"name": "Ройко"
+		},
+		"roots": [
+			{
+				"x": 55,
+				"y": 80,
+				"width": 91,
+				"height": 30,
+				"name": "Гаврило",
+				"children": [
+					{
+						"x": 77,
+						"y": 135,
+						"width": 47,
+						"height": 30,
+						"name": "?",
+						"children": [
+							{
+								"x": 10,
+								"y": 190,
+								"width": 84,
+								"height": 30,
+								"name": "Лариса",
+								"children": []
+							},
+							{
+								"x": 114,
+								"y": 190,
+								"width": 76,
+								"height": 30,
+								"name": "брат?",
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 66,
+				"y": 29
+			},
+			{
+				"x": 66,
+				"y": 70
+			},
+			{
+				"x": 45,
+				"y": 70
+			},
+			{
+				"x": 45,
+				"y": 120
+			},
+			{
+				"x": 67,
+				"y": 120
+			},
+			{
+				"x": 67,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 230
+			},
+			{
+				"x": 200,
+				"y": 230
+			},
+			{
+				"x": 200,
+				"y": 165
+			},
+			{
+				"x": 134,
+				"y": 165
+			},
+			{
+				"x": 134,
+				"y": 120
+			},
+			{
+				"x": 156,
+				"y": 120
+			},
+			{
+				"x": 156,
+				"y": 70
+			},
+			{
+				"x": 135,
+				"y": 70
+			},
+			{
+				"x": 135,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 49,
+		"y": 2970,
+		"width": 229,
+		"height": 240,
+		"title": {
+			"x": 85,
+			"y": 39,
+			"width": 59,
+			"height": 16,
+			"name": "Масаад"
+		},
+		"roots": [
+			{
+				"x": 69,
+				"y": 80,
+				"width": 91,
+				"height": 30,
+				"name": "Шарбель",
+				"children": [
+					{
+						"x": 80,
+						"y": 135,
+						"width": 69,
+						"height": 30,
+						"name": "Маша",
+						"children": [
+							{
+								"x": 10,
+								"y": 190,
+								"width": 121,
+								"height": 30,
+								"name": "Девив-Алекс",
+								"children": []
+							},
+							{
+								"x": 150,
+								"y": 190,
+								"width": 69,
+								"height": 30,
+								"name": "Лара",
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 75,
+				"y": 29
+			},
+			{
+				"x": 75,
+				"y": 70
+			},
+			{
+				"x": 59,
+				"y": 70
+			},
+			{
+				"x": 59,
+				"y": 120
+			},
+			{
+				"x": 70,
+				"y": 120
+			},
+			{
+				"x": 70,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 230
+			},
+			{
+				"x": 229,
+				"y": 230
+			},
+			{
+				"x": 229,
+				"y": 165
+			},
+			{
+				"x": 159,
+				"y": 165
+			},
+			{
+				"x": 159,
+				"y": 120
+			},
+			{
+				"x": 170,
+				"y": 120
+			},
+			{
+				"x": 170,
+				"y": 70
+			},
+			{
+				"x": 154,
+				"y": 70
+			},
+			{
+				"x": 154,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 0,
+		"y": 3190,
+		"width": 1000,
+		"height": 680,
+		"title": {
+			"x": 618,
+			"y": 39,
+			"width": 88,
+			"height": 16,
+			"name": "Билименко"
+		},
+		"roots": [
+			{
+				"x": 620,
+				"y": 80,
+				"width": 84,
+				"height": 30,
+				"name": "Дмитро",
+				"children": [
+					{
+						"x": 617,
+						"y": 135,
+						"width": 91,
+						"height": 30,
+						"name": "дружина",
+						"children": [
+							{
+								"x": 334,
+								"y": 190,
+								"width": 91,
+								"height": 30,
+								"name": "Михайло",
+								"children": [
+									{
+										"x": 341,
+										"y": 245,
+										"width": 76,
+										"height": 30,
+										"name": "Марія",
+										"children": [
+											{
+												"x": 62,
+												"y": 300,
+												"width": 84,
+												"height": 30,
+												"name": "Василь",
+												"children": [
+													{
+														"x": 48,
+														"y": 355,
+														"width": 113,
+														"height": 30,
+														"name": "Анастасія?",
+														"children": [
+															{
+																"x": 10,
+																"y": 410,
+																"width": 76,
+																"height": 30,
+																"name": "Жанна",
+																"children": []
+															},
+															{
+																"x": 107,
+																"y": 410,
+																"width": 91,
+																"height": 30,
+																"name": "Наталка",
+																"children": []
+															}
+														]
+													}
+												]
+											},
+											{
+												"x": 267,
+												"y": 300,
+												"width": 99,
+												"height": 30,
+												"name": "Світлана",
+												"children": [
+													{
+														"x": 271,
+														"y": 355,
+														"width": 91,
+														"height": 30,
+														"name": "Дмитро?",
+														"children": [
+															{
+																"x": 218,
+																"y": 410,
+																"width": 106,
+																"height": 30,
+																"name": "Олександр",
+																"children": []
+															},
+															{
+																"x": 345,
+																"y": 410,
+																"width": 69,
+																"height": 30,
+																"name": "Таня",
+																"children": []
+															}
+														]
+													}
+												]
+											},
+											{
+												"x": 606,
+												"y": 300,
+												"width": 91,
+												"height": 30,
+												"name": "Олексій",
+												"children": [
+													{
+														"x": 617,
+														"y": 355,
+														"width": 69,
+														"height": 30,
+														"name": "Таня",
+														"children": [
+															{
+																"x": 434,
+																"y": 410,
+																"width": 106,
+																"height": 30,
+																"name": "Володимир",
+																"children": [
+																	{
+																		"x": 453,
+																		"y": 465,
+																		"width": 69,
+																		"height": 30,
+																		"name": "Люда",
+																		"children": [
+																			{
+																				"x": 412,
+																				"y": 520,
+																				"width": 69,
+																				"height": 30,
+																				"name": "Даша",
+																				"children": []
+																			},
+																			{
+																				"x": 501,
+																				"y": 520,
+																				"width": 62,
+																				"height": 30,
+																				"name": "Аня",
+																				"children": []
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"x": 642,
+																"y": 410,
+																"width": 69,
+																"height": 30,
+																"name": "Ігор",
+																"children": [
+																	{
+																		"x": 623,
+																		"y": 465,
+																		"width": 106,
+																		"height": 30,
+																		"name": "Світлана?",
+																		"children": [
+																			{
+																				"x": 583,
+																				"y": 520,
+																				"width": 76,
+																				"height": 30,
+																				"name": "Марія",
+																				"children": [
+																					{
+																						"x": 576,
+																						"y": 575,
+																						"width": 91,
+																						"height": 30,
+																						"name": "чоловік",
+																						"children": [
+																							{
+																								"x": 579,
+																								"y": 630,
+																								"width": 84,
+																								"height": 30,
+																								"name": "Віктор",
+																								"children": []
+																							}
+																						]
+																					}
+																				]
+																			},
+																			{
+																				"x": 680,
+																				"y": 520,
+																				"width": 91,
+																				"height": 30,
+																				"name": "Олексій",
+																				"children": []
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"x": 799,
+																"y": 410,
+																"width": 69,
+																"height": 30,
+																"name": "Люба",
+																"children": [
+																	{
+																		"x": 791,
+																		"y": 465,
+																		"width": 84,
+																		"height": 30,
+																		"name": "Борис?",
+																		"children": [
+																			{
+																				"x": 791,
+																				"y": 520,
+																				"width": 84,
+																				"height": 30,
+																				"name": "Андрій",
+																				"children": []
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"x": 713,
+								"y": 190,
+								"width": 91,
+								"height": 30,
+								"name": "Пріська",
+								"children": [
+									{
+										"x": 713,
+										"y": 245,
+										"width": 91,
+										"height": 30,
+										"name": "чоловік",
+										"children": [
+											{
+												"x": 716,
+												"y": 300,
+												"width": 84,
+												"height": 30,
+												"name": "Микола",
+												"children": []
+											}
+										]
+									}
+								]
+							},
+							{
+								"x": 825,
+								"y": 190,
+								"width": 69,
+								"height": 30,
+								"name": "Іван",
+								"children": []
+							},
+							{
+								"x": 914,
+								"y": 190,
+								"width": 76,
+								"height": 30,
+								"name": "Настя",
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 608,
+				"y": 29
+			},
+			{
+				"x": 608,
+				"y": 65
+			},
+			{
+				"x": 610,
+				"y": 65
+			},
+			{
+				"x": 610,
+				"y": 110
+			},
+			{
+				"x": 607,
+				"y": 110
+			},
+			{
+				"x": 607,
+				"y": 165
+			},
+			{
+				"x": 324,
+				"y": 165
+			},
+			{
+				"x": 324,
+				"y": 230
+			},
+			{
+				"x": 331,
+				"y": 230
+			},
+			{
+				"x": 331,
+				"y": 275
+			},
+			{
+				"x": 52,
+				"y": 275
+			},
+			{
+				"x": 52,
+				"y": 330
+			},
+			{
+				"x": 38,
+				"y": 330
+			},
+			{
+				"x": 38,
+				"y": 385
+			},
+			{
+				"x": 0,
+				"y": 385
+			},
+			{
+				"x": 0,
+				"y": 450
+			},
+			{
+				"x": 443,
+				"y": 450
+			},
+			{
+				"x": 443,
+				"y": 495
+			},
+			{
+				"x": 402,
+				"y": 495
+			},
+			{
+				"x": 402,
+				"y": 560
+			},
+			{
+				"x": 566,
+				"y": 560
+			},
+			{
+				"x": 566,
+				"y": 615
+			},
+			{
+				"x": 569,
+				"y": 615
+			},
+			{
+				"x": 569,
+				"y": 670
+			},
+			{
+				"x": 673,
+				"y": 670
+			},
+			{
+				"x": 673,
+				"y": 615
+			},
+			{
+				"x": 677,
+				"y": 615
+			},
+			{
+				"x": 677,
+				"y": 560
+			},
+			{
+				"x": 885,
+				"y": 560
+			},
+			{
+				"x": 885,
+				"y": 495
+			},
+			{
+				"x": 885,
+				"y": 440
+			},
+			{
+				"x": 878,
+				"y": 440
+			},
+			{
+				"x": 878,
+				"y": 385
+			},
+			{
+				"x": 696,
+				"y": 385
+			},
+			{
+				"x": 696,
+				"y": 340
+			},
+			{
+				"x": 810,
+				"y": 340
+			},
+			{
+				"x": 810,
+				"y": 285
+			},
+			{
+				"x": 814,
+				"y": 285
+			},
+			{
+				"x": 814,
+				"y": 230
+			},
+			{
+				"x": 1000,
+				"y": 230
+			},
+			{
+				"x": 1000,
+				"y": 165
+			},
+			{
+				"x": 718,
+				"y": 165
+			},
+			{
+				"x": 718,
+				"y": 110
+			},
+			{
+				"x": 714,
+				"y": 110
+			},
+			{
+				"x": 714,
+				"y": 65
+			},
+			{
+				"x": 716,
+				"y": 65
+			},
+			{
+				"x": 716,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 0,
+		"y": 4125,
+		"width": 1716,
+		"height": 680,
+		"title": {
+			"x": 1008,
+			"y": 39,
+			"width": 88,
+			"height": 16,
+			"name": "Горбуновы"
+		},
+		"roots": [
+			{
+				"x": 1010,
+				"y": 80,
+				"width": 84,
+				"height": 30,
+				"name": "Никита",
+				"children": [
+					{
+						"x": 1010,
+						"y": 135,
+						"width": 84,
+						"height": 30,
+						"name": "Ирина?",
+						"children": [
+							{
+								"x": 399,
+								"y": 190,
+								"width": 91,
+								"height": 30,
+								"name": "Дмитрий",
+								"children": [
+									{
+										"x": 391,
+										"y": 245,
+										"width": 106,
+										"height": 30,
+										"name": "Елизавета",
+										"children": [
+											{
+												"x": 10,
+												"y": 300,
+												"width": 91,
+												"height": 30,
+												"name": "Зинаида",
+												"children": []
+											},
+											{
+												"x": 121,
+												"y": 300,
+												"width": 76,
+												"height": 30,
+												"name": "Елана",
+												"children": []
+											},
+											{
+												"x": 218,
+												"y": 300,
+												"width": 106,
+												"height": 30,
+												"name": "Александр",
+												"children": []
+											},
+											{
+												"x": 345,
+												"y": 300,
+												"width": 69,
+												"height": 30,
+												"name": "Пётр",
+												"children": [
+													{
+														"x": 341,
+														"y": 355,
+														"width": 76,
+														"height": 30,
+														"name": "Анна?",
+														"children": [
+															{
+																"x": 345,
+																"y": 410,
+																"width": 69,
+																"height": 30,
+																"name": "Саша",
+																"children": [
+																	{
+																		"x": 345,
+																		"y": 465,
+																		"width": 69,
+																		"height": 30,
+																		"name": "жена",
+																		"children": [
+																			{
+																				"x": 285,
+																				"y": 520,
+																				"width": 76,
+																				"height": 30,
+																				"name": "Толик",
+																				"children": [
+																					{
+																						"x": 289,
+																						"y": 575,
+																						"width": 69,
+																						"height": 30,
+																						"name": "жена",
+																						"children": [
+																							{
+																								"x": 289,
+																								"y": 630,
+																								"width": 69,
+																								"height": 30,
+																								"name": "дочь",
+																								"children": []
+																							}
+																						]
+																					}
+																				]
+																			},
+																			{
+																				"x": 382,
+																				"y": 520,
+																				"width": 91,
+																				"height": 30,
+																				"name": "Наташа?",
+																				"children": []
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											},
+											{
+												"x": 601,
+												"y": 300,
+												"width": 84,
+												"height": 30,
+												"name": "Сергей",
+												"children": [
+													{
+														"x": 583,
+														"y": 355,
+														"width": 121,
+														"height": 30,
+														"name": "Александра?",
+														"children": [
+															{
+																"x": 546,
+																"y": 410,
+																"width": 76,
+																"height": 30,
+																"name": "Иосиф",
+																"children": [
+																	{
+																		"x": 539,
+																		"y": 465,
+																		"width": 91,
+																		"height": 30,
+																		"name": "Галина?",
+																		"children": [
+																			{
+																				"x": 493,
+																				"y": 520,
+																				"width": 84,
+																				"height": 30,
+																				"name": "Лариса",
+																				"children": []
+																			},
+																			{
+																				"x": 598,
+																				"y": 520,
+																				"width": 76,
+																				"height": 30,
+																				"name": "Ирина",
+																				"children": []
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"x": 643,
+																"y": 410,
+																"width": 99,
+																"height": 30,
+																"name": "Геннадий",
+																"children": []
+															}
+														]
+													}
+												]
+											},
+											{
+												"x": 811,
+												"y": 300,
+												"width": 69,
+												"height": 30,
+												"name": "Иван",
+												"children": [
+													{
+														"x": 807,
+														"y": 355,
+														"width": 76,
+														"height": 30,
+														"name": "Елана",
+														"children": [
+															{
+																"x": 762,
+																"y": 410,
+																"width": 76,
+																"height": 30,
+																"name": "Мария",
+																"children": []
+															},
+															{
+																"x": 859,
+																"y": 410,
+																"width": 69,
+																"height": 30,
+																"name": "Анна",
+																"children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"x": 1051,
+								"y": 190,
+								"width": 84,
+								"height": 30,
+								"name": "Михаил",
+								"children": [
+									{
+										"x": 1059,
+										"y": 245,
+										"width": 69,
+										"height": 30,
+										"name": "жена",
+										"children": [
+											{
+												"x": 900,
+												"y": 300,
+												"width": 76,
+												"height": 30,
+												"name": "Софья",
+												"children": []
+											},
+											{
+												"x": 997,
+												"y": 300,
+												"width": 69,
+												"height": 30,
+												"name": "Анна",
+												"children": []
+											},
+											{
+												"x": 1085,
+												"y": 300,
+												"width": 106,
+												"height": 30,
+												"name": "Валентина",
+												"children": []
+											},
+											{
+												"x": 1212,
+												"y": 300,
+												"width": 76,
+												"height": 30,
+												"name": "Мария",
+												"children": []
+											}
+										]
+									}
+								]
+							},
+							{
+								"x": 1428,
+								"y": 190,
+								"width": 69,
+								"height": 30,
+								"name": "Егор",
+								"children": [
+									{
+										"x": 1428,
+										"y": 245,
+										"width": 69,
+										"height": 30,
+										"name": "жена",
+										"children": [
+											{
+												"x": 1309,
+												"y": 300,
+												"width": 106,
+												"height": 30,
+												"name": "Ефросиния",
+												"children": []
+											},
+											{
+												"x": 1436,
+												"y": 300,
+												"width": 91,
+												"height": 30,
+												"name": "Мотрёна",
+												"children": []
+											},
+											{
+												"x": 1547,
+												"y": 300,
+												"width": 69,
+												"height": 30,
+												"name": "Анна",
+												"children": []
+											}
+										]
+									}
+								]
+							},
+							{
+								"x": 1637,
+								"y": 190,
+								"width": 69,
+								"height": 30,
+								"name": "Иоан",
+								"children": [
+									{
+										"x": 1637,
+										"y": 245,
+										"width": 69,
+										"height": 30,
+										"name": "жена",
+										"children": [
+											{
+												"x": 1637,
+												"y": 300,
+												"width": 69,
+												"height": 30,
+												"name": "Вера",
+												"children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 998,
+				"y": 29
+			},
+			{
+				"x": 998,
+				"y": 65
+			},
+			{
+				"x": 1000,
+				"y": 65
+			},
+			{
+				"x": 1000,
+				"y": 110
+			},
+			{
+				"x": 1000,
+				"y": 165
+			},
+			{
+				"x": 389,
+				"y": 165
+			},
+			{
+				"x": 389,
+				"y": 220
+			},
+			{
+				"x": 381,
+				"y": 220
+			},
+			{
+				"x": 381,
+				"y": 275
+			},
+			{
+				"x": 0,
+				"y": 275
+			},
+			{
+				"x": 0,
+				"y": 340
+			},
+			{
+				"x": 331,
+				"y": 340
+			},
+			{
+				"x": 331,
+				"y": 395
+			},
+			{
+				"x": 335,
+				"y": 395
+			},
+			{
+				"x": 335,
+				"y": 440
+			},
+			{
+				"x": 335,
+				"y": 495
+			},
+			{
+				"x": 275,
+				"y": 495
+			},
+			{
+				"x": 275,
+				"y": 560
+			},
+			{
+				"x": 279,
+				"y": 560
+			},
+			{
+				"x": 279,
+				"y": 605
+			},
+			{
+				"x": 279,
+				"y": 670
+			},
+			{
+				"x": 368,
+				"y": 670
+			},
+			{
+				"x": 368,
+				"y": 605
+			},
+			{
+				"x": 368,
+				"y": 560
+			},
+			{
+				"x": 684,
+				"y": 560
+			},
+			{
+				"x": 684,
+				"y": 495
+			},
+			{
+				"x": 640,
+				"y": 495
+			},
+			{
+				"x": 640,
+				"y": 450
+			},
+			{
+				"x": 938,
+				"y": 450
+			},
+			{
+				"x": 938,
+				"y": 385
+			},
+			{
+				"x": 893,
+				"y": 385
+			},
+			{
+				"x": 893,
+				"y": 340
+			},
+			{
+				"x": 1716,
+				"y": 340
+			},
+			{
+				"x": 1716,
+				"y": 275
+			},
+			{
+				"x": 1716,
+				"y": 220
+			},
+			{
+				"x": 1716,
+				"y": 165
+			},
+			{
+				"x": 1104,
+				"y": 165
+			},
+			{
+				"x": 1104,
+				"y": 110
+			},
+			{
+				"x": 1104,
+				"y": 65
+			},
+			{
+				"x": 1106,
+				"y": 65
+			},
+			{
+				"x": 1106,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 922,
+		"y": 4455,
+		"width": 98,
+		"height": 240,
+		"title": {
+			"x": 10,
+			"y": 39,
+			"width": 78,
+			"height": 16,
+			"name": "Будилова"
+		},
+		"roots": [
+			{
+				"x": 26,
+				"y": 80,
+				"width": 47,
+				"height": 30,
+				"name": "?",
+				"children": [
+					{
+						"x": 26,
+						"y": 135,
+						"width": 47,
+						"height": 30,
+						"name": "?",
+						"children": [
+							{
+								"x": 11,
+								"y": 190,
+								"width": 76,
+								"height": 30,
+								"name": "Елана",
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 0,
+				"y": 29
+			},
+			{
+				"x": 0,
+				"y": 65
+			},
+			{
+				"x": 16,
+				"y": 65
+			},
+			{
+				"x": 16,
+				"y": 110
+			},
+			{
+				"x": 16,
+				"y": 165
+			},
+			{
+				"x": 1,
+				"y": 165
+			},
+			{
+				"x": 1,
+				"y": 230
+			},
+			{
+				"x": 97,
+				"y": 230
+			},
+			{
+				"x": 97,
+				"y": 165
+			},
+			{
+				"x": 83,
+				"y": 165
+			},
+			{
+				"x": 83,
+				"y": 110
+			},
+			{
+				"x": 83,
+				"y": 65
+			},
+			{
+				"x": 98,
+				"y": 65
+			},
+			{
+				"x": 98,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 641,
+		"y": 4565,
+		"width": 319,
+		"height": 240,
+		"title": {
+			"x": 115,
+			"y": 39,
+			"width": 88,
+			"height": 16,
+			"name": "Соловьева"
+		},
+		"roots": [
+			{
+				"x": 106,
+				"y": 80,
+				"width": 106,
+				"height": 30,
+				"name": "Владислав",
+				"children": [
+					{
+						"x": 121,
+						"y": 135,
+						"width": 76,
+						"height": 30,
+						"name": "Мария",
+						"children": [
+							{
+								"x": 10,
+								"y": 190,
+								"width": 69,
+								"height": 30,
+								"name": "Вера",
+								"children": []
+							},
+							{
+								"x": 99,
+								"y": 190,
+								"width": 99,
+								"height": 30,
+								"name": "Владимир",
+								"children": []
+							},
+							{
+								"x": 218,
+								"y": 190,
+								"width": 91,
+								"height": 30,
+								"name": "Надежда",
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 105,
+				"y": 29
+			},
+			{
+				"x": 105,
+				"y": 70
+			},
+			{
+				"x": 96,
+				"y": 70
+			},
+			{
+				"x": 96,
+				"y": 120
+			},
+			{
+				"x": 111,
+				"y": 120
+			},
+			{
+				"x": 111,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 230
+			},
+			{
+				"x": 319,
+				"y": 230
+			},
+			{
+				"x": 319,
+				"y": 165
+			},
+			{
+				"x": 207,
+				"y": 165
+			},
+			{
+				"x": 207,
+				"y": 120
+			},
+			{
+				"x": 222,
+				"y": 120
+			},
+			{
+				"x": 222,
+				"y": 70
+			},
+			{
+				"x": 213,
+				"y": 70
+			},
+			{
+				"x": 213,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 381,
+		"y": 3850,
+		"width": 539,
+		"height": 460,
+		"title": {
+			"x": 211,
+			"y": 39,
+			"width": 68,
+			"height": 16,
+			"name": "Опарины"
+		},
+		"roots": [
+			{
+				"x": 200,
+				"y": 80,
+				"width": 91,
+				"height": 30,
+				"name": "Дмитрий",
+				"children": [
+					{
+						"x": 203,
+						"y": 135,
+						"width": 84,
+						"height": 30,
+						"name": "Марфа?",
+						"children": [
+							{
+								"x": 10,
+								"y": 190,
+								"width": 106,
+								"height": 30,
+								"name": "Елизавета",
+								"children": []
+							},
+							{
+								"x": 137,
+								"y": 190,
+								"width": 91,
+								"height": 30,
+								"name": "Наталья",
+								"children": []
+							},
+							{
+								"x": 248,
+								"y": 190,
+								"width": 69,
+								"height": 30,
+								"name": "Иоан",
+								"children": [
+									{
+										"x": 248,
+										"y": 245,
+										"width": 69,
+										"height": 30,
+										"name": "жена",
+										"children": [
+											{
+												"x": 244,
+												"y": 300,
+												"width": 76,
+												"height": 30,
+												"name": "Дарья",
+												"children": []
+											}
+										]
+									}
+								]
+							},
+							{
+								"x": 389,
+								"y": 190,
+								"width": 91,
+								"height": 30,
+								"name": "Василий",
+								"children": [
+									{
+										"x": 400,
+										"y": 245,
+										"width": 69,
+										"height": 30,
+										"name": "жена",
+										"children": [
+											{
+												"x": 340,
+												"y": 300,
+												"width": 84,
+												"height": 30,
+												"name": "Андрей",
+												"children": [
+													{
+														"x": 348,
+														"y": 355,
+														"width": 69,
+														"height": 30,
+														"name": "жена",
+														"children": [
+															{
+																"x": 329,
+																"y": 410,
+																"width": 106,
+																"height": 30,
+																"name": "Валентина",
+																"children": []
+															}
+														]
+													}
+												]
+											},
+											{
+												"x": 445,
+												"y": 300,
+												"width": 84,
+												"height": 30,
+												"name": "Михаил",
+												"children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 201,
+				"y": 29
+			},
+			{
+				"x": 201,
+				"y": 70
+			},
+			{
+				"x": 190,
+				"y": 70
+			},
+			{
+				"x": 190,
+				"y": 120
+			},
+			{
+				"x": 193,
+				"y": 120
+			},
+			{
+				"x": 193,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 230
+			},
+			{
+				"x": 238,
+				"y": 230
+			},
+			{
+				"x": 238,
+				"y": 275
+			},
+			{
+				"x": 234,
+				"y": 275
+			},
+			{
+				"x": 234,
+				"y": 340
+			},
+			{
+				"x": 338,
+				"y": 340
+			},
+			{
+				"x": 338,
+				"y": 385
+			},
+			{
+				"x": 319,
+				"y": 385
+			},
+			{
+				"x": 319,
+				"y": 450
+			},
+			{
+				"x": 445,
+				"y": 450
+			},
+			{
+				"x": 445,
+				"y": 385
+			},
+			{
+				"x": 427,
+				"y": 385
+			},
+			{
+				"x": 427,
+				"y": 340
+			},
+			{
+				"x": 539,
+				"y": 340
+			},
+			{
+				"x": 539,
+				"y": 275
+			},
+			{
+				"x": 479,
+				"y": 275
+			},
+			{
+				"x": 479,
+				"y": 230
+			},
+			{
+				"x": 490,
+				"y": 230
+			},
+			{
+				"x": 490,
+				"y": 165
+			},
+			{
+				"x": 297,
+				"y": 165
+			},
+			{
+				"x": 297,
+				"y": 120
+			},
+			{
+				"x": 301,
+				"y": 120
+			},
+			{
+				"x": 301,
+				"y": 70
+			},
+			{
+				"x": 289,
+				"y": 70
+			},
+			{
+				"x": 289,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 510,
+		"y": 4070,
+		"width": 111,
+		"height": 240,
+		"title": {
+			"x": 11,
+			"y": 39,
+			"width": 88,
+			"height": 16,
+			"name": "Смолякова"
+		},
+		"roots": [
+			{
+				"x": 24,
+				"y": 80,
+				"width": 62,
+				"height": 30,
+				"name": "муж",
+				"children": [
+					{
+						"x": 17,
+						"y": 135,
+						"width": 76,
+						"height": 30,
+						"name": "Дарья",
+						"children": [
+							{
+								"x": 10,
+								"y": 190,
+								"width": 91,
+								"height": 30,
+								"name": "Наталья",
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 1,
+				"y": 29
+			},
+			{
+				"x": 1,
+				"y": 65
+			},
+			{
+				"x": 14,
+				"y": 65
+			},
+			{
+				"x": 14,
+				"y": 110
+			},
+			{
+				"x": 7,
+				"y": 110
+			},
+			{
+				"x": 7,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 230
+			},
+			{
+				"x": 111,
+				"y": 230
+			},
+			{
+				"x": 111,
+				"y": 165
+			},
+			{
+				"x": 103,
+				"y": 165
+			},
+			{
+				"x": 103,
+				"y": 110
+			},
+			{
+				"x": 96,
+				"y": 110
+			},
+			{
+				"x": 96,
+				"y": 65
+			},
+			{
+				"x": 109,
+				"y": 65
+			},
+			{
+				"x": 109,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 0,
+		"y": 4785,
+		"width": 583,
+		"height": 570,
+		"title": {
+			"x": 325,
+			"y": 39,
+			"width": 68,
+			"height": 16,
+			"name": "Нагорні"
+		},
+		"roots": [
+			{
+				"x": 317,
+				"y": 80,
+				"width": 84,
+				"height": 30,
+				"name": "Сергей",
+				"children": [
+					{
+						"x": 317,
+						"y": 135,
+						"width": 84,
+						"height": 30,
+						"name": "Федора",
+						"children": [
+							{
+								"x": 183,
+								"y": 190,
+								"width": 69,
+								"height": 30,
+								"name": "Пётр",
+								"children": [
+									{
+										"x": 168,
+										"y": 245,
+										"width": 99,
+										"height": 30,
+										"name": "Матрона?",
+										"children": [
+											{
+												"x": 46,
+												"y": 300,
+												"width": 84,
+												"height": 30,
+												"name": "Михаил",
+												"children": [
+													{
+														"x": 50,
+														"y": 355,
+														"width": 76,
+														"height": 30,
+														"name": "Нина?",
+														"children": [
+															{
+																"x": 10,
+																"y": 410,
+																"width": 69,
+																"height": 30,
+																"name": "Галя",
+																"children": []
+															},
+															{
+																"x": 99,
+																"y": 410,
+																"width": 69,
+																"height": 30,
+																"name": "Лена",
+																"children": []
+															}
+														]
+													}
+												]
+											},
+											{
+												"x": 192,
+												"y": 300,
+												"width": 76,
+												"height": 30,
+												"name": "Павел",
+												"children": [
+													{
+														"x": 196,
+														"y": 355,
+														"width": 69,
+														"height": 30,
+														"name": "Галя",
+														"children": [
+															{
+																"x": 188,
+																"y": 410,
+																"width": 84,
+																"height": 30,
+																"name": "Сергей",
+																"children": [
+																	{
+																		"x": 192,
+																		"y": 465,
+																		"width": 76,
+																		"height": 30,
+																		"name": "Ирина",
+																		"children": [
+																			{
+																				"x": 133,
+																				"y": 520,
+																				"width": 99,
+																				"height": 30,
+																				"name": "Катерина",
+																				"children": []
+																			},
+																			{
+																				"x": 252,
+																				"y": 520,
+																				"width": 76,
+																				"height": 30,
+																				"name": "Роман",
+																				"children": []
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											},
+											{
+												"x": 289,
+												"y": 300,
+												"width": 99,
+												"height": 30,
+												"name": "Григорий",
+												"children": [
+													{
+														"x": 304,
+														"y": 355,
+														"width": 69,
+														"height": 30,
+														"name": "Нина",
+														"children": [
+															{
+																"x": 304,
+																"y": 410,
+																"width": 69,
+																"height": 30,
+																"name": "Алла",
+																"children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"x": 306,
+								"y": 190,
+								"width": 84,
+								"height": 30,
+								"name": "Поліна",
+								"children": []
+							},
+							{
+								"x": 445,
+								"y": 190,
+								"width": 91,
+								"height": 30,
+								"name": "Матрона",
+								"children": [
+									{
+										"x": 459,
+										"y": 245,
+										"width": 62,
+										"height": 30,
+										"name": "муж",
+										"children": [
+											{
+												"x": 407,
+												"y": 300,
+												"width": 76,
+												"height": 30,
+												"name": "Ольга",
+												"children": []
+											},
+											{
+												"x": 504,
+												"y": 300,
+												"width": 69,
+												"height": 30,
+												"name": "Яшка",
+												"children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 315,
+				"y": 29
+			},
+			{
+				"x": 315,
+				"y": 70
+			},
+			{
+				"x": 307,
+				"y": 70
+			},
+			{
+				"x": 307,
+				"y": 110
+			},
+			{
+				"x": 307,
+				"y": 165
+			},
+			{
+				"x": 173,
+				"y": 165
+			},
+			{
+				"x": 173,
+				"y": 220
+			},
+			{
+				"x": 158,
+				"y": 220
+			},
+			{
+				"x": 158,
+				"y": 275
+			},
+			{
+				"x": 36,
+				"y": 275
+			},
+			{
+				"x": 36,
+				"y": 340
+			},
+			{
+				"x": 40,
+				"y": 340
+			},
+			{
+				"x": 40,
+				"y": 385
+			},
+			{
+				"x": 0,
+				"y": 385
+			},
+			{
+				"x": 0,
+				"y": 450
+			},
+			{
+				"x": 182,
+				"y": 450
+			},
+			{
+				"x": 182,
+				"y": 495
+			},
+			{
+				"x": 123,
+				"y": 495
+			},
+			{
+				"x": 123,
+				"y": 560
+			},
+			{
+				"x": 338,
+				"y": 560
+			},
+			{
+				"x": 338,
+				"y": 495
+			},
+			{
+				"x": 278,
+				"y": 495
+			},
+			{
+				"x": 278,
+				"y": 450
+			},
+			{
+				"x": 383,
+				"y": 450
+			},
+			{
+				"x": 383,
+				"y": 385
+			},
+			{
+				"x": 383,
+				"y": 340
+			},
+			{
+				"x": 583,
+				"y": 340
+			},
+			{
+				"x": 583,
+				"y": 275
+			},
+			{
+				"x": 531,
+				"y": 275
+			},
+			{
+				"x": 531,
+				"y": 230
+			},
+			{
+				"x": 546,
+				"y": 230
+			},
+			{
+				"x": 546,
+				"y": 165
+			},
+			{
+				"x": 411,
+				"y": 165
+			},
+			{
+				"x": 411,
+				"y": 110
+			},
+			{
+				"x": 411,
+				"y": 70
+			},
+			{
+				"x": 403,
+				"y": 70
+			},
+			{
+				"x": 403,
+				"y": 29
+			}
+		]
+	},
+	{
+		"x": 491,
+		"y": 4950,
+		"width": 289,
+		"height": 240,
+		"title": {
+			"x": 100,
+			"y": 39,
+			"width": 88,
+			"height": 16,
+			"name": "Осауленко"
+		},
+		"roots": [
+			{
+				"x": 106,
+				"y": 80,
+				"width": 76,
+				"height": 30,
+				"name": "Гриша",
+				"children": [
+					{
+						"x": 102,
+						"y": 135,
+						"width": 84,
+						"height": 30,
+						"name": "Химка?",
+						"children": [
+							{
+								"x": 10,
+								"y": 190,
+								"width": 69,
+								"height": 30,
+								"name": "Нина",
+								"children": []
+							},
+							{
+								"x": 98,
+								"y": 190,
+								"width": 76,
+								"height": 30,
+								"name": "Сашко",
+								"children": []
+							},
+							{
+								"x": 195,
+								"y": 190,
+								"width": 84,
+								"height": 30,
+								"name": "Василь",
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		],
+		"bounding": [
+			{
+				"x": 90,
+				"y": 29
+			},
+			{
+				"x": 90,
+				"y": 65
+			},
+			{
+				"x": 96,
+				"y": 65
+			},
+			{
+				"x": 96,
+				"y": 110
+			},
+			{
+				"x": 92,
+				"y": 110
+			},
+			{
+				"x": 92,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 165
+			},
+			{
+				"x": 0,
+				"y": 230
+			},
+			{
+				"x": 289,
+				"y": 230
+			},
+			{
+				"x": 289,
+				"y": 165
+			},
+			{
+				"x": 196,
+				"y": 165
+			},
+			{
+				"x": 196,
+				"y": 110
+			},
+			{
+				"x": 192,
+				"y": 110
+			},
+			{
+				"x": 192,
+				"y": 65
+			},
+			{
+				"x": 198,
+				"y": 65
+			},
+			{
+				"x": 198,
+				"y": 29
 			}
 		]
 	}

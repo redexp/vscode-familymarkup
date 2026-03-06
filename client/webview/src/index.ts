@@ -1,7 +1,17 @@
-import {mount} from 'svelte';
-import App from './app.svelte';
-import './styles.less'
+import './style.less';
+import {onEvent, send} from './lib/api';
+import {renderFamilies, getFontRatio} from './app';
 
-mount(App, {
-	target: document.body
+onEvent((e) => {
+	switch (e.type) {
+	case 'document':
+		renderFamilies(e.families)
+		break;
+	}
+});
+
+send('ready', {
+	fontRatio: getFontRatio(),
+}).catch(err => {
+	console.error('send ready', err);
 });
