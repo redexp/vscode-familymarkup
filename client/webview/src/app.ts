@@ -22,6 +22,8 @@ root.add(stage);
 panZoom(root, stage);
 
 export function renderFamilies(families: SvgFamily[]) {
+	stage.remove(stage.children);
+
 	for (const family of families) {
 		const g = new Two.Group();
 		g.position.set(family.x, family.y);
