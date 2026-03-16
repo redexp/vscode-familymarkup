@@ -4,7 +4,7 @@ import {renderFamilies, getFontRatio} from './app';
 
 onEvent((e) => {
 	switch (e.type) {
-	case 'document':
+	case 'families':
 		renderFamilies(e.families)
 		break;
 	}
