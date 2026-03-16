@@ -41,22 +41,19 @@ function updateWebView(ctx, view) {
 		return view;
 	}
 
-	const uri = window.activeTextEditor?.document.uri.toString();
+	// const uri = window.activeTextEditor?.document.uri.toString();
 
 	view = createWebView(ctx);
 
 	view.webview.onDidReceiveMessage(function (e) {
 		switch (e.type) {
 		case 'ready':
-			if (!uri) return;
-
 			ctx.lsp
-			.sendRequest('svg/document', {
-				uri,
+			.sendRequest('svg/families', {
 				fontRatio: e.fontRatio,
 			})
 			.then(function (families) {
-				return send('document', {families});
+				return send('families', {families});
 			})
 			.catch(logErr);
 
