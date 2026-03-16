@@ -1,7 +1,3 @@
-import Two from 'two.js';
-import {ZUI} from 'two.js/extras/jsm/zui';
-import type {Group} from "two.js/src/group";
-
 export default function panZoom(root: Two, stage: Group) {
 	const node = root.renderer.domElement;
 	const zui = new ZUI(stage);

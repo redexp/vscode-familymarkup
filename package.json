@@ -132,12 +132,13 @@
     "vscode-languageclient": "^10.0.0-next.21"
   },
   "devDependencies": {
+    "@svgdotjs/svg.js": "^3.2.5",
     "@types/vscode": "^1.90.0",
     "@types/vscode-webview": "^1.57.5",
     "less": "^4.4.1",
     "process": "^0.11.10",
+    "svg-pan-zoom": "^3.6.2",
     "svg-round-corners": "^0.4.3",
-    "two.js": "^0.8.23",
     "typescript": "^5.9.2",
     "vite": "^7.1.4",
     "webpack": "^5.97.1",
