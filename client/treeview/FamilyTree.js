@@ -1,10 +1,10 @@
-const {TreeItem, EventEmitter, commands, Selection} = require('vscode');
+const {TreeItem, EventEmitter} = require('vscode');
 
 class FamilyTree {
 	/**
 	 * @param {Ctx} ctx
 	 */
-	constructor({lsp, ext}) {
+	constructor({lsp}) {
 		this.lsp = lsp;
 
 		const reloadEmitter = new EventEmitter()
@@ -15,16 +15,6 @@ class FamilyTree {
 		lsp.onNotification('tree/reload', function () {
 			reloadEmitter.fire();
 		});
-
-		const command = commands.registerCommand('familytree.open', ({uri, ...pos}) => {
-			uri = lsp.protocol2CodeConverter.asUri(uri);
-
-			commands.executeCommand('vscode.open', uri, {
-				selection: new Selection(pos, pos),
-			});
-		});
-
-		ext.subscriptions.push(command);
 	}
 
 	request(method, params) {

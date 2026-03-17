@@ -1,6 +1,5 @@
 const createLspWeb = require('./lsp-web');
-const createTreeView = require('./treeview/create');
-const initWebView = require('./webview/init');
+const init = require("./init");
 
 let lsp;
 
@@ -10,13 +9,7 @@ let lsp;
 exports.activate = async function (ext) {
 	lsp = createLspWeb(ext);
 
-	await lsp.start();
-
-	/** @type {Ctx} */
-	const ctx = {ext, lsp};
-
-	createTreeView(ctx);
-	initWebView(ctx);
+	await init(ext, lsp);
 };
 
 exports.deactivate = function () {
