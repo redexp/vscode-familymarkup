@@ -1,8 +1,9 @@
+// @ts-ignore
+import svgPanZoom from 'svg-pan-zoom';
 import {SVG, type G} from '@svgdotjs/svg.js';
 import type {Rect, SvgFamily, SvgPerson} from "./types";
 import {createBoundingPath} from "./lib/tree";
-// @ts-ignore
-import svgPanZoom from 'svg-pan-zoom';
+import {open} from "./lib/api";
 
 let FONT_FAMILY: string;
 const COLOR = '#4a90e2';
@@ -39,16 +40,19 @@ export function renderFamilies(families: SvgFamily[]) {
 
 		const {title: t} = family;
 
-		createText(fg, t.name, 16, t)
-		.addClass('family-title');
+		const title = createText(fg, t.name, 16, t);
+		title.addClass('family-title');
+		title.on('click', function () {
+			open(family.uri, family.loc);
+		});
 
 		for (const person of family.roots) {
-			renderPerson(fg, person);
+			renderPerson(fg, family, person);
 		}
 	}
 }
 
-function renderPerson(fg: G, p: SvgPerson) {
+function renderPerson(fg: G, f: SvgFamily, p: SvgPerson) {
 	for (const child of p.children) {
 		const arrow = createArrow(fg, p, child);
 		arrow.fill('none');
@@ -58,6 +62,10 @@ function renderPerson(fg: G, p: SvgPerson) {
 	const pg = fg.group();
 	pg.translate(p.x, p.y);
 	pg.addClass('person');
+
+	pg.on('click', function () {
+		open(f.uri, p.loc);
+	});
 
 	const rect = pg.rect(p.width, p.height);
 	rect.radius(6);
@@ -72,7 +80,7 @@ function renderPerson(fg: G, p: SvgPerson) {
 	});
 
 	for (const child of p.children) {
-		renderPerson(fg, child);
+		renderPerson(fg, f, child);
 	}
 }
 

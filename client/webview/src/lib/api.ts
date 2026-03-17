@@ -1,3 +1,5 @@
+import type {Loc} from "../types";
+
 let vscode;
 
 const listeners: Listener[] = [];
@@ -40,5 +42,12 @@ export async function send(type: string, data?: any) {
 	vscode.postMessage({
 		...data,
 		type,
+	});
+}
+
+export function open(uri: string, loc: Loc) {
+	return send('open', {
+		uri,
+		...loc.start,
 	});
 }

@@ -56,7 +56,14 @@ function updateWebView(ctx, view) {
 				return send('families', {families});
 			})
 			.catch(logErr);
+			break;
 
+		case 'open':
+			commands.executeCommand('familytree.open', {
+				uri: e.uri,
+				line: e.line,
+				character: e.char,
+			});
 			break;
 		}
 	});

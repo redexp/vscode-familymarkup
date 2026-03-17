@@ -1,6 +1,8 @@
 import {roundCommands} from 'svg-round-corners';
 
 export type SvgFamily = Rect & {
+	uri: string,
+	loc: Loc,
 	title: Node,
 	bounding: Pos[],
 	rows: Row[],
@@ -8,6 +10,7 @@ export type SvgFamily = Rect & {
 };
 
 export type SvgPerson = Rect & {
+	loc: Loc,
 	name: string,
 	children: SvgPerson[],
 };
@@ -27,6 +30,17 @@ export type Row = {
 export type Rect = Pos & {
 	width: number,
 	height: number,
+};
+
+export type Loc = {
+	start: {
+		line: number,
+		char: number,
+	},
+	end: {
+		line: number,
+		char: number,
+	},
 };
 
 export type Node = Rect & {name: string};
