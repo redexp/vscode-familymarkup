@@ -31,7 +31,7 @@ export async function send(type: string, data?: any) {
 		if (type !== 'ready') return;
 
 		const {families} = await import('../dev/data');
-		trigger({type: 'document', families});
+		trigger({type: 'families', families});
 		return;
 	}
 
@@ -46,8 +46,11 @@ export async function send(type: string, data?: any) {
 }
 
 export function open(uri: string, loc: Loc) {
-	return send('open', {
+	send('open', {
 		uri,
 		...loc.start,
+	})
+	.catch(err => {
+		console.error('send("open")', err);
 	});
 }
