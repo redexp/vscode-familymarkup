@@ -1,24 +1,26 @@
-import type {G} from '@svgdotjs/svg.js';
 import type {SvgFamily} from "../types";
 import {createBoundingPath} from "../lib/tree";
 import {open} from "../lib/api";
-import {COLOR} from '../theme';
+import {MAIN_COLOR} from '../theme';
 import renderText from './text';
 import renderPerson from './person';
+import {families as container} from '../app';
 
-export default function renderFamilies(stage: G, families: SvgFamily[]) {
-	stage.clear();
+export default function renderFamilies(families: SvgFamily[]) {
+	container.clear();
 
 	for (const family of families) {
-		const fg = stage.group();
+		const fg = container.group();
+		fg.addClass('family');
 		fg.translate(family.x, family.y);
 
 		const path = createBoundingPath(family);
 
 		const bounding = fg.path(path.path);
+		bounding.addClass('bounding');
 		bounding.fill('#fafdff');
 		bounding.stroke({
-			color: COLOR,
+			color: MAIN_COLOR,
 			width: 2,
 			dasharray: '4',
 		});

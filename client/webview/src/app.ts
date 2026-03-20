@@ -4,9 +4,12 @@ import {SVG} from '@svgdotjs/svg.js';
 
 export const root = SVG().addTo(document.body);
 export const stage = root.group().addClass('svg-pan-zoom_viewport');
+export const families = stage.group().addClass('families');
+export const pointers = stage.group().addClass('pointers');
 
 resize();
-svgPanZoom(root.node, {
+
+export const zoom = svgPanZoom(root.node, {
 	minZoom: 0.1,
 	maxZoom: 10,
 	zoomScaleSensitivity: 0.3,

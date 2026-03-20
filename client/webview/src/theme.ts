@@ -1,7 +1,8 @@
 const data = JSON.parse(document.getElementById('data').innerHTML);
 
 export const FONT_FAMILY = data.fontFamily;
-export const COLOR = '#4a90e2';
+export const MAIN_COLOR = '#4a90e2';
+export const POINTER_COLOR = '#e85d75';
 
 export function getFontRatio() {
 	document.body.style.fontFamily = FONT_FAMILY;

@@ -1,14 +1,18 @@
 import type {G} from '@svgdotjs/svg.js';
 import type {SvgFamily, SvgPerson} from "../types";
-import {COLOR} from '../theme';
+import {MAIN_COLOR} from '../theme';
 import {open} from '../lib/api';
 import renderText from './text';
+import renderPointers from './pointers';
 
 export default function renderPerson(fg: G, f: SvgFamily, p: SvgPerson) {
 	for (const child of p.children) {
 		const arrow = renderArrow(fg, p, child);
 		arrow.fill('none');
-		arrow.stroke({color: COLOR, width: 2});
+		arrow.stroke({
+			color: MAIN_COLOR,
+			width: 2,
+		});
 	}
 
 	const pg = fg.group();
@@ -22,7 +26,10 @@ export default function renderPerson(fg: G, f: SvgFamily, p: SvgPerson) {
 	const rect = pg.rect(p.width, p.height);
 	rect.radius(6);
 	rect.fill('#fff');
-	rect.stroke({color: COLOR, width: 2});
+	rect.stroke({
+		color: MAIN_COLOR,
+		width: 2,
+	});
 
 	renderText(pg, p.name, 12, {
 		x: 0,
@@ -30,6 +37,8 @@ export default function renderPerson(fg: G, f: SvgFamily, p: SvgPerson) {
 		width: p.width,
 		height: p.height,
 	});
+
+	renderPointers(pg, f, p);
 
 	for (const child of p.children) {
 		renderPerson(fg, f, child);
