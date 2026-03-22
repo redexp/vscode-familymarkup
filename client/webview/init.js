@@ -84,7 +84,8 @@ function createWebView({ext}) {
 		'Family View',
 		ViewColumn.Two,
 		{
-			enableScripts: true
+			enableScripts: true,
+			retainContextWhenHidden: true,
 		}
 	);
 
