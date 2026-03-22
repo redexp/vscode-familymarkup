@@ -4,10 +4,10 @@ import {open} from "../lib/api";
 import {MAIN_COLOR} from '../theme';
 import renderText from './text';
 import renderPerson from './person';
-import {families as container} from '../app';
+import {families as container, clearAll} from '../app';
 
 export default function renderFamilies(families: SvgFamily[]) {
-	container.clear();
+	clearAll();
 
 	for (const family of families) {
 		const fg = container.group();

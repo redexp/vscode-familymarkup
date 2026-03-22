@@ -25,3 +25,8 @@ function resize() {
 	root.size(w, h);
 	root.viewbox(0, 0, w, h);
 }
+
+export function clearAll() {
+	families.clear();
+	pointers.clear();
+}
