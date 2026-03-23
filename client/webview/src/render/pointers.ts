@@ -1,8 +1,8 @@
-import {Timeline, Runner} from '@svgdotjs/svg.js';
 import type {G, Line} from '@svgdotjs/svg.js';
 import type {Pos, SvgFamily, SvgPerson} from "../types";
 import {POINTER_COLOR} from '../theme';
-import {pointers, zoom} from '../app';
+import {pointers} from '../app';
+import moveView from '../lib/moveView';
 
 export default function renderPointers(pg: G, f: SvgFamily, p: SvgPerson) {
 	if (!p.pointers) return;
@@ -117,29 +117,4 @@ function getLineEnd({x: x1, y: y1}: Pos, {x: x2, y: y2}: Pos, newLength: number)
 		x: x1 + (dx / l) * newLength,
 		y: y1 + (dy / l) * newLength,
 	};
-}
-
-function moveView(start: Pos, end: Pos) {
-	const p = zoom.getPan();
-	const z = zoom.getZoom();
-	const x = (start.x - end.x) * z;
-	const y = (start.y - end.y) * z;
-
-	const r = new Runner(1000);
-	r.during((d: number) => {
-		d = ease(d);
-
-		zoom.pan({
-			x: p.x + x * d,
-			y: p.y + y * d,
-		});
-	});
-
-	const t = new Timeline();
-	t.schedule(r);
-	t.play();
-}
-
-function ease(pos: number) {
-	return Math.pow((pos-1), 5) + 1;
 }

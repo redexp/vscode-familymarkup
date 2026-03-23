@@ -16,6 +16,7 @@ module.exports = function initWebView(ctx) {
 
 		initView(ctx);
 		listenFileChange(ctx);
+		listenSelection(ctx);
 
 		view.onDidDispose(() => {
 			view = null;
@@ -97,6 +98,25 @@ function listenFileChange(ctx) {
 /**
  * @param {Ctx} ctx
  */
+function listenSelection(ctx) {
+	const listener = window.onDidChangeTextEditorSelection(function (e) {
+		const uri = e.textEditor.document.uri.toString(true);
+		const selections = e.selections.filter(s => !s.isEmpty);
+
+		if (selections.length === 0) return;
+
+		send('selection', {
+			uri,
+			selections,
+		});
+	});
+
+	ctx.ext.subscriptions.push(listener);
+}
+
+/**
+ * @param {Ctx} ctx
+ */
 function createWebView({ext}) {
 	const panel = window.createWebviewPanel(
 		'familymarkup',
@@ -160,7 +180,7 @@ function logErr(err) {
  * @param {object} data
  */
 function send(type, data) {
-	return view.webview.postMessage({
+	view.webview.postMessage({
 		...data,
 		type,
 	});
