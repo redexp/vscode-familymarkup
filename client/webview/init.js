@@ -53,6 +53,50 @@ function initView(ctx) {
 /**
  * @param {Ctx} ctx
  */
+function listenFileChange(ctx) {
+	const extList = ctx.ext.extension.packageJSON?.contributes.languages[0].extensions || ['fml', 'family'];
+
+	if (extList.length === 0) {
+		throw new Error('empty languages extensions array');
+	}
+
+	const watcher = workspace.createFileSystemWatcher(
+		'**/*.{' + extList.map(ext => ext.replace('.', '')).join(',') + '}'
+	);
+
+	const TIMEOUT = 1000;
+	let changeTime = null;
+	let pending = false;
+
+	const onFileChange = function () {
+		changeTime = Date.now();
+	};
+
+	watcher.onDidChange(onFileChange);
+	watcher.onDidCreate(onFileChange);
+	watcher.onDidDelete(onFileChange);
+
+	ctx.ext.subscriptions.push(watcher);
+
+	const timer = setInterval(function () {
+		if (!changeTime || pending || Date.now() - changeTime < TIMEOUT) return;
+
+		changeTime = null;
+		pending = true;
+
+		updateFamilies(ctx)
+		.catch(logErr)
+		.then(() => {
+			pending = false;
+		});
+	}, 500);
+
+	view.onDidDispose(() => clearInterval(timer));
+}
+
+/**
+ * @param {Ctx} ctx
+ */
 function createWebView({ext}) {
 	const panel = window.createWebviewPanel(
 		'familymarkup',
@@ -120,50 +164,6 @@ function send(type, data) {
 		...data,
 		type,
 	});
-}
-
-/**
- * @param {Ctx} ctx
- */
-function listenFileChange(ctx) {
-	const extList = ctx.ext.extension.packageJSON?.contributes.languages[0].extensions || ['fml', 'family'];
-
-	if (extList.length === 0) {
-		throw new Error('empty languages extensions array');
-	}
-
-	const watcher = workspace.createFileSystemWatcher(
-		'**/*.{' + extList.map(ext => ext.replace('.', '')).join(',') + '}'
-	);
-
-	const TIMEOUT = 1000;
-	let changeTime = null;
-	let pending = false;
-
-	const onFileChange = function () {
-		changeTime = Date.now();
-	};
-
-	watcher.onDidChange(onFileChange);
-	watcher.onDidCreate(onFileChange);
-	watcher.onDidDelete(onFileChange);
-
-	ctx.ext.subscriptions.push(watcher);
-
-	const timer = setInterval(function () {
-		if (!changeTime || pending || Date.now() - changeTime < TIMEOUT) return;
-
-		changeTime = null;
-		pending = true;
-
-		updateFamilies(ctx)
-		.catch(logErr)
-		.then(() => {
-			pending = false;
-		});
-	}, 500);
-
-	view.onDidDispose(() => clearInterval(timer));
 }
 
 /**
