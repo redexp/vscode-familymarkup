@@ -66,7 +66,6 @@ function listenFileChange(ctx) {
 
 	const TIMEOUT = 1000;
 	let changeTime = null;
-	let pending = false;
 
 	const onFileChange = function () {
 		changeTime = Date.now();
@@ -79,16 +78,17 @@ function listenFileChange(ctx) {
 	ctx.ext.subscriptions.push(watcher);
 
 	const timer = setInterval(function () {
-		if (!changeTime || pending || Date.now() - changeTime < TIMEOUT) return;
+		if (
+			!changeTime ||
+			updateFamilies.pending ||
+			Date.now() - changeTime < TIMEOUT
+		) {
+			return;
+		}
 
 		changeTime = null;
-		pending = true;
 
-		updateFamilies(ctx)
-		.catch(logErr)
-		.then(() => {
-			pending = false;
-		});
+		updateFamilies(ctx).catch(logErr);
 	}, 500);
 
 	view.onDidDispose(() => clearInterval(timer));
@@ -170,7 +170,7 @@ function send(type, data) {
  * @param {Ctx} ctx
  * @param {number} [fontRatio]
  */
-async function updateFamilies(ctx, fontRatio) {
+function updateFamilies(ctx, fontRatio) {
 	if (!fontRatio) {
 		fontRatio = updateFamilies.fontRatio;
 	}
@@ -179,11 +179,17 @@ async function updateFamilies(ctx, fontRatio) {
 	}
 
 	if (!fontRatio) {
-		console.warn('updateFamilies no fontRatio');
-		return;
+		return Promise.reject(new Error('updateFamilies no fontRatio'));
 	}
 
-	const families = await ctx.lsp.sendRequest('svg/families', {fontRatio});
+	updateFamilies.pending = (
+		ctx.lsp
+		.sendRequest('svg/families', {fontRatio})
+		.then(list => send('families', {families: list}))
+		.finally(() => {
+			updateFamilies.pending = null;
+		})
+	);
 
-	return send('families', {families});
+	return updateFamilies.pending;
 }
