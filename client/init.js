@@ -1,7 +1,6 @@
 const {commands, Selection, ViewColumn} = require('vscode');
 const createTreeView = require("./treeview/create");
 const initWebView = require("./webview/init");
-const {onHighlights} = require('./middleware');
 
 /**
  * @param {import('vscode').ExtensionContext} ext
