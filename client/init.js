@@ -1,6 +1,7 @@
 const {commands, Selection, ViewColumn} = require('vscode');
 const createTreeView = require("./treeview/create");
 const initWebView = require("./webview/init");
+const {onHighlights} = require('./middleware');
 
 /**
  * @param {import('vscode').ExtensionContext} ext
@@ -10,7 +11,10 @@ module.exports = async function init(ext, lsp) {
 	await lsp.start();
 
 	/** @type {Ctx} */
-	const ctx = {ext, lsp};
+	const ctx = {
+		ext,
+		lsp,
+	};
 
 	initFamilyOpen(ctx);
 	createTreeView(ctx);

@@ -1,6 +1,7 @@
 const {LanguageClient} = require("vscode-languageclient/browser");
 const {wasmOptions, createUriConverters} = require("./wasm");
 const {getSettings} = require("./config");
+const {middleware} = require('./middleware');
 
 /**
  * @param {import('vscode').ExtensionContext} ext
@@ -18,6 +19,7 @@ module.exports = function createLspWeb(ext) {
 			}],
 			initializationOptions: getSettings(),
 			uriConverters: createUriConverters(),
+			middleware,
 		},
 	);
 }

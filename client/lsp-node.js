@@ -2,6 +2,7 @@ const {join} = require('path');
 const {LanguageClient, TransportKind} = require('vscode-languageclient/node');
 const {getSettings} = require('./config');
 const {wasmOptions, createUriConverters} = require('./wasm');
+const {middleware} = require('./middleware');
 
 /**
  * @param {import('vscode').ExtensionContext} ext
@@ -16,6 +17,7 @@ module.exports = function createLspNode(ext) {
 			language: 'familymarkup',
 		}],
 		initializationOptions: getSettings(),
+		middleware,
 	};
 
 	switch (process.env.TRANSPORT) {

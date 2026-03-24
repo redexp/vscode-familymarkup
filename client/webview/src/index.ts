@@ -16,12 +16,8 @@ onEvent((e) => {
 		break;
 
 	case 'selection':
-		console.log(e);
-
 		const uri = e.uri as string;
 		const doc = docs.get(uri);
-
-		console.log(doc);
 
 		if (!doc) return;
 
@@ -34,6 +30,10 @@ onEvent((e) => {
 			}
 
 		}
+		break;
+
+	case 'highlights':
+		console.log(e.highlights);
 		break;
 	}
 });

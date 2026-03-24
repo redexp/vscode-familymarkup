@@ -1,5 +1,6 @@
 const {commands, window, workspace, ViewColumn, Uri} = require('vscode');
 const assets = require('./assets.json');
+const {onHighlights} = require('../middleware');
 
 /** @type {import('vscode').WebviewPanel} */
 let view;
@@ -17,6 +18,7 @@ module.exports = function initWebView(ctx) {
 		initView(ctx);
 		listenFileChange(ctx);
 		listenSelection(ctx);
+		listenHighlight();
 
 		view.onDidDispose(() => {
 			view = null;
@@ -112,6 +114,14 @@ function listenSelection(ctx) {
 	});
 
 	ctx.ext.subscriptions.push(listener);
+}
+
+function listenHighlight() {
+	const off = onHighlights(function (highlights) {
+		send('highlights', {highlights});
+	});
+
+	view.onDidDispose(off);
 }
 
 /**
