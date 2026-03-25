@@ -22,12 +22,12 @@ export class RenderFamily {
 		this.loc = f.loc;
 		this.title = {
 			node: title,
-			rect: toRect(f.title),
+			rect: toRect(f.title, f),
 		};
 	}
 
 	addPerson(p: SvgPerson, pg: SvgGroup): RenderPerson {
-		const rp = new RenderPerson(p, pg);
+		const rp = new RenderPerson(this, p, pg);
 		this.persons.set(loc2key(rp.loc), rp);
 		return rp;
 	}
@@ -38,10 +38,10 @@ export class RenderPerson {
 	loc: Loc;
 	group: SvgGroup;
 
-	constructor(p: SvgPerson, pg: SvgGroup) {
-		this.rect = toRect(p);
+	constructor(f: RenderFamily, p: SvgPerson, pg: SvgGroup) {
 		this.loc = p.loc;
 		this.group = pg;
+		this.rect = toRect(p, f.rect);
 	}
 }
 

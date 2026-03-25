@@ -1,10 +1,11 @@
 # Bugs
 
  * fix order of parents in relation
- * fix `showRect`
 
 # Features
 
- * remove webview tab on editor close
+ * reopen webview tab on start
  * colors from theme
  * on open - scroll to current doc
+ * add pointer zone
+ * add other relations
