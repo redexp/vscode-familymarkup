@@ -1,8 +1,10 @@
 # Bugs
 
- * [ ] fix order of parents in relation
+ * fix order of parents in relation
+ * fix `showRect`
 
 # Features
 
- * [ ] highlight person rect on selection in editor
- * [ ] remove webview tab on editor close
+ * remove webview tab on editor close
+ * colors from theme
+ * on open - scroll to current doc

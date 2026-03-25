@@ -1,0 +1,26 @@
+.person {
+	rect {
+		transition: stroke 0.15s;
+	}
+
+	&:hover rect {
+		stroke: #185FA5;
+	}
+
+	&.highlight rect {
+		fill: #d5d5d5;
+	}
+}
+
+circle.pointer {
+	transition: r 300ms;
+
+	&:hover,
+	&:has(+ line:hover) {
+		r: 7px;
+	}
+}
+
+line.pointer {
+	pointer-events: none;
+}

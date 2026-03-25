@@ -1,5 +1,5 @@
 import type {Plugin} from "vite";
-import {writeFile} from 'node:fs/promises';
+import {writeFileSync} from 'node:fs';
 
 export default function assetsListPlugin(): Plugin {
 	return {
@@ -14,7 +14,7 @@ export default function assetsListPlugin(): Plugin {
 				}
 			}
 
-			writeFile('assets.json', JSON.stringify(assets));
+			writeFileSync('assets.json', JSON.stringify(assets));
 		},
 	};
 }

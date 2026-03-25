@@ -102,10 +102,23 @@ function listenFileChange(ctx) {
  */
 function listenSelection(ctx) {
 	const listener = window.onDidChangeTextEditorSelection(function (e) {
-		const uri = e.textEditor.document.uri.toString(true);
+		const doc = e.textEditor.document;
+		const uri = doc.uri.toString(true);
 		const selections = e.selections.filter(s => !s.isEmpty);
 
-		if (selections.length === 0) return;
+		if (selections.length === 0) {
+			if (
+				e.selections.length === 0 ||
+				e.selections.some(s => !doc.getWordRangeAtPosition(s.active))
+			) {
+				send('highlights', {
+					uri,
+					highlights: [],
+				});
+			}
+
+			return;
+		}
 
 		send('selection', {
 			uri,
@@ -117,8 +130,11 @@ function listenSelection(ctx) {
 }
 
 function listenHighlight() {
-	const off = onHighlights(function (highlights) {
-		send('highlights', {highlights});
+	const off = onHighlights(function (uri, highlights) {
+		send('highlights', {
+			uri,
+			highlights,
+		});
 	});
 
 	view.onDidDispose(off);

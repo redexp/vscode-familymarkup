@@ -1,8 +1,11 @@
 /**
+ * @typedef {import('vscode-languageclient').DocumentHighlightKind} HighlightKind
+ * @typedef {import('vscode-languageclient').Position} HighlightPos
  * @typedef {import('vscode-languageclient').DocumentHighlight} Highlight
- * @typedef {function(highlights: Highlight[])} HighlightsCb
- * @type {Set<HighlightsCb>}
+ * @typedef {function(uri: string, highlights: Highlight[])} HighlightsCb
  */
+
+/** @type {Set<HighlightsCb>} */
 const highlightsCallbacks = new Set();
 
 /** @type {import('vscode-languageclient').Middleware} */
@@ -11,8 +14,19 @@ const middleware = {
 		/** @type {Highlight[]} */
 		const highlights = await next(doc, pos, token);
 
-		for (const cb of highlightsCallbacks) {
-			cb(highlights);
+		if (highlightsCallbacks.size > 0) {
+			const uri = doc.uri.toString(true);
+			const list = highlights.map(h => ({
+				...h,
+				range: {
+					start: h.range.start,
+					end: h.range.end,
+				},
+			}));
+
+			for (const cb of highlightsCallbacks) {
+				cb(uri, list);
+			}
 		}
 
 		return highlights;
@@ -22,7 +36,7 @@ const middleware = {
 exports.middleware = middleware;
 
 /**
- * @param {function(highlights: Highlight[])} cb
+ * @param {HighlightsCb} cb
  */
 exports.onHighlights = function (cb) {
 	highlightsCallbacks.add(cb);

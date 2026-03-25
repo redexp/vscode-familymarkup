@@ -1,4 +1,5 @@
-import {roundCommands} from 'svg-round-corners';
+import type {roundCommands} from 'svg-round-corners';
+import type {Doc} from "./render/Doc";
 
 export type SvgFamily = Rect & {
 	uri: string,
@@ -53,3 +54,5 @@ export type Loc = {
 export type Node = Rect & {name: string};
 
 export type BoundingPath = ReturnType<typeof roundCommands>;
+
+export type Docs = Map<string, Doc>;

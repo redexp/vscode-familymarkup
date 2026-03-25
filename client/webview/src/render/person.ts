@@ -1,13 +1,14 @@
 import type {G} from '@svgdotjs/svg.js';
-import type {SvgFamily, SvgPerson} from "../types";
+import type {SvgPerson} from "../types";
 import {MAIN_COLOR} from '../theme';
 import {open} from '../lib/api';
 import renderText from './text';
 import renderPointers from './pointers';
+import type {RenderFamily} from "./RenderFamily";
 
-export default function renderPerson(fg: G, f: SvgFamily, p: SvgPerson) {
+export default function renderPerson(rf: RenderFamily, p: SvgPerson) {
 	for (const child of p.children) {
-		const arrow = renderArrow(fg, p, child);
+		const arrow = renderArrow(rf.group, p, child);
 		arrow.fill('none');
 		arrow.stroke({
 			color: MAIN_COLOR,
@@ -15,12 +16,12 @@ export default function renderPerson(fg: G, f: SvgFamily, p: SvgPerson) {
 		});
 	}
 
-	const pg = fg.group();
+	const pg = rf.group.group();
 	pg.translate(p.x, p.y);
 	pg.addClass('person');
 
 	pg.on('click', function () {
-		open(f.uri, p.loc);
+		open(rf.uri, p.loc);
 	});
 
 	const rect = pg.rect(p.width, p.height);
@@ -38,10 +39,12 @@ export default function renderPerson(fg: G, f: SvgFamily, p: SvgPerson) {
 		height: p.height,
 	});
 
-	renderPointers(pg, f, p);
+	rf.addPerson(p, pg);
+
+	renderPointers(pg, rf, p);
 
 	for (const child of p.children) {
-		renderPerson(fg, f, child);
+		renderPerson(rf, child);
 	}
 }
 

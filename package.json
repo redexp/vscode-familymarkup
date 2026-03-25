@@ -133,6 +133,7 @@
   },
   "devDependencies": {
     "@svgdotjs/svg.js": "^3.2.5",
+    "@tsconfig/bun": "^1.0.10",
     "@types/vscode": "^1.90.0",
     "@types/vscode-webview": "^1.57.5",
     "less": "^4.4.1",

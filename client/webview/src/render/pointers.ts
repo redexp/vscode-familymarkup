@@ -1,10 +1,11 @@
 import type {G, Line} from '@svgdotjs/svg.js';
-import type {Pos, SvgFamily, SvgPerson} from "../types";
+import type {Pos, SvgPerson} from "../types";
+import type {RenderFamily} from "./RenderFamily";
 import {POINTER_COLOR} from '../theme';
 import {pointers} from '../app';
 import moveView from '../lib/moveView';
 
-export default function renderPointers(pg: G, f: SvgFamily, p: SvgPerson) {
+export default function renderPointers(pg: G, f: RenderFamily, p: SvgPerson) {
 	if (!p.pointers) return;
 
 	const arrows: Array<{line: Line, end: Pos, cut: Pos}> = [];
@@ -49,8 +50,8 @@ export default function renderPointers(pg: G, f: SvgFamily, p: SvgPerson) {
 	pg.on('mouseleave', leave);
 
 	const base = {
-		x: f.x + p.x,
-		y: f.y + p.y + p.height/2,
+		x: f.rect.x + p.x,
+		y: f.rect.y + p.y + p.height/2,
 	};
 
 	for (const {family, person} of p.pointers) {

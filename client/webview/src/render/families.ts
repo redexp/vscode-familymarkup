@@ -1,20 +1,24 @@
-import type {SvgFamily} from "../types";
+import type {Docs, SvgFamily} from "../types";
 import {createBoundingPath} from "../lib/tree";
 import {open} from "../lib/api";
 import {MAIN_COLOR} from '../theme';
 import renderText from './text';
 import renderPerson from './person';
 import {families as container, clearAll} from '../app';
+import {RenderFamily} from "./RenderFamily";
+import {Doc} from "./Doc";
 
-export default function renderFamilies(families: SvgFamily[]) {
+export default function renderFamilies(families: SvgFamily[]): Docs {
 	clearAll();
 
-	for (const family of families) {
+	const docs: Docs = new Map();
+
+	for (const f of families) {
 		const fg = container.group();
 		fg.addClass('family');
-		fg.translate(family.x, family.y);
+		fg.translate(f.x, f.y);
 
-		const path = createBoundingPath(family);
+		const path = createBoundingPath(f);
 
 		const bounding = fg.path(path.path);
 		bounding.addClass('bounding');
@@ -25,16 +29,31 @@ export default function renderFamilies(families: SvgFamily[]) {
 			dasharray: '4',
 		});
 
-		const {title: t} = family;
+		const {title: t} = f;
+
+		const bgRect = fg.rect(t.width, t.height);
+		bgRect.addClass('family-title-bg');
+		bgRect.move(t.x, t.y);
+		bgRect.fill('none');
 
 		const title = renderText(fg, t.name, 16, t);
 		title.addClass('family-title');
 		title.on('click', function () {
-			open(family.uri, family.loc);
+			open(rf.uri, rf.loc);
 		});
 
-		for (const person of family.roots) {
-			renderPerson(fg, family, person);
+		const rf = new RenderFamily(f, fg, title);
+
+		for (const person of f.roots) {
+			renderPerson(rf, person);
 		}
+
+		if (!docs.has(rf.uri)) {
+			docs.set(rf.uri, new Doc());
+		}
+
+		docs.get(rf.uri).addFamily(rf);
 	}
+
+	return docs;
 }

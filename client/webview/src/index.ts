@@ -1,39 +1,27 @@
-import './style.less';
-import type {Rect, SvgFamily, SvgPerson} from "./types";
-import type {Selection} from "vscode";
+import './style/app.less';
+import type {Docs} from "./types";
 import {onEvent, send} from './lib/api';
-import {showRect} from './lib/moveView';
 import renderFamilies from './render/families';
 import {getFontRatio} from './theme';
+import selectionHandler from './controllers/selection';
+import highlightsHandler from './controllers/highlights';
 
-const docs = new Map<string, {loc2rect: Map<string, Rect>}>();
+let docs: Docs;
 
 onEvent((e) => {
 	switch (e.type) {
 	case 'families':
-		renderFamilies(e.families);
-		updateDocs(e.families);
+		docs = renderFamilies(e.families);
 		break;
 
 	case 'selection':
-		const uri = e.uri as string;
-		const doc = docs.get(uri);
-
-		if (!doc) return;
-
-		for (const s of e.selections as Selection[]) {
-			const rect = doc.loc2rect.get(s.start.line + ':' + s.start.character);
-
-			if (rect) {
-				showRect(rect);
-				break;
-			}
-
-		}
+		console.log('selection', e.selections);
+		selectionHandler(docs, e.uri, e.selections);
 		break;
 
 	case 'highlights':
-		console.log(e.highlights);
+		console.log('highlights', e.highlights);
+		highlightsHandler(docs, e.uri, e.highlights);
 		break;
 	}
 });
@@ -44,36 +32,3 @@ send('ready', {
 .catch(err => {
 	console.error('send(ready)', err)
 });
-
-function updateDocs(list: SvgFamily[]) {
-	docs.clear();
-
-	for (const f of list) {
-		if (!docs.has(f.uri)) {
-			docs.set(f.uri, {
-				loc2rect: new Map(),
-			});
-		}
-
-		const {loc2rect} = docs.get(f.uri);
-
-		mergePersons(f, f.roots, loc2rect);
-	}
-}
-
-function mergePersons(f: SvgFamily, list: SvgPerson[], map: Map<string, Rect>) {
-	for (const p of list) {
-		const {start: s} = p.loc;
-
-		map.set(s.line + ":" + s.char, {
-			x: f.x + p.x,
-			y: f.y + p.y,
-			width: p.width,
-			height: p.height,
-		});
-
-		if (p.children?.length > 0) {
-			mergePersons(f, p.children, map);
-		}
-	}
-}
