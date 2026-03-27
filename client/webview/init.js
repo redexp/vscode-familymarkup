@@ -15,26 +15,51 @@ module.exports = function initWebView(ctx) {
 			return;
 		}
 
-		initView(ctx);
-		listenFileChange(ctx);
-		listenSelection(ctx);
-		listenHighlight();
-
-		view.onDidDispose(() => {
-			view = null;
-		});
+		start(ctx);
 	});
 
 	ctx.ext.subscriptions.push(command);
+
+	window.registerWebviewPanelSerializer('familymarkup', {
+		deserializeWebviewPanel(panel) {
+			start(ctx, panel);
+		}
+	});
 }
 
 /**
  * @param {Ctx} ctx
+ * @param {import('vscode').WebviewPanel} [panel]
  */
-function initView(ctx) {
-	// const uri = window.activeTextEditor?.document.uri.toString();
+function start(ctx, panel) {
+	initView(ctx, panel);
+	listenFileChange(ctx);
+	listenSelection(ctx);
+	listenHighlight();
+}
 
-	view = createWebView(ctx);
+/**
+ * @param {Ctx} ctx
+ * @param {import('vscode').WebviewPanel} [panel]
+ */
+function initView(ctx, panel) {
+	view = panel || window.createWebviewPanel(
+		'familymarkup',
+		'Family View',
+		ViewColumn.Two,
+		{
+			enableScripts: true,
+			retainContextWhenHidden: true,
+		}
+	);
+
+	const getPath = (...parts) => (
+		view.webview.asWebviewUri(
+			Uri.joinPath(ctx.ext.extensionUri, 'client', 'webview', 'dist', 'assets', ...parts)
+		)
+	);
+
+	view.webview.html = tpl(getPath);
 
 	view.webview.onDidReceiveMessage(function (e) {
 		switch (e.type) {
@@ -50,6 +75,10 @@ function initView(ctx) {
 			});
 			break;
 		}
+	});
+
+	view.onDidDispose(() => {
+		view = null;
 	});
 }
 
@@ -138,31 +167,6 @@ function listenHighlight() {
 	});
 
 	view.onDidDispose(off);
-}
-
-/**
- * @param {Ctx} ctx
- */
-function createWebView({ext}) {
-	const panel = window.createWebviewPanel(
-		'familymarkup',
-		'Family View',
-		ViewColumn.Two,
-		{
-			enableScripts: true,
-			retainContextWhenHidden: true,
-		}
-	);
-
-	const getPath = (...parts) => (
-		panel.webview.asWebviewUri(
-			Uri.joinPath(ext.extensionUri, 'client', 'webview', 'dist', 'assets', ...parts)
-		)
-	);
-
-	panel.webview.html = tpl(getPath);
-
-	return panel;
 }
 
 function tpl(getPath) {

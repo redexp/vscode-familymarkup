@@ -4,7 +4,6 @@
 
 # Features
 
- * reopen webview tab on start
  * colors from theme
  * on open - scroll to current doc
  * add pointer zone
