@@ -1,6 +1,7 @@
 import type {Pos, Rect} from "../types";
 import {Timeline, Runner} from '@svgdotjs/svg.js';
 import {zoom} from '../app';
+import {RenderFamily, type RenderPerson} from "../render/RenderFamily.ts";
 
 export default function moveView(start: Pos, end?: Pos) {
 	const p = zoom.getPan();
@@ -41,4 +42,13 @@ export function showRect(rect: Rect) {
 		x: newPanX,
 		y: newPanY,
 	});
+}
+
+export function showItem(item: RenderFamily | RenderPerson) {
+	if (item instanceof RenderFamily) {
+		showRect(item.title.rect);
+	}
+	else {
+		showRect(item.rect);
+	}
 }

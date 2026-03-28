@@ -64,7 +64,26 @@ function initView(ctx, panel) {
 	view.webview.onDidReceiveMessage(function (e) {
 		switch (e.type) {
 		case 'ready':
-			updateFamilies(ctx, e.fontRatio).catch(logErr);
+			updateFamilies(ctx, e.fontRatio)
+			.then(function () {
+				const editor = window.visibleTextEditors[0];
+
+				if (!editor) return;
+
+				const doc = editor.document;
+				const uri = doc.uri.toString(true);
+				const selection = editor.selection;
+				const range = selection && doc.getWordRangeAtPosition(selection.active);
+
+				send('uri', {
+					uri,
+					selection: range && {
+						start: range.start,
+						end: range.end,
+					},
+				});
+			})
+			.catch(logErr);
 			break;
 
 		case 'open':
