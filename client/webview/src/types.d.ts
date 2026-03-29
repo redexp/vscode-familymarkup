@@ -13,6 +13,10 @@ export type SvgFamily = Rect & {
 export type SvgPerson = Rect & {
 	loc: Loc,
 	name: string,
+	rel?: {
+		type?: "+" | "=",
+		label?: string,
+	},
 	children: SvgPerson[],
 	pointers?: SvgPointer[],
 };

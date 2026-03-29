@@ -1,5 +1,5 @@
 import type {G} from '@svgdotjs/svg.js';
-import type {SvgPerson} from "../types";
+import type {Pos, SvgPerson} from "../types";
 import {MAIN_COLOR} from '../theme';
 import {open} from '../lib/api';
 import renderText from './text';
@@ -8,7 +8,7 @@ import type {RenderFamily} from "./RenderFamily";
 
 export default function renderPerson(rf: RenderFamily, p: SvgPerson) {
 	for (const child of p.children) {
-		const arrow = renderArrow(rf.group, p, child);
+		const {path: arrow} = renderArrow(rf.group, p, child);
 		arrow.fill('none');
 		arrow.stroke({
 			color: MAIN_COLOR,
@@ -71,5 +71,37 @@ function renderArrow(g: G, from: SvgPerson, to: SvgPerson) {
 		y: d.y - h,
 	};
 
-	return g.path([['M', a.x, a.y], ['C', b.x, b.y, c.x, c.y, d.x, d.y]]);
+	const path = g.path([['M', a.x, a.y], ['C', b.x, b.y, c.x, c.y, d.x, d.y]]);
+
+	let type: G;
+	if (to.rel?.type === "+") {
+		const R = 6;
+		const D = R * 2;
+		const pad = 2;
+
+		type = g.group();
+		const pos = getCenterPoint(a, d);
+		type.translate(pos.x - R, pos.y - R);
+		const circle = type.circle(D);
+		circle.fill('#fff');
+		circle.stroke({
+			color: MAIN_COLOR,
+			width: 1,
+		});
+		const line = type.path([['M', R, pad], ['L', R, D - pad], ['M', pad, R], ['L', D - pad, R]]);
+		line.fill('none');
+		line.stroke({
+			color: '#000',
+			width: 1,
+		});
+	}
+
+	return {path, type};
+}
+
+function getCenterPoint(p1: Pos, p2: Pos): Pos {
+	return {
+		x: (p1.x + p2.x) / 2,
+		y: (p1.y + p2.y) / 2
+	};
 }

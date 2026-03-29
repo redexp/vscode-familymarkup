@@ -1,9 +1,6 @@
-# Bugs
-
- * fix order of parents in relation
-
 # Features
 
+ * color unknown
  * colors from theme
  * add pointer zone
- * add other relations
+ * add labels to graph
