@@ -1,7 +1,7 @@
 import type {Docs, SvgFamily} from "../types";
 import {createBoundingPath} from "../lib/tree";
 import {open} from "../lib/api";
-import {MAIN_COLOR, themeColors} from '../theme';
+import {themeColors} from '../theme';
 import renderText from './text';
 import renderPerson from './person';
 import {families as container, clearAll} from '../app';

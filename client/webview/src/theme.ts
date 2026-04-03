@@ -1,4 +1,3 @@
-export const MAIN_COLOR = '#4a90e2';
 export const POINTER_COLOR = '#e85d75';
 
 export function getFontRatio() {

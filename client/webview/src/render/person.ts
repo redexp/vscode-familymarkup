@@ -1,6 +1,6 @@
 import type {G} from '@svgdotjs/svg.js';
 import type {Pos, SvgPerson} from "../types";
-import {MAIN_COLOR, themeColors} from '../theme';
+import {themeColors} from '../theme';
 import {open} from '../lib/api';
 import renderText from './text';
 import renderPointers from './pointers';
