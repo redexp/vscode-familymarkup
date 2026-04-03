@@ -1,6 +1,7 @@
 const {commands, window, workspace, ViewColumn, Uri} = require('vscode');
 const assets = require('./assets.json');
 const {onHighlights} = require('../middleware');
+const {getUserTheme} = require('vscode-shiki-bridge');
 
 /** @type {import('vscode').WebviewPanel} */
 let view;
@@ -36,6 +37,7 @@ function start(ctx, panel) {
 	listenFileChange(ctx);
 	listenSelection(ctx);
 	listenHighlight();
+	listenThemeChange();
 }
 
 /**
@@ -64,8 +66,10 @@ function initView(ctx, panel) {
 	view.webview.onDidReceiveMessage(function (e) {
 		switch (e.type) {
 		case 'ready':
-			updateFamilies(ctx, e.fontRatio)
-			.then(function () {
+			updateThemeColors()
+			.then(async function () {
+				await updateFamilies(ctx, e.fontRatio);
+
 				const editor = window.visibleTextEditors[0];
 
 				if (!editor) return;
@@ -188,6 +192,23 @@ function listenHighlight() {
 	view.onDidDispose(off);
 }
 
+function listenThemeChange() {
+	const listener = window.onDidChangeActiveColorTheme(function () {
+		updateThemeColors();
+	});
+
+	const l2 = workspace.onDidChangeConfiguration(e => {
+		if (e.affectsConfiguration('workbench.colorTheme')) {
+			updateThemeColors();
+		}
+	});
+
+	view.onDidDispose(function () {
+		listener.dispose();
+		l2.dispose();
+	});
+}
+
 function tpl(getPath) {
 	const assetsCss = (
 		assets
@@ -201,10 +222,6 @@ function tpl(getPath) {
 		.map(file => `<script type="module" crossorigin src="${getPath(file)}"></script>`)
 	);
 
-	const fontFamily = workspace.getConfiguration("editor").get('fontFamily', 'monospace');
-
-	const data = {fontFamily};
-
 	return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -214,7 +231,6 @@ function tpl(getPath) {
 </head>
 <body>
 <div id="root"></div>
-<script id="data" type="text/json">${JSON.stringify(data)}</script>
 ${assetsJs.join('')}
 </body>
 </html>`;
@@ -261,4 +277,91 @@ function updateFamilies(ctx, fontRatio) {
 	);
 
 	return updateFamilies.pending;
+}
+
+async function updateThemeColors() {
+	const [_themeName, data] = await getUserTheme();
+	const list = data?.[0]?.settings;
+	const colors = data?.[0]?.colors;
+
+	const map = [
+		['family', [
+			'entity.name.class',
+			'entity.name.type.class',
+			'entity.name.type',
+		]],
+		['person', [
+			'variable.property',
+			'variable.other.property',
+			'variable.other',
+			'variable',
+		]],
+		['unknown', [
+			'string.unknown',
+			'string',
+		]],
+		['separator', [
+			'keyword.operator',
+			'keyword',
+		]],
+	];
+	const result = new Map();
+	let defStyle;
+
+	for (let {scope: themeScopes, settings} of list) {
+		if (!themeScopes) {
+			defStyle = settings;
+			continue;
+		}
+
+		if (!Array.isArray(themeScopes)) {
+			themeScopes = [themeScopes];
+		}
+
+		for (const themeScope of themeScopes) {
+			for (const [type, lookingScopes] of map) {
+				for (const scope of lookingScopes) {
+					if (scope === themeScope) {
+						result.set(scope + '.' + type, settings);
+					}
+				}
+			}
+		}
+	}
+
+	const theme = {};
+
+	for (const [type, scopes] of map) {
+		for (const scope of scopes) {
+			if (result.has(scope + '.' + type)) {
+				theme[type] = result.get(scope + '.' + type);
+				break;
+			}
+		}
+
+		if (!theme[type]) {
+			theme[type] = {};
+		}
+
+		if (defStyle) {
+			for (const [prop, value] of Object.entries(defStyle)) {
+				if (!theme[type][prop]) {
+					theme[type][prop] = value;
+				}
+			}
+		}
+	}
+
+	if (colors) {
+		for (const [type] of map) {
+			if (!theme[type].foreground) {
+				theme[type].foreground = colors["editor.foreground"];
+			}
+			if (!theme[type].background) {
+				theme[type].background = colors["editor.background"];
+			}
+		}
+	}
+
+	send('theme', {colors: theme});
 }

@@ -1,7 +1,7 @@
-import type {RenderFamily, RenderPerson} from "./RenderFamily";
-import loc2key, {range2key} from "../lib/loc2key";
 import type {Range} from "vscode";
-import type {Loc} from "../types";
+import type {RenderFamily} from "./RenderFamily";
+import type {RenderPerson} from "./RenderPerson.ts";
+import loc2key, {range2key} from "../lib/loc2key";
 
 export class Doc {
 	map = new Map<string, RenderFamily|RenderPerson>();
@@ -26,7 +26,9 @@ export class Doc {
 		return this.get(range2key(range));
 	}
 
-	byLoc(loc: Loc) {
-		return this.get(loc2key(loc));
+	updateThemeColors() {
+		for (const family of this.families) {
+			family.updateThemeColors();
+		}
 	}
 }

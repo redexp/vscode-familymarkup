@@ -2,7 +2,7 @@ import './style/app.less';
 import type {Docs} from "./types";
 import {onEvent, send} from './lib/api';
 import renderFamilies from './render/families';
-import {getFontRatio} from './theme';
+import {getFontRatio, setThemeColors} from './theme';
 import uriHandler from './controllers/uri';
 import selectionHandler from './controllers/selection';
 import highlightsHandler from './controllers/highlights';
@@ -13,6 +13,18 @@ onEvent((e) => {
 	switch (e.type) {
 	case 'families':
 		docs = renderFamilies(e.families);
+		break;
+
+	case 'theme':
+		setThemeColors(e.colors);
+
+		if (docs) {
+			requestAnimationFrame(function () {
+				for (const doc of docs.values()) {
+					doc.updateThemeColors();
+				}
+			});
+		}
 		break;
 
 	case 'uri':

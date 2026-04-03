@@ -1,14 +1,16 @@
 .person {
 	rect {
+		stroke: var(--vscode-widget-border, var(--vscode-editorGroup-border, var(--vscode-tree-indentGuidesStroke)));
+		fill: var(--vscode-editor-background);
 		transition: stroke 0.15s;
 	}
 
 	&:hover rect {
-		stroke: #185FA5;
+		stroke: var(--vscode-focusBorder);
 	}
 
 	&.highlight rect {
-		fill: #d5d5d5;
+		fill: var(--vscode-editor-selectionBackground);
 	}
 }
 
@@ -23,4 +25,14 @@ circle.pointer {
 
 line.pointer {
 	pointer-events: none;
+}
+
+.arrow,
+.separator > circle
+{
+	stroke: var(--vscode-tree-indentGuidesStroke, var(--vscode-widget-border, var(--vscode-editorGroup-border)));
+}
+
+.separator > circle {
+	fill: var(--vscode-editor-background);
 }

@@ -13,6 +13,7 @@ export type SvgFamily = Rect & {
 export type SvgPerson = Rect & {
 	loc: Loc,
 	name: string,
+	unknown: boolean,
 	rel?: {
 		type?: "+" | "=",
 		label?: string,

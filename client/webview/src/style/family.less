@@ -1,12 +1,15 @@
 .family .bounding {
-	transition: stroke 150ms, stroke-width 150ms;
+	stroke: var(--vscode-editorGroup-border, var(--vscode-widget-border, var(--vscode-tree-indentGuidesStroke)));
+	fill: var(--vscode-editor-foldBackground, var(--vscode-editor-background));
+
+	transition: fill 200ms;
 }
+
 .family:hover .bounding {
-	stroke: #185FA5;
 	stroke-width: 3px;
-	fill: #edf2f0;
+	fill: var(--vscode-editor-lineHighlightBackground, var(--vscode-editor-background));
 }
 
 .family.highlight > .family-title-bg {
-	fill: #d5d5d5;
+	fill: var(--vscode-editor-selectionBackground);
 }
