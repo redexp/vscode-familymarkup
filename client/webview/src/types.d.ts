@@ -14,6 +14,7 @@ export type SvgPerson = Rect & {
 	loc: Loc,
 	name: string,
 	unknown: boolean,
+	external: boolean,
 	rel?: {
 		type?: "+" | "=",
 		label?: string,

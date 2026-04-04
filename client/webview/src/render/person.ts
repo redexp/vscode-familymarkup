@@ -25,6 +25,10 @@ export default function renderPerson(rf: RenderFamily, p: SvgPerson) {
 		width: 2,
 	});
 
+	if (p.external) {
+		rect.stroke({dasharray: '6'});
+	}
+
 	renderText(pg, p.name, 12, {
 		x: 0,
 		y: 0,
