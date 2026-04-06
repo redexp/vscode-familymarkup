@@ -1,14 +1,13 @@
-import type {G, Line} from '@svgdotjs/svg.js';
-import type {Pos, SvgPerson} from "../types";
-import type {RenderFamily} from "./RenderFamily";
+import type {Pos, SvgPointer} from "../types";
+import type {RenderPerson} from "./RenderPerson.ts";
 import {POINTER_COLOR} from '../theme';
-import {pointers} from '../app';
+import {pointers as container} from '../app';
 import moveView from '../lib/moveView';
 
-export default function renderPointers(pg: G, f: RenderFamily, p: SvgPerson) {
-	if (!p.pointers) return;
+export default function renderPointers(rp: RenderPerson, pointers: SvgPointer[]) {
+	if (!pointers || pointers.length === 0) return;
 
-	const arrows: Array<{line: Line, end: Pos, cut: Pos}> = [];
+	rp.pointers = [];
 
 	let dir = -1;
 
@@ -17,8 +16,11 @@ export default function renderPointers(pg: G, f: RenderFamily, p: SvgPerson) {
 
 		dir = 1;
 
-		for (const item of arrows) {
-			const {line, end} = item;
+		for (const item of rp.pointers) {
+			const {c, line, end} = item;
+
+			c.addClass('active');
+
 			const r = line.animate();
 
 			if (r.active()) {
@@ -34,8 +36,11 @@ export default function renderPointers(pg: G, f: RenderFamily, p: SvgPerson) {
 
 		dir = -1;
 
-		for (const item of arrows) {
-			const {line, cut} = item;
+		for (const item of rp.pointers) {
+			const {c, line, cut} = item;
+
+			c.removeClass('active');
+
 			const r = line.animate();
 
 			if (r.active()) {
@@ -46,15 +51,17 @@ export default function renderPointers(pg: G, f: RenderFamily, p: SvgPerson) {
 		}
 	};
 
-	pg.on('mouseenter', enter);
-	pg.on('mouseleave', leave);
+	rp.group.on('mouseenter', enter);
+	rp.group.on('mouseleave', leave);
+
+	const root = rp.rect;
 
 	const base = {
-		x: f.rect.x + p.x,
-		y: f.rect.y + p.y + p.height/2,
+		x: root.x,
+		y: root.y + root.height / 2,
 	};
 
-	for (const {family, person} of p.pointers) {
+	for (const {family, person} of pointers) {
 		const start = {...base};
 
 		const end = {
@@ -66,8 +73,8 @@ export default function renderPointers(pg: G, f: RenderFamily, p: SvgPerson) {
 		for (const [s, e] of [
 			[start.x + 10, end.x + 10],
 			[start.x + 10, end.x + person.width - 10],
-			[start.x + p.width - 10, end.x + 10],
-			[start.x + p.width - 10, end.x + person.width - 10],
+			[start.x + root.width - 10, end.x + 10],
+			[start.x + root.width - 10, end.x + person.width - 10],
 		]) {
 			const v = Math.abs(s - e);
 			if (v >= min) continue;
@@ -78,28 +85,29 @@ export default function renderPointers(pg: G, f: RenderFamily, p: SvgPerson) {
 
 		const cut = getLineEnd(start, end, 20);
 
-		const c = pg.circle(10);
+		const line = container.line(start.x, start.y, cut.x, cut.y);
+		line.addClass('pointer');
+		line.stroke({
+			color: POINTER_COLOR,
+			width: 2,
+		});
+
+		const c = container.circle(10);
 		c.addClass('pointer');
-		c.center(start.x - base.x, p.height/2);
+		c.center(start.x, start.y);
 		c.fill(POINTER_COLOR);
+		c.on('mouseenter', enter);
+		c.on('mouseleave', leave);
 		c.on('click', (e) => {
 			e.stopPropagation();
 			moveView(start, end);
 		});
 
-		const arrow = pointers.line(start.x, start.y, cut.x, cut.y);
-		arrow.addClass('pointer');
-		arrow.stroke({
-			color: POINTER_COLOR,
-			width: 2,
-		});
-		arrow.on('mouseenter', enter);
-		arrow.on('mouseleave', leave);
-
-		arrows.push({
-			line: arrow,
+		rp.pointers.push({
+			c,
+			line,
 			cut,
-			end: end,
+			end,
 		});
 	}
 }

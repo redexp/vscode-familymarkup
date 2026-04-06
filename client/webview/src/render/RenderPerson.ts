@@ -1,5 +1,5 @@
-import type {G as SvgGroup, Rect as SvgRect, Text} from '@svgdotjs/svg.js';
-import type {Loc, Rect, SvgPerson} from "../types";
+import type {G as SvgGroup, Rect as SvgRect, Text, Circle, Line} from '@svgdotjs/svg.js';
+import type {Loc, Pos, Rect, SvgPerson} from "../types";
 import type {RenderFamily} from './RenderFamily.ts';
 import toRect from "../lib/toRect.ts";
 import {themeColors} from "../theme.ts";
@@ -14,6 +14,7 @@ export class RenderPerson {
 	name: {
 		node: Text,
 	};
+	pointers: Pointer[];
 
 	constructor(f: RenderFamily, p: SvgPerson, pg: SvgGroup) {
 		this.loc = p.loc;
@@ -38,3 +39,10 @@ export class RenderPerson {
 		applyFontStyle(this.name.node, style);
 	}
 }
+
+type Pointer = {
+	c: Circle,
+	line: Line,
+	end: Pos,
+	cut: Pos,
+};

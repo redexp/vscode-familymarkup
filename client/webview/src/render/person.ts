@@ -36,9 +36,9 @@ export default function renderPerson(rf: RenderFamily, p: SvgPerson) {
 		height: p.height,
 	});
 
-	rf.addPerson(p, pg);
+	const rp = rf.addPerson(p, pg);
 
-	renderPointers(pg, rf, p);
+	renderPointers(rp, p.pointers);
 
 	for (const child of p.children) {
 		renderPerson(rf, child);
