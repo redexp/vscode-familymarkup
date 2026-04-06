@@ -17,6 +17,9 @@ export default function renderFamilies(families: SvgFamily[]): Docs {
 		const fg = container.group();
 		fg.addClass('family');
 		fg.translate(f.x, f.y);
+		fg.on('mouseenter', function () {
+			fg.front();
+		});
 
 		const path = createBoundingPath(f);
 
