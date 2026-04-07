@@ -40,9 +40,10 @@ export class RenderPerson {
 	}
 }
 
-type Pointer = {
+export type Pointer = {
 	c: Circle,
 	line: Line,
-	end: Pos,
+	start: Pos,
 	cut: Pos,
+	end: Pos,
 };

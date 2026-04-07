@@ -1,8 +1,11 @@
 import type {Pos, SvgPointer} from "../types";
-import type {RenderPerson} from "./RenderPerson.ts";
+import type {Pointer, RenderPerson} from "./RenderPerson.ts";
 import {POINTER_COLOR} from '../theme';
 import {pointers as container} from '../app';
 import moveView from '../lib/moveView';
+import type {Element} from "@svgdotjs/svg.js";
+
+const DIAMETER = 10;
 
 export default function renderPointers(rp: RenderPerson, pointers: SvgPointer[]) {
 	if (!pointers || pointers.length === 0) return;
@@ -16,18 +19,24 @@ export default function renderPointers(rp: RenderPerson, pointers: SvgPointer[])
 
 		dir = 1;
 
-		for (const item of rp.pointers) {
-			const {c, line, end} = item;
+		const startPos = stackVertically(rp.pointers);
 
-			c.addClass('active');
+		for (let i = 0; i < rp.pointers.length; i++) {
+			const {c, line, end} = rp.pointers[i];
+			const start = startPos[i];
 
-			const r = line.animate();
+			stopAnimation(c);
 
-			if (r.active()) {
-				r.unschedule();
-			}
+			c.animate().center(start.x, start.y);
 
-			line.animate().to(end.x, end.y);
+			stopAnimation(line);
+
+			line.animate().attr({
+				x1: start.x,
+				y1: start.y,
+				x2: end.x,
+				y2: end.y,
+			});
 		}
 	};
 
@@ -37,17 +46,20 @@ export default function renderPointers(rp: RenderPerson, pointers: SvgPointer[])
 		dir = -1;
 
 		for (const item of rp.pointers) {
-			const {c, line, cut} = item;
+			const {c, line, start, cut} = item;
 
-			c.removeClass('active');
+			stopAnimation(c);
 
-			const r = line.animate();
+			c.animate().center(start.x, start.y);
 
-			if (r.active()) {
-				r.unschedule();
-			}
+			stopAnimation(line);
 
-			line.animate().to(cut.x, cut.y);
+			line.animate().attr({
+				x1: start.x,
+				y1: start.y,
+				x2: cut.x,
+				y2: cut.y,
+			});
 		}
 	};
 
@@ -92,7 +104,7 @@ export default function renderPointers(rp: RenderPerson, pointers: SvgPointer[])
 			width: 2,
 		});
 
-		const c = container.circle(10);
+		const c = container.circle(DIAMETER);
 		c.addClass('pointer');
 		c.center(start.x, start.y);
 		c.fill(POINTER_COLOR);
@@ -106,10 +118,19 @@ export default function renderPointers(rp: RenderPerson, pointers: SvgPointer[])
 		rp.pointers.push({
 			c,
 			line,
+			start,
 			cut,
 			end,
 		});
 	}
+
+	rp.pointers.sort((p1, p2) => {
+		if (p1.start.x !== p2.start.x) {
+			return p1.start.x - p2.start.x;
+		}
+
+		return tan(p1) - tan(p2);
+	});
 }
 
 function getLineEnd({x: x1, y: y1}: Pos, {x: x2, y: y2}: Pos, newLength: number): Pos {
@@ -126,4 +147,48 @@ function getLineEnd({x: x1, y: y1}: Pos, {x: x2, y: y2}: Pos, newLength: number)
 		x: x1 + (dx / l) * newLength,
 		y: y1 + (dy / l) * newLength,
 	};
+}
+
+function stackVertically(pointers: Pointer[]): Pos[] {
+	if (pointers.length === 0) return [];
+
+	const start = pointers[0].start;
+
+	if (pointers.length === 1) return [start];
+
+	const totalHeight = pointers.length * DIAMETER;
+
+	let top = start.y - totalHeight / 2;
+
+	return pointers.map(() => {
+		const y = top + DIAMETER/2;
+
+		top += DIAMETER;
+
+		return {
+			x: start.x,
+			y,
+		};
+	});
+}
+
+function stopAnimation(el: Element) {
+	const r = el.animate();
+
+	if (r.active()) {
+		r.unschedule();
+	}
+}
+
+function tan(p: Pointer) {
+	const dx = p.end.x - p.start.x;
+	const dy = p.end.y - p.start.y;
+
+	let a = Math.atan2(dy, dx);
+
+	if (a > Math.PI / 2) {
+		a = Math.PI - a
+	}
+
+	return a;
 }
