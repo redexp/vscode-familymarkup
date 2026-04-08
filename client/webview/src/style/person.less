@@ -1,6 +1,9 @@
 .person {
 	rect {
-		stroke: var(--vscode-widget-border, var(--vscode-editorGroup-border, var(--vscode-tree-indentGuidesStroke)));
+		&:not([stroke]) {
+			stroke: var(--vscode-widget-border, var(--vscode-editorGroup-border, var(--vscode-tree-indentGuidesStroke)));
+		}
+
 		fill: var(--vscode-editor-background);
 		transition: stroke 0.15s;
 	}
@@ -19,11 +22,11 @@ line.pointer {
 }
 
 .arrow,
-.separator > circle
+.separator > rect
 {
 	stroke: var(--vscode-tree-indentGuidesStroke, var(--vscode-widget-border, var(--vscode-editorGroup-border)));
 }
 
-.separator > circle {
+.separator > rect {
 	fill: var(--vscode-editor-background);
 }

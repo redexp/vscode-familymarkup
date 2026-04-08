@@ -1,10 +1,12 @@
 import type {G} from '@svgdotjs/svg.js';
 import type {Pos, SvgPerson} from "../types";
-import {themeColors} from '../theme';
+import {textWidth, themeColors} from '../theme';
 import {open} from '../lib/api';
 import renderText from './text';
 import renderPointers from './pointers';
 import type {RenderFamily} from "./RenderFamily";
+
+const LABEL_SIZE = 10;
 
 export default function renderPerson(rf: RenderFamily, p: SvgPerson) {
 	for (const child of p.children) {
@@ -25,8 +27,16 @@ export default function renderPerson(rf: RenderFamily, p: SvgPerson) {
 		width: 2,
 	});
 
-	if (p.external) {
-		rect.stroke({dasharray: '8 2'});
+	if (p.unknown) {
+		rect.stroke({
+			color: themeColors.unknown.foreground,
+			dasharray: '8 4',
+		});
+	}
+	else if (p.external) {
+		rect.stroke({
+			dasharray: '8 2',
+		});
 	}
 
 	renderText(pg, p.name, 12, {
@@ -75,25 +85,38 @@ function renderArrow(g: G, from: SvgPerson, to: SvgPerson) {
 		width: 2,
 	});
 
-	if (to.rel?.type === "+") {
-		const R = 6;
-		const D = R * 2;
-		const pad = 2;
+	const separator = to.rel?.label || to.rel?.separator;
 
-		const s = g.group();
-		s.addClass('separator');
+	if (separator) {
+		const isLabel = !!to.rel.label;
 		const pos = getCenterPoint(a, d);
-		s.translate(pos.x - R, pos.y - R);
-		const circle = s.circle(D);
-		circle.stroke({
-			width: 1,
+
+		const sep = g.group();
+		sep.addClass('separator');
+		sep.translate(pos.x, pos.y);
+
+		const width = textWidth(separator, LABEL_SIZE) + 8;
+		const height = LABEL_SIZE + 2;
+		const bg = sep.rect(Math.max(width, height), height);
+		bg.radius(6);
+		bg.css({
+			'transform': `translate(-50%, -50%)`,
+			'transform-box': 'fill-box',
 		});
-		const line = s.path([['M', R, pad], ['L', R, D - pad], ['M', pad, R], ['L', D - pad, R]]);
-		line.fill('none');
-		line.stroke({
-			color: themeColors.separator.foreground,
-			width: 1,
+		bg.stroke({
+			width: isLabel ? 0 : 1,
 		});
+
+		const text = renderText(sep, separator, LABEL_SIZE);
+		text.fill(
+			isLabel ?
+				themeColors.unknown.foreground :
+				themeColors.separator.foreground
+		);
+
+		if (isLabel) {
+			text.addClass('label');
+		}
 	}
 }
 

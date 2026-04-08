@@ -1,7 +1,7 @@
 # Features
 
  * add pointer zone
- * add labels to graph
+ * add non family relations
 
 # Bugs
 

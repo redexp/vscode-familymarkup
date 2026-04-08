@@ -2,7 +2,7 @@ import './style/app.less';
 import type {Docs} from "./types";
 import {onEvent, send} from './lib/api';
 import renderFamilies from './render/families';
-import {getFontRatio, setThemeColors} from './theme';
+import {getFontRatio, setThemeColors, updateThemeFont} from './theme';
 import uriHandler from './controllers/uri';
 import selectionHandler from './controllers/selection';
 import highlightsHandler from './controllers/highlights';
@@ -16,6 +16,7 @@ onEvent((e) => {
 		break;
 
 	case 'theme':
+		updateThemeFont();
 		setThemeColors(e.colors);
 
 		if (docs) {

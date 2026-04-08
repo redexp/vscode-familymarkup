@@ -11,12 +11,13 @@ export type SvgFamily = Rect & {
 };
 
 export type SvgPerson = Rect & {
+	id: string,
 	loc: Loc,
 	name: string,
 	unknown: boolean,
 	external: boolean,
 	rel?: {
-		type?: "+" | "=",
+		separator?: string,
 		label?: string,
 	},
 	children: SvgPerson[],

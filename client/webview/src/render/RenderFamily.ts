@@ -52,6 +52,14 @@ export class RenderFamily {
 				null
 		));
 
+		this.group.node.querySelectorAll('.separator text').forEach(function (text: SVGTextElement) {
+			text.setAttribute('fill', (
+				text.classList.contains('label') ?
+					themeColors.unknown.foreground :
+					themeColors.separator.foreground
+			));
+		});
+
 		for (const p of this.persons.values()) {
 			p.updateThemeColors();
 		}

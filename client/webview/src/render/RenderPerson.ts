@@ -37,6 +37,10 @@ export class RenderPerson {
 		);
 
 		applyFontStyle(this.name.node, style);
+
+		if (this.unknown) {
+			this.bg.stroke({color: style.foreground});
+		}
 	}
 }
 
