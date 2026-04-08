@@ -16,7 +16,7 @@ const middleware = {
 
 		if (highlightsCallbacks.size > 0) {
 			const uri = doc.uri.toString(true);
-			const list = highlights.map(h => ({
+			const list = (highlights || []).map(h => ({
 				...h,
 				range: {
 					start: h.range.start,
