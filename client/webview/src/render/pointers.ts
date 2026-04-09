@@ -1,11 +1,13 @@
 import type {Pos, SvgPointer} from "../types";
 import type {Pointer, RenderPerson} from "./RenderPerson.ts";
-import {POINTER_COLOR} from '../theme';
+import type {Element, G} from "@svgdotjs/svg.js";
+import {POINTER_COLOR, textWidth, themeColors} from '../theme';
 import {pointers as container} from '../app';
 import moveView from '../lib/moveView';
-import type {Element} from "@svgdotjs/svg.js";
 
 const DIAMETER = 10;
+const R = DIAMETER/2;
+const LABEL_SIZE = DIAMETER - 2;
 
 export default function renderPointers(rp: RenderPerson, pointers: SvgPointer[]) {
 	if (!pointers || pointers.length === 0) return;
@@ -22,7 +24,8 @@ export default function renderPointers(rp: RenderPerson, pointers: SvgPointer[])
 		const startPos = stackVertically(rp.pointers);
 
 		for (let i = 0; i < rp.pointers.length; i++) {
-			const {c, line, end} = rp.pointers[i];
+			const p = rp.pointers[i];
+			const {c, line, label, end} = p;
 			const start = startPos[i];
 
 			stopAnimation(c);
@@ -37,6 +40,18 @@ export default function renderPointers(rp: RenderPerson, pointers: SvgPointer[])
 				x2: end.x,
 				y2: end.y,
 			});
+
+			if (!label) continue;
+
+			label.front();
+
+			stopAnimation(label);
+
+			label.addClass('active');
+			label.animate().transform({
+				translateX: start.x - R - (p.side === 1 ? 0 : p.width - DIAMETER),
+				translateY: start.y - R,
+			});
 		}
 	};
 
@@ -45,8 +60,8 @@ export default function renderPointers(rp: RenderPerson, pointers: SvgPointer[])
 
 		dir = -1;
 
-		for (const item of rp.pointers) {
-			const {c, line, start, cut} = item;
+		for (const p of rp.pointers) {
+			const {c, line, label, start, cut} = p;
 
 			stopAnimation(c);
 
@@ -59,6 +74,16 @@ export default function renderPointers(rp: RenderPerson, pointers: SvgPointer[])
 				y1: start.y,
 				x2: cut.x,
 				y2: cut.y,
+			});
+
+			if (!label) continue;
+
+			stopAnimation(label);
+
+			label.removeClass('active');
+			label.animate().transform({
+				translateX: start.x - R - (p.side === 1 ? 0 : p.width - DIAMETER),
+				translateY: start.y - R,
 			});
 		}
 	};
@@ -73,7 +98,7 @@ export default function renderPointers(rp: RenderPerson, pointers: SvgPointer[])
 		y: root.y + root.height / 2,
 	};
 
-	for (const {family, person} of pointers) {
+	for (const {family, person, label} of pointers) {
 		const start = {...base};
 
 		const end = {
@@ -95,7 +120,14 @@ export default function renderPointers(rp: RenderPerson, pointers: SvgPointer[])
 			end.x = e;
 		}
 
+		const side = start.x === base.x + 10 ? -1 : 1;
+
 		const cut = getLineEnd(start, end, 20);
+
+		const click = (e) => {
+			e.stopPropagation();
+			moveView(start, end);
+		};
 
 		const line = container.line(start.x, start.y, cut.x, cut.y);
 		line.addClass('pointer');
@@ -108,16 +140,53 @@ export default function renderPointers(rp: RenderPerson, pointers: SvgPointer[])
 		c.addClass('pointer');
 		c.center(start.x, start.y);
 		c.fill(POINTER_COLOR);
-		c.on('mouseenter', enter);
-		c.on('mouseleave', leave);
-		c.on('click', (e) => {
-			e.stopPropagation();
-			moveView(start, end);
-		});
+
+		let lg: G;
+		let lw: number;
+
+		if (label) {
+			const width = textWidth(label, LABEL_SIZE);
+			lw = width + 8;
+
+			lg = container.group();
+			lg.addClass('pointer-label');
+			lg.transform({
+				translateX: start.x - R - (side === 1 ? 0 : lw - DIAMETER),
+				translateY: start.y - R,
+			});
+			lg.on('mouseenter', enter);
+			lg.on('mouseleave', leave);
+
+			const rect = lg.rect(lw, DIAMETER);
+			rect.radius(R);
+			rect.stroke({
+				color: POINTER_COLOR,
+				width: 1,
+			});
+			const text = lg.plain(label);
+			text.x(4);
+			text.fill(themeColors.unknown.foreground);
+			text.css({
+				'font-size': LABEL_SIZE + 'px',
+				'alignment-baseline': 'before-edge',
+			});
+
+			lg.on('mouseenter', enter);
+			lg.on('mouseleave', leave);
+			lg.on('click', click);
+		}
+		else {
+			c.on('mouseenter', enter);
+			c.on('mouseleave', leave);
+			c.on('click', click);
+		}
 
 		rp.pointers.push({
+			side,
 			c,
 			line,
+			label: lg,
+			width: lw,
 			start,
 			cut,
 			end,
@@ -181,14 +250,18 @@ function stopAnimation(el: Element) {
 }
 
 function tan(p: Pointer) {
-	const dx = p.end.x - p.start.x;
-	const dy = p.end.y - p.start.y;
-
-	let a = Math.atan2(dy, dx);
+	let a = atan2(p.start, p.end);
 
 	if (a > Math.PI / 2) {
 		a = Math.PI - a
 	}
 
 	return a;
+}
+
+function atan2(start: Pos, end: Pos) {
+	const dx = end.x - start.x;
+	const dy = end.y - start.y;
+
+	return Math.atan2(dy, dx);
 }

@@ -21,6 +21,22 @@ line.pointer {
 	pointer-events: none;
 }
 
+.pointer-label {
+	> * {
+		opacity: 0;
+		transition: opacity 200ms;
+	}
+
+	rect {
+		fill: var(--vscode-editor-background);
+		transition: opacity 200ms, width 200ms;
+	}
+
+	&.active > * {
+		opacity: 1;
+	}
+}
+
 .arrow,
 .separator > rect
 {
