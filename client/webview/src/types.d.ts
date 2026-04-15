@@ -1,5 +1,5 @@
 import type {roundCommands} from 'svg-round-corners';
-import type {Doc} from "./render/Doc";
+import type {Doc} from "./render/Docs.ts";
 
 export type SvgFamily = Rect & {
 	uri: string,
@@ -19,14 +19,19 @@ export type SvgPerson = Rect & {
 		separator?: string,
 		label?: string,
 	},
-	children: SvgPerson[],
-	pointers?: SvgPointer[],
+	children?: SvgPerson[],
+	links?: SvgPersonLink[],
 };
 
-export type SvgPointer = {
+export type SvgPersonLink = Rect & {
+	isRelation?: boolean,
 	label: string,
-	family: Rect,
-	person: Rect,
+};
+
+export type SvgRelation = {
+	label: string,
+	sources: SvgPersonLink[],
+	targets?: SvgPersonLink[],
 };
 
 export type Pos = {
@@ -60,5 +65,3 @@ export type Loc = {
 export type Node = Rect & {name: string};
 
 export type BoundingPath = ReturnType<typeof roundCommands>;
-
-export type Docs = Map<string, Doc>;

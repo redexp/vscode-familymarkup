@@ -7,8 +7,10 @@ import renderPointers from './pointers';
 import renderArrow from './arrow.ts';
 
 export default function renderPerson(rf: RenderFamily, p: SvgPerson) {
-	for (const child of p.children) {
-		renderArrow(rf.group, p, child);
+	if (p.children) {
+		for (const child of p.children) {
+			renderArrow(rf.group, p, child);
+		}
 	}
 
 	const pg = rf.group.group();
@@ -46,9 +48,11 @@ export default function renderPerson(rf: RenderFamily, p: SvgPerson) {
 
 	const rp = rf.addPerson(p, pg);
 
-	renderPointers(rp, p.pointers);
+	renderPointers(rp, p.links);
 
-	for (const child of p.children) {
-		renderPerson(rf, child);
+	if (p.children) {
+		for (const child of p.children) {
+			renderPerson(rf, child);
+		}
 	}
 }

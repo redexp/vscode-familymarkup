@@ -1,5 +1,5 @@
 import './style/app.less';
-import type {Docs} from "./types";
+import type {Docs} from "./render/Docs.ts";
 import {onEvent, send} from './lib/api';
 import renderFamilies from './render/families';
 import {getFontRatio, setThemeColors, updateThemeFont} from './theme';
@@ -12,7 +12,7 @@ let docs: Docs;
 onEvent((e) => {
 	switch (e.type) {
 	case 'families':
-		docs = renderFamilies(e.families);
+		docs = renderFamilies(e.families, e.relations);
 		break;
 
 	case 'theme':
@@ -21,9 +21,7 @@ onEvent((e) => {
 
 		if (docs) {
 			requestAnimationFrame(function () {
-				for (const doc of docs.values()) {
-					doc.updateThemeColors();
-				}
+				docs.updateThemeColors();
 			});
 		}
 		break;

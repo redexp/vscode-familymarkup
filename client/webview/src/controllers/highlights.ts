@@ -1,4 +1,4 @@
-import type {Docs} from "../types";
+import type {Docs} from "../render/Docs.ts";
 import type {DocumentHighlight} from "vscode";
 import {root} from '../app.ts';
 

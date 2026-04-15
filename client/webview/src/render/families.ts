@@ -1,4 +1,4 @@
-import type {Docs, SvgFamily} from "../types";
+import type {SvgFamily, SvgRelation} from "../types";
 import {createBoundingPath} from "../lib/tree";
 import {open} from "../lib/api";
 import {themeColors} from '../theme';
@@ -6,12 +6,13 @@ import renderText from './text';
 import renderPerson from './person';
 import {families as container, clearAll} from '../app';
 import {RenderFamily} from "./RenderFamily";
-import {Doc} from "./Doc";
+import {Docs} from "./Docs.ts";
+import renderRelation from "./relation.ts";
 
-export default function renderFamilies(families: SvgFamily[]): Docs {
+export default function renderFamilies(families: SvgFamily[], relations?: SvgRelation[]): Docs {
 	clearAll();
 
-	const docs: Docs = new Map();
+	const docs = new Docs();
 
 	for (const f of families) {
 		const fg = container.group();
@@ -55,11 +56,13 @@ export default function renderFamilies(families: SvgFamily[]): Docs {
 			renderPerson(rf, person);
 		}
 
-		if (!docs.has(rf.uri)) {
-			docs.set(rf.uri, new Doc());
-		}
+		docs.addFamily(rf);
+	}
 
-		docs.get(rf.uri).addFamily(rf);
+	if (relations?.length > 0) {
+		for (const rel of relations) {
+			renderRelation(docs, rel);
+		}
 	}
 
 	return docs;

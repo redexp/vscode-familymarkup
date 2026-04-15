@@ -1,5 +1,5 @@
 import type {Range} from "vscode";
-import type {Docs} from "../types";
+import type {Docs} from "../render/Docs.ts";
 import {showItem, showRect} from '../lib/moveView';
 
 export default function uriHandler(docs: Docs, uri: string, selection?: Range) {

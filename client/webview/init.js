@@ -270,7 +270,7 @@ function updateFamilies(ctx, fontRatio) {
 	updateFamilies.pending = (
 		ctx.lsp
 		.sendRequest('svg/families', {fontRatio})
-		.then(list => send('families', {families: list}))
+		.then((data) => send('families', data))
 		.finally(() => {
 			updateFamilies.pending = null;
 		})

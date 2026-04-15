@@ -1,7 +1,8 @@
 import type {Pos, Rect} from "../types";
 import {Timeline, Runner} from '@svgdotjs/svg.js';
 import {zoom} from '../app';
-import {RenderFamily, type RenderPerson} from "../render/RenderFamily.ts";
+import {RenderFamily} from "../render/RenderFamily.ts";
+import type {RenderPerson} from "../render/RenderPerson.ts";
 
 export default function moveView(start: Pos, end?: Pos) {
 	const p = zoom.getPan();
