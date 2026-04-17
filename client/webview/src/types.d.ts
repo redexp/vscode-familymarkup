@@ -24,7 +24,7 @@ export type SvgPerson = Rect & {
 };
 
 export type SvgPersonLink = Rect & {
-	isRelation?: boolean,
+	relation?: Dir,
 	label: string,
 };
 
@@ -65,3 +65,5 @@ export type Loc = {
 export type Node = Rect & {name: string};
 
 export type BoundingPath = ReturnType<typeof roundCommands>;
+
+export type Dir = -1 | 1;

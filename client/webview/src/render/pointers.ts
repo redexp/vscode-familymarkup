@@ -1,5 +1,5 @@
-import type {Pos, SvgPersonLink} from "../types";
-import type {Pointer, RenderPerson} from "./RenderPerson.ts";
+import type {Dir, Pos, SvgPersonLink} from "../types";
+import type {RenderPerson} from "./RenderPerson.ts";
 import type {G} from "@svgdotjs/svg.js";
 import {POINTER_COLOR, textWidth, themeColors} from '../theme';
 import {pointers as container} from '../app';
@@ -53,7 +53,7 @@ export default function renderPointers(rp: RenderPerson, links?: SvgPersonLink[]
 			width: 2,
 		});
 
-		if (target.isRelation) {
+		if (target.relation) {
 			line.stroke({
 				dasharray: '4'
 			});
@@ -78,10 +78,7 @@ export default function renderPointers(rp: RenderPerson, links?: SvgPersonLink[]
 
 			lg = container.group();
 			lg.addClass('pointer-label');
-			lg.transform({
-				translateX: start.x - R - (side === 1 ? 0 : lw - DIAMETER),
-				translateY: start.y - R,
-			});
+			lg.css('opacity', '0');
 			lg.on('mouseenter', rp.onMouseEnter);
 			lg.on('mouseleave', rp.onMouseLeave);
 
@@ -109,7 +106,7 @@ export default function renderPointers(rp: RenderPerson, links?: SvgPersonLink[]
 		}
 
 		rp.pointers.push({
-			side: side as -1 | 1,
+			side: side as Dir,
 			c,
 			line,
 			label: lg,
@@ -117,16 +114,9 @@ export default function renderPointers(rp: RenderPerson, links?: SvgPersonLink[]
 			start,
 			cut,
 			end,
+			dir: target.relation,
 		});
 	}
-
-	rp.pointers.sort((p1, p2) => {
-		if (p1.start.x !== p2.start.x) {
-			return p1.start.x - p2.start.x;
-		}
-
-		return tan(p1) - tan(p2);
-	});
 }
 
 function getLineEnd({x: x1, y: y1}: Pos, {x: x2, y: y2}: Pos, newLength: number): Pos {
@@ -143,21 +133,4 @@ function getLineEnd({x: x1, y: y1}: Pos, {x: x2, y: y2}: Pos, newLength: number)
 		x: x1 + (dx / l) * newLength,
 		y: y1 + (dy / l) * newLength,
 	};
-}
-
-function tan(p: Pointer) {
-	let a = atan2(p.start, p.end);
-
-	if (a > Math.PI / 2) {
-		a = Math.PI - a
-	}
-
-	return a;
-}
-
-function atan2(start: Pos, end: Pos) {
-	const dx = end.x - start.x;
-	const dy = end.y - start.y;
-
-	return Math.atan2(dy, dx);
 }
