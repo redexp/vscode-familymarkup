@@ -35,7 +35,20 @@ export default function renderArrow(g: G, from: SvgPerson, to: SvgPerson) {
 
 	const separator = to.rel?.label || to.rel?.separator;
 
-	if (separator) {
+	if (separator === '+') {
+		const pos = getCenterPoint(a, d);
+		const D = LABEL_SIZE;
+		const R = D / 2;
+
+		const cg = g.group();
+		cg.addClass('separator');
+		cg.translate(pos.x - R, pos.y - R);
+
+		cg.circle(D);
+		const path = cg.path([['M', R, 2], ['L', R, D - 2], ['M', 2, R], ['L', D - 2, R]]);
+		path.fill('none');
+	}
+	else if (separator) {
 		const isLabel = !!to.rel.label;
 		const pos = getCenterPoint(a, d);
 

@@ -38,11 +38,14 @@ line.pointer {
 }
 
 .arrow,
-.separator > rect
+.separator > rect,
+.separator > circle,
+.separator > path
 {
 	stroke: var(--vscode-tree-indentGuidesStroke, var(--vscode-widget-border, var(--vscode-editorGroup-border)));
 }
 
-.separator > rect {
+.separator > rect,
+.separator > circle {
 	fill: var(--vscode-editor-background);
 }

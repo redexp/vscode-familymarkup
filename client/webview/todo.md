@@ -4,5 +4,4 @@
 
 # Bugs
 
- * replace + with cross
- * hide other side pointer line
+ * fix speed of zoom
