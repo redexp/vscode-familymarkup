@@ -19,7 +19,7 @@ export default function renderPointers(rp: RenderPerson, links?: SvgPersonLink[]
 		y: root.y + root.height / 2,
 	};
 
-	for (const {label, ...target} of links) {
+	for (const target of links) {
 		const start = {...base};
 
 		const end = {
@@ -72,7 +72,13 @@ export default function renderPointers(rp: RenderPerson, links?: SvgPersonLink[]
 		let lg: G;
 		let lw: number;
 
-		if (label) {
+		if (target.label) {
+			let {label} = target;
+
+			if (target.title && getLineLength(start, end) > 100) {
+				label += ' ' + target.title;
+			}
+
 			const width = textWidth(label, LABEL_SIZE);
 			lw = width + 8;
 
@@ -81,12 +87,6 @@ export default function renderPointers(rp: RenderPerson, links?: SvgPersonLink[]
 			lg.css('opacity', '0');
 			lg.on('mouseenter', rp.onMouseEnter);
 			lg.on('mouseleave', rp.onMouseLeave);
-
-			if (target.title) {
-				const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-				title.textContent = target.title;
-				lg.node.prepend(title);
-			}
 
 			const rect = lg.rect(lw, DIAMETER);
 			rect.radius(R);
@@ -139,4 +139,11 @@ function getLineEnd({x: x1, y: y1}: Pos, {x: x2, y: y2}: Pos, newLength: number)
 		x: x1 + (dx / l) * newLength,
 		y: y1 + (dy / l) * newLength,
 	};
+}
+
+function getLineLength(start: Pos, end: Pos) {
+	const dx = end.x - start.x;
+	const dy = end.y - start.y;
+
+	return Math.sqrt(dx * dx + dy * dy);
 }
