@@ -17,6 +17,7 @@ export default function renderRelation(docs: Docs, rel: SvgRelation) {
 				renderPointers(from, [{
 					...to.rect,
 					label,
+					title: b.label,
 					relation: 1,
 				}]);
 			}
@@ -25,29 +26,31 @@ export default function renderRelation(docs: Docs, rel: SvgRelation) {
 		return;
 	}
 
-	for (const rect of sources) {
-		const from = docs.getPerson(rect);
+	for (const a of sources) {
+		const from = docs.getPerson(a);
 
-		for (const rect of targets) {
-			const to = docs.getPerson(rect);
+		for (const b of targets) {
+			const to = docs.getPerson(b);
 
 			renderPointers(from, [{
 				...to.rect,
 				label,
+				title: b.label,
 				relation: -1,
 			}]);
 		}
 	}
 
-	for (const rect of targets) {
-		const from = docs.getPerson(rect);
+	for (const a of targets) {
+		const from = docs.getPerson(a);
 
-		for (const rect of sources) {
-			const to = docs.getPerson(rect);
+		for (const b of sources) {
+			const to = docs.getPerson(b);
 
 			renderPointers(from, [{
 				...to.rect,
 				label,
+				title: b.label,
 				relation: 1,
 			}]);
 		}

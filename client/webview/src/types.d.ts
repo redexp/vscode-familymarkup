@@ -25,6 +25,7 @@ export type SvgPerson = Rect & {
 export type SvgPersonLink = Rect & {
 	relation?: Dir,
 	label: string,
+	title?: string,
 };
 
 export type SvgRelation = {

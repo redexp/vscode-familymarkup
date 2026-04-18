@@ -82,6 +82,12 @@ export default function renderPointers(rp: RenderPerson, links?: SvgPersonLink[]
 			lg.on('mouseenter', rp.onMouseEnter);
 			lg.on('mouseleave', rp.onMouseLeave);
 
+			if (target.title) {
+				const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+				title.textContent = target.title;
+				lg.node.prepend(title);
+			}
+
 			const rect = lg.rect(lw, DIAMETER);
 			rect.radius(R);
 			rect.stroke({
