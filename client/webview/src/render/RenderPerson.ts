@@ -96,14 +96,25 @@ export class RenderPerson {
 
 				if (p.dir) {
 					const aDir = animate(line.node, {
-						strokeDashoffset: [0, 8 * p.dir],
+						strokeDashoffset: [0, 16 * p.dir],
 						ease: 'linear',
 						loop: true,
 						autoplay: false,
+						onPause() {
+							line.stroke({
+								dasharray: '4'
+							});
+						},
 					});
 
 					ani.set('dir', aDir);
 				}
+			}
+
+			if (p.dir) {
+				line.stroke({
+					dasharray: '8'
+				});
 			}
 
 			if (label) {
