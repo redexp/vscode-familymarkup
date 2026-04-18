@@ -1,5 +1,4 @@
 import type {roundCommands} from 'svg-round-corners';
-import type {Doc} from "./render/Docs.ts";
 
 export type SvgFamily = Rect & {
 	uri: string,

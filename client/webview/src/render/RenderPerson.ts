@@ -1,4 +1,4 @@
-import type {G, Rect as SvgRect, Text, Circle, Line, Element} from '@svgdotjs/svg.js';
+import type {G, Rect as SvgRect, Text, Circle, Line} from '@svgdotjs/svg.js';
 import {animate, type JSAnimation} from 'animejs';
 import type {Dir, Loc, Pos, Rect, SvgPerson} from "../types";
 import type {RenderFamily} from './RenderFamily.ts';
@@ -229,12 +229,4 @@ function getEndPos(pointers: Pointer[]): Map<Pointer, Pos> {
 	}
 
 	return map;
-}
-
-function stopAnimation(el: Element) {
-	const r = el.animate();
-
-	if (r.active()) {
-		r.unschedule();
-	}
 }
