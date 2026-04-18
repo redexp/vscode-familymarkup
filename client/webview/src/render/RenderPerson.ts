@@ -57,6 +57,7 @@ export class RenderPerson {
 		if (pointers.length === 0 || this.isOver) return;
 
 		this.isOver = true;
+		this.group.addClass('hover');
 
 		const posMap = getEndPos(pointers);
 
@@ -151,6 +152,7 @@ export class RenderPerson {
 		if (pointers.length === 0 || !this.isOver) return;
 
 		this.isOver = false;
+		this.group.removeClass('hover');
 
 		for (const p of pointers) {
 			const {start, line, label, ani} = p;
