@@ -4,4 +4,3 @@
 
 # Bugs
 
- * fix speed of zoom

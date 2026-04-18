@@ -12,7 +12,7 @@ resize();
 export const zoom = svgPanZoom(root.node, {
 	minZoom: 0.1,
 	maxZoom: 10,
-	zoomScaleSensitivity: 0.3,
+	zoomScaleSensitivity: 0.2,
 	dblClickZoomEnabled: false,
 });
 
