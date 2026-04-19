@@ -12,7 +12,7 @@ export default function highlightsHandler(docs: Docs, uri: string, list: Documen
 
 		root.node.querySelectorAll('.' + cl).forEach(function (el) {
 			el.classList.remove(cl);
-		})
+		});
 
 		for (const {range} of list) {
 			const item = doc.byRange(range);
