@@ -1,6 +1,6 @@
 # Features
 
- * add pointer zone
+ * add pointer tooltip like in editor
 
 # Bugs
 
