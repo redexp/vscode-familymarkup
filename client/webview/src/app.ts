@@ -1,6 +1,7 @@
 // @ts-ignore
 import svgPanZoom from 'svg-pan-zoom';
 import {SVG} from '@svgdotjs/svg.js';
+import {send, onEvent} from './lib/api';
 
 export const root = SVG().addTo(document.body);
 export const stage = root.group().addClass('svg-pan-zoom_viewport');
@@ -14,6 +15,15 @@ export const zoom = svgPanZoom(root.node, {
 	maxZoom: 10,
 	zoomScaleSensitivity: 0.2,
 	dblClickZoomEnabled: false,
+	onZoom(value) {
+		send('zoom', {zoom: value});
+	},
+});
+
+onEvent(function (e) {
+	if (e.type === 'zoom') {
+		zoom.zoom(e.zoom);
+	}
 });
 
 window.addEventListener('resize', resize);

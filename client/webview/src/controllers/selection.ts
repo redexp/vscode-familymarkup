@@ -1,6 +1,6 @@
 import type {Selection} from "vscode";
 import type {Docs} from "../render/Docs";
-import {showItem} from '../lib/moveView';
+import {showItem} from '../lib/viewport.ts';
 
 export default function selectionHandler(docs: Docs, uri: string, selections: Selection[]) {
 	const doc = docs.get(uri);

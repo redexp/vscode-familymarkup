@@ -4,7 +4,7 @@ import {zoom} from '../app';
 import {RenderFamily} from "../render/RenderFamily.ts";
 import type {RenderPerson} from "../render/RenderPerson.ts";
 
-export default function moveView(start: Pos, end?: Pos) {
+export function moveView(start: Pos, end?: Pos) {
 	const p = zoom.getPan();
 	const z = zoom.getZoom();
 	const x = (start.x - end.x) * z;

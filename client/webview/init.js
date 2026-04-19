@@ -66,6 +66,12 @@ function initView(ctx, panel) {
 	view.webview.onDidReceiveMessage(function (e) {
 		switch (e.type) {
 		case 'ready':
+			const zoom = ctx.ext.workspaceState.get('zoom');
+
+			if (zoom) {
+				send('zoom', {zoom});
+			}
+
 			updateThemeColors()
 			.then(async function () {
 				await updateFamilies(ctx, e.fontRatio);
@@ -96,6 +102,10 @@ function initView(ctx, panel) {
 				line: e.line,
 				character: e.char,
 			});
+			break;
+
+		case 'zoom':
+			ctx.ext.workspaceState.update('zoom', e.zoom);
 			break;
 		}
 	});

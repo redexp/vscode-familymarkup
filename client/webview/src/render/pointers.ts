@@ -3,7 +3,7 @@ import type {RenderPerson} from "./RenderPerson.ts";
 import type {G} from "@svgdotjs/svg.js";
 import {POINTER_COLOR, textWidth, themeColors} from '../theme';
 import {pointers as container} from '../app';
-import moveView from '../lib/moveView';
+import {moveView} from '../lib/viewport.ts';
 
 const DIAMETER = 10;
 const R = DIAMETER / 2;
