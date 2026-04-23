@@ -112,6 +112,9 @@
         "command": "familymarkup.showGraph",
         "title": "Open Family Tree View",
         "icon": "$(open-preview)"
+      },{
+        "command": "familymarkup.pickPersons",
+        "title": "Find path between two persons"
       }
     ],
     "menus": {

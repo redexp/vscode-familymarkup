@@ -1,5 +1,6 @@
 export const FONT_SIZE = 12;
 export const POINTER_COLOR = '#e85d75';
+export const POINTER_DIAMETER = 10;
 export const LABEL_SIZE = 10;
 
 let canvas: HTMLCanvasElement;

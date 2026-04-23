@@ -1,0 +1,32 @@
+svg:has(.paths .path) {
+	.pointers {
+		display: none;
+	}
+}
+
+.paths .path {
+	opacity: 1;
+	transition: opacity 300ms;
+}
+
+.paths:has(.path .pointer:hover) .path {
+	opacity: 0.2;
+}
+.paths .path:has(.pointer:hover) {
+	opacity: 1 !important;
+}
+
+[data-zoom-step="sm"] .paths line {
+	stroke-width: 4px;
+	stroke-dasharray: 15px;
+}
+
+[data-zoom-step="xs"] .paths line {
+	stroke-width: 8px;
+	stroke-dasharray: 20px;
+}
+
+[data-zoom-step="min"] .paths line {
+	stroke-width: 14px;
+	stroke-dasharray: 40px;
+}

@@ -1,49 +1,18 @@
-import type {Dir, Pos, SvgPersonLink} from "../types";
+import type {Dir, Pos, Rect, SvgPersonLink} from "../types";
 import type {RenderPerson} from "./RenderPerson.ts";
 import type {G} from "@svgdotjs/svg.js";
-import {POINTER_COLOR, textWidth, themeColors} from '../theme';
+import {POINTER_DIAMETER, POINTER_COLOR, textWidth, themeColors} from '../theme';
 import {pointers as container} from '../app';
 import {moveView} from '../lib/viewport.ts';
 
-const DIAMETER = 10;
-const R = DIAMETER / 2;
-const LABEL_SIZE = DIAMETER - 2;
+const R = POINTER_DIAMETER / 2;
+const LABEL_SIZE = POINTER_DIAMETER - 2;
 
 export default function renderPointers(rp: RenderPerson, links?: SvgPersonLink[]) {
 	if (!links || links.length === 0) return;
 
-	const root = rp.rect;
-
-	const base = {
-		x: root.x,
-		y: root.y + root.height / 2,
-	};
-
 	for (const target of links) {
-		const start = {...base};
-
-		const end = {
-			x: target.x,
-			y: target.y + target.height / 2,
-		};
-
-		let min = Number.MAX_VALUE;
-		let side = -1;
-
-		for (const [si, s, e] of [
-			[-1, start.x + 10, end.x + 10],
-			[-1, start.x + 10, end.x + target.width - 10],
-			[1, start.x + root.width - 10, end.x + 10],
-			[1, start.x + root.width - 10, end.x + target.width - 10],
-		]) {
-			const v = Math.abs(s - e);
-			if (v >= min) continue;
-			min = v;
-			side = si;
-			start.x = s;
-			end.x = e;
-		}
-
+		const {side, start, end} = getLine(rp.rect, target);
 		const cut = getLineEnd(start, end, 20);
 
 		const line = container.line(start.x, start.y, cut.x, cut.y);
@@ -59,7 +28,7 @@ export default function renderPointers(rp: RenderPerson, links?: SvgPersonLink[]
 			});
 		}
 
-		const c = container.circle(DIAMETER);
+		const c = container.circle(POINTER_DIAMETER);
 		c.addClass('pointer');
 		c.center(start.x, start.y);
 		c.fill(POINTER_COLOR);
@@ -88,7 +57,7 @@ export default function renderPointers(rp: RenderPerson, links?: SvgPersonLink[]
 			lg.on('mouseenter', rp.onMouseEnter);
 			lg.on('mouseleave', rp.onMouseLeave);
 
-			const rect = lg.rect(lw, DIAMETER);
+			const rect = lg.rect(lw, POINTER_DIAMETER);
 			rect.radius(R);
 			rect.stroke({
 				color: POINTER_COLOR,
@@ -125,7 +94,38 @@ export default function renderPointers(rp: RenderPerson, links?: SvgPersonLink[]
 	}
 }
 
-function getLineEnd({x: x1, y: y1}: Pos, {x: x2, y: y2}: Pos, newLength: number): Pos {
+export function getLine(from: Rect, target: Rect) {
+	const start = {
+		x: from.x,
+		y: from.y + from.height / 2,
+	};
+
+	const end = {
+		x: target.x,
+		y: target.y + target.height / 2,
+	};
+
+	let min = Number.MAX_VALUE;
+	let side: Dir = -1;
+
+	for (const [si, s, e] of [
+		[-1, start.x + 10, end.x + 10],
+		[-1, start.x + 10, end.x + target.width - 10],
+		[1, start.x + from.width - 10, end.x + 10],
+		[1, start.x + from.width - 10, end.x + target.width - 10],
+	]) {
+		const v = Math.abs(s - e);
+		if (v >= min) continue;
+		min = v;
+		side = si as Dir;
+		start.x = s;
+		end.x = e;
+	}
+
+	return {side, start, end};
+}
+
+export function getLineEnd({x: x1, y: y1}: Pos, {x: x2, y: y2}: Pos, newLength: number): Pos {
 	const dx = x2 - x1;
 	const dy = y2 - y1;
 

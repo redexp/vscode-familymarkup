@@ -8,5 +8,9 @@ export default function loc2key(loc: Loc): string {
 export function range2key(range: Range | [Position, Position]): string {
 	const start = Array.isArray(range) ? range[0] : range.start;
 
-	return start.line + ':' + start.character;
+	return pos2key(start);
+}
+
+export function pos2key(pos: Position): string {
+	return pos.line + ':' + pos.character;
 }

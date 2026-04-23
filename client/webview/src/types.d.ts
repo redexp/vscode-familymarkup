@@ -1,4 +1,5 @@
 import type {roundCommands} from 'svg-round-corners';
+import type {Position} from "vscode";
 
 export type SvgFamily = Rect & {
 	uri: string,
@@ -32,6 +33,11 @@ export type SvgRelation = {
 	label: string,
 	sources: SvgPersonLink[],
 	targets?: SvgPersonLink[],
+};
+
+export type SvgPathPerson = {
+	uri: string,
+	position: Position,
 };
 
 export type Pos = {

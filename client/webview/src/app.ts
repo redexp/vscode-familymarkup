@@ -2,11 +2,13 @@
 import svgPanZoom from 'svg-pan-zoom';
 import {SVG} from '@svgdotjs/svg.js';
 import {send, onEvent} from './lib/api';
+import zoomStep from './controllers/zoomStep.ts';
 
 export const root = SVG().addTo(document.body);
 export const stage = root.group().addClass('svg-pan-zoom_viewport');
 export const families = stage.group().addClass('families');
 export const pointers = stage.group().addClass('pointers');
+export const paths = stage.group().addClass('paths');
 
 resize();
 
@@ -17,12 +19,14 @@ export const zoom = svgPanZoom(root.node, {
 	dblClickZoomEnabled: false,
 	onZoom(value) {
 		send('zoom', {zoom: value});
+		zoomStep(value, stage);
 	},
 });
 
 onEvent(function (e) {
 	if (e.type === 'zoom') {
 		zoom.zoom(e.zoom);
+		zoomStep(e.zoom, stage);
 	}
 });
 
