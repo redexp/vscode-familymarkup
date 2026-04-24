@@ -112,7 +112,8 @@
         "command": "familymarkup.showGraph",
         "title": "Open Family Tree View",
         "icon": "$(open-preview)"
-      },{
+      },
+      {
         "command": "familymarkup.pickPersons",
         "title": "Find path between two persons"
       }
@@ -143,8 +144,8 @@
     "@types/vscode-webview": "^1.57.5",
     "animejs": "^4.3.6",
     "less": "^4.4.1",
+    "panzoom": "^9.4.4",
     "process": "^0.11.10",
-    "svg-pan-zoom": "^3.6.2",
     "svg-round-corners": "^0.4.3",
     "typescript": "^5.9.2",
     "vite": "^7.1.4",

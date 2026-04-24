@@ -10,6 +10,7 @@ import {getLine, getLineEnd} from '../render/pointers.ts';
 import {POINTER_COLOR, POINTER_DIAMETER} from "../theme.ts";
 import {animate, type JSAnimation} from "animejs";
 import {moveView} from "../lib/viewport.ts";
+import onClick from "../lib/onClick.ts";
 
 const closeMarker = root.marker(10, 10, function(add) {
 	add
@@ -99,23 +100,20 @@ function renderPathItem(path: SvgPath, p: RenderPerson, target: RenderPerson, la
 	const {group} = path;
 	const {start, end} = getLine(p.rect, target.rect);
 
-	const move = function (e: Event) {
-		e.stopPropagation();
-		moveView(start, end);
-	};
+	const move = () => moveView(start, end);
 
 	const line = group.line(start.x, start.y, end.x, end.y);
 	line.addClass('pointer');
 	line.stroke({
 		color: POINTER_COLOR,
 	});
-	line.on('click', move);
+	onClick(line, move);
 
 	const cStart = group.circle(POINTER_DIAMETER);
 	cStart.addClass('pointer');
 	cStart.center(start.x, start.y);
 	cStart.fill(POINTER_COLOR);
-	cStart.on('click', move);
+	onClick(cStart, move);
 
 	const cEnd = group.circle(POINTER_DIAMETER);
 	cEnd.addClass('pointer');
@@ -125,14 +123,12 @@ function renderPathItem(path: SvgPath, p: RenderPerson, target: RenderPerson, la
 	if (last) {
 		line.marker('end', closeMarker);
 		cEnd.css('opacity', '0.1');
-		cEnd.on('click', function (e) {
-			e.stopPropagation();
+		onClick(cEnd, function () {
 			destroyPath(path);
 		});
 	}
 	else {
-		cEnd.on('click', function (e) {
-			e.stopPropagation();
+		onClick(cEnd, function () {
 			moveView(end, start);
 		});
 	}

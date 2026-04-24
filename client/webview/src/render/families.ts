@@ -8,6 +8,7 @@ import {families as container, clearAll} from '../app';
 import {RenderFamily} from "./RenderFamily";
 import {Docs} from "./Docs.ts";
 import renderRelation from "./relation.ts";
+import onClick from "../lib/onClick.ts";
 
 export default function renderFamilies(families: SvgFamily[], relations?: SvgRelation[]): Docs {
 	clearAll();
@@ -46,7 +47,7 @@ export default function renderFamilies(families: SvgFamily[], relations?: SvgRel
 		const title = renderText(fg, t.name, 16, t);
 		title.addClass('family-title');
 		title.fill(themeColors.family.foreground);
-		title.on('click', function () {
+		onClick(title, function () {
 			open(rf.uri, rf.loc);
 		});
 

@@ -4,5 +4,4 @@
 
 # Bugs
  
- * disable click on pan
 

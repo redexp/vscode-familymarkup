@@ -1,28 +1,15 @@
 import type {Pos, Rect} from "../types";
-import {Timeline, Runner} from '@svgdotjs/svg.js';
-import {zoom} from '../app';
+import {zoom, root} from '../app';
 import {RenderFamily} from "../render/RenderFamily.ts";
 import type {RenderPerson} from "../render/RenderPerson.ts";
 
 export function moveView(start: Pos, end?: Pos) {
-	const p = zoom.getPan();
-	const z = zoom.getZoom();
+	const p = zoom.getTransform();
+	const z = p.scale;
 	const x = (start.x - end.x) * z;
 	const y = (start.y - end.y) * z;
 
-	const r = new Runner(1000);
-	r.during((d: number) => {
-		d = ease(d);
-
-		zoom.pan({
-			x: p.x + x * d,
-			y: p.y + y * d,
-		});
-	});
-
-	const t = new Timeline();
-	t.schedule(r);
-	t.play();
+	zoom.smoothMoveTo(p.x + x, p.y + y);
 }
 
 function ease(pos: number) {
@@ -30,19 +17,15 @@ function ease(pos: number) {
 }
 
 export function showRect(rect: Rect) {
-	const sizes = zoom.getSizes();
-	const currentZoom = sizes.realZoom;
+	const {scale: currentZoom} = zoom.getTransform();
 
 	const centerX = rect.x + (rect.width / 2);
 	const centerY = rect.y + (rect.height / 2);
 
-	const newPanX = (sizes.width / 2) - (centerX * currentZoom);
-	const newPanY = (sizes.height / 2) - (centerY * currentZoom);
+	const newPanX = (Number(root.width()) / 2) - (centerX * currentZoom);
+	const newPanY = (Number(root.height()) / 2) - (centerY * currentZoom);
 
-	zoom.pan({
-		x: newPanX,
-		y: newPanY,
-	});
+	zoom.moveTo(newPanX, newPanY);
 }
 
 export function showItem(item: RenderFamily | RenderPerson) {

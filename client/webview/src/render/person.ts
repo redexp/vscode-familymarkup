@@ -5,6 +5,7 @@ import {open} from '../lib/api';
 import renderText from './text';
 import renderPointers from './pointers';
 import renderArrow from './arrow.ts';
+import onClick from "../lib/onClick.ts";
 
 export default function renderPerson(rf: RenderFamily, p: SvgPerson) {
 	if (p.children) {
@@ -17,7 +18,7 @@ export default function renderPerson(rf: RenderFamily, p: SvgPerson) {
 	pg.translate(p.x, p.y);
 	pg.addClass('person');
 
-	pg.on('click', function () {
+	onClick(pg, function () {
 		open(rf.uri, p.loc);
 	});
 

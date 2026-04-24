@@ -4,6 +4,7 @@ import type {G} from "@svgdotjs/svg.js";
 import {POINTER_DIAMETER, POINTER_COLOR, textWidth, themeColors} from '../theme';
 import {pointers as container} from '../app';
 import {moveView} from '../lib/viewport.ts';
+import onClick from "../lib/onClick.ts";
 
 const R = POINTER_DIAMETER / 2;
 const LABEL_SIZE = POINTER_DIAMETER - 2;
@@ -33,8 +34,7 @@ export default function renderPointers(rp: RenderPerson, links?: SvgPersonLink[]
 		c.center(start.x, start.y);
 		c.fill(POINTER_COLOR);
 
-		const click = (e: Event) => {
-			e.stopPropagation();
+		const click = () => {
 			moveView(start, end);
 		};
 
@@ -73,11 +73,11 @@ export default function renderPointers(rp: RenderPerson, links?: SvgPersonLink[]
 
 			lg.on('mouseenter', rp.onMouseEnter);
 			lg.on('mouseleave', rp.onMouseLeave);
-			lg.on('click', click);
+			onClick(lg, click);
 		} else {
 			c.on('mouseenter', rp.onMouseEnter);
 			c.on('mouseleave', rp.onMouseLeave);
-			c.on('click', click);
+			onClick(c, click);
 		}
 
 		rp.pointers.push({
