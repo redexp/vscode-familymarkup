@@ -12,10 +12,6 @@ export function moveView(start: Pos, end?: Pos) {
 	zoom.smoothMoveTo(p.x + x, p.y + y);
 }
 
-function ease(pos: number) {
-	return Math.pow((pos-1), 5) + 1;
-}
-
 export function showRect(rect: Rect) {
 	const {scale: currentZoom} = zoom.getTransform();
 
