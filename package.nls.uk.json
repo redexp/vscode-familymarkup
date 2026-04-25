@@ -1,0 +1,7 @@
+{
+  "familymarkup.treeView.name": "Сімʼї",
+  "familymarkup.childrenWithoutRelationships.description": "Коли родина розростається до великої кількості осіб, то легко пропустити опис певної особи. Ця опція підкреслить усіх дітей, які не мають сімейних зв'язків, що дозволить вам перевірити, чи справді людина не продовжила рід, чи ви просто забули описати її гілку.",
+  "familymarkup.showGraph.title": "Відкрити родинне дерево",
+  "familymarkup.pickPersons.title": "Побудувати шлях між двома людьми",
+  "familymarkup.findPerson.title": "Знайти людину"
+}

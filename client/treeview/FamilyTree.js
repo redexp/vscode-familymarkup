@@ -50,7 +50,7 @@ class FamilyTree {
 
 		ti.command = {
 			title: 'show',
-			command: 'familytree.open',
+			command: 'familymarkup.open',
 			arguments: [{
 				uri: item.uri || item.family.uri,
 				line: item.line,

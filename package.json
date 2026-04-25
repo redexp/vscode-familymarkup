@@ -19,6 +19,7 @@
   "engines": {
     "vscode": "^1.90.0"
   },
+  "l10n": "./l10n",
   "categories": [
     "Programming Languages"
   ],
@@ -68,33 +69,17 @@
       "explorer": [
         {
           "id": "families",
-          "name": "Families"
+          "name": "%familymarkup.treeView.name%"
         }
       ]
     },
     "configuration": {
       "title": "FamilyMarkup",
       "properties": {
-        "familymarkup.locale": {
-          "type": "string",
-          "default": "editor",
-          "enum": [
-            "editor",
-            "uk",
-            "ru",
-            "en"
-          ],
-          "enumItemLabels": [
-            "Current editor locale",
-            "Українська",
-            "Русский",
-            "English"
-          ]
-        },
         "familymarkup.childrenWithoutRelationships": {
           "type": "boolean",
           "default": true,
-          "description": "Usually, when a family starts with a large number of siblings, it’s easy to overlook describing the branch of one of them. This feature will highlight all children who lack family connections, allowing you to check whether a person truly did not continue the lineage or if you simply forgot to describe their branch."
+          "description": "%familymarkup.childrenWithoutRelationships.description%"
         }
       }
     },
@@ -110,12 +95,16 @@
     "commands": [
       {
         "command": "familymarkup.showGraph",
-        "title": "Open Family Tree View",
+        "title": "%familymarkup.showGraph.title%",
         "icon": "$(open-preview)"
       },
       {
         "command": "familymarkup.pickPersons",
-        "title": "Find path between two persons"
+        "title": "%familymarkup.pickPersons.title%"
+      },
+      {
+        "command": "familymarkup.findPerson",
+        "title": "%familymarkup.findPerson.title%"
       }
     ],
     "menus": {

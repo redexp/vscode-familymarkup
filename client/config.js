@@ -1,8 +1,6 @@
 const {workspace, env} = require('vscode');
 
 module.exports = {
-	getConfig,
-	getLocale,
 	getSettings,
 	onConfiguration,
 };
@@ -12,13 +10,7 @@ function getConfig() {
 }
 
 function getLocale() {
-	let locale = getConfig().get("locale")
-
-	if (locale === "editor") {
-		locale = env.language.replace(/^([a-z]{2}).+$/, '$1');
-	}
-
-	return locale;
+	return env.language.replace(/^([a-z]{2}).+$/, '$1');
 }
 
 function getSettings() {

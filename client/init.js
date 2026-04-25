@@ -1,6 +1,8 @@
-const {commands, Selection, ViewColumn} = require('vscode');
+const {commands} = require('vscode');
 const createTreeView = require("./treeview/create");
 const initWebView = require("./webview/init");
+const open = require('./commands/open');
+const {findPerson} = require('./commands/findPerson');
 
 /**
  * @param {import('vscode').ExtensionContext} ext
@@ -15,7 +17,7 @@ module.exports = async function init(ext, lsp) {
 		lsp,
 	};
 
-	initFamilyOpen(ctx);
+	registerCommands(ctx);
 	createTreeView(ctx);
 	initWebView(ctx);
 }
@@ -23,17 +25,14 @@ module.exports = async function init(ext, lsp) {
 /**
  * @param {Ctx} ctx
  */
-function initFamilyOpen(ctx) {
-	const {lsp, ext} = ctx;
+function registerCommands(ctx) {
+	const {ext} = ctx;
 
-	const command = commands.registerCommand('familytree.open', ({uri, line, character}) => {
-		uri = lsp.protocol2CodeConverter.asUri(uri);
+	ext.subscriptions.push(
+		commands.registerCommand('familymarkup.open', (params) => open(ctx, params))
+	);
 
-		commands.executeCommand('vscode.open', uri, {
-			viewColumn: ViewColumn.One,
-			selection: new Selection(line, character, line, character),
-		});
-	});
-
-	ext.subscriptions.push(command);
+	ext.subscriptions.push(
+		commands.registerCommand('familymarkup.findPerson', () => findPerson(ctx))
+	);
 }

@@ -267,7 +267,7 @@ function handleWebViewEvent(ctx, e) {
 		break;
 
 	case 'open':
-		commands.executeCommand('familytree.open', {
+		commands.executeCommand('familymarkup.open', {
 			uri: e.uri,
 			line: e.line,
 			character: e.char,
