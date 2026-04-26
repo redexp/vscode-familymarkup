@@ -2,6 +2,6 @@
   "familymarkup.treeView.name": "Семъи",
   "familymarkup.childrenWithoutRelationships.description": "Когда семья разрастается, то легко пропустить описание определенного лица. Эта опция подчеркнет всех детей, не имеющих семейных связей, что позволит вам проверить, действительно ли человек не продлил род или вы просто забыли описать его ветвь.",
   "familymarkup.showGraph.title": "Открыть семейное дерево",
-  "familymarkup.pickPersons.title": "Построить путь между двумя людьми",
+  "familymarkup.createPersonsPath.title": "Построить путь между двумя людьми",
   "familymarkup.findPerson.title": "Найти человека"
 }

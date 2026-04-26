@@ -99,8 +99,8 @@
         "icon": "$(open-preview)"
       },
       {
-        "command": "familymarkup.pickPersons",
-        "title": "%familymarkup.pickPersons.title%"
+        "command": "familymarkup.createPersonsPath",
+        "title": "%familymarkup.createPersonsPath.title%"
       },
       {
         "command": "familymarkup.findPerson",

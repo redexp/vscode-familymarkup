@@ -2,6 +2,6 @@
   "familymarkup.treeView.name": "Families",
   "familymarkup.childrenWithoutRelationships.description": "When family grow to a large number of persons, it’s easy to miss to describe some person brunch. This option will highlight all children who lack family connections, allowing you to check whether a person truly did not continue the lineage or if you simply forgot to describe their branch.",
   "familymarkup.showGraph.title": "Open Family Tree View",
-  "familymarkup.pickPersons.title": "Create path between two persons",
+  "familymarkup.createPersonsPath.title": "Create path between two persons",
   "familymarkup.findPerson.title": "Find person"
 }

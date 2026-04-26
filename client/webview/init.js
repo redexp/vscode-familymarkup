@@ -1,6 +1,6 @@
 const {commands, window} = require('vscode');
 const {showGraph, start} = require('./commands/showGraph');
-const {pickPersons} = require('./commands/pickPersons');
+const {createPersonsPath} = require('./commands/createPersonsPath');
 
 /**
  * @param {Ctx} ctx
@@ -11,7 +11,7 @@ module.exports = function initWebView(ctx) {
 	);
 
 	ctx.ext.subscriptions.push(
-		commands.registerCommand('familymarkup.pickPersons', () => pickPersons(ctx))
+		commands.registerCommand('familymarkup.createPersonsPath', () => createPersonsPath(ctx))
 	);
 
 	window.registerWebviewPanelSerializer('familymarkup', {

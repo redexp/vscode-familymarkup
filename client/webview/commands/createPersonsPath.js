@@ -2,7 +2,7 @@ const {window, l10n} = require('vscode');
 const {showGraph, send} = require('./showGraph');
 const {createSearchInput, symbolToQuickPick} = require('../../commands/findPerson');
 
-exports.pickPersons = pickPersons;
+exports.createPersonsPath = createPersonsPath;
 
 /** @type {import('vscode').QuickPick<PathPerson>} */
 let qp;
@@ -13,7 +13,7 @@ let selected;
 /**
  * @param {Ctx} ctx
  */
-function pickPersons(ctx) {
+function createPersonsPath(ctx) {
 	selected = [];
 	qp = createSearchInput(ctx);
 
