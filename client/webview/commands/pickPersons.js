@@ -40,12 +40,13 @@ function pickPersons(ctx) {
 
 	if (!word) return;
 
-	const p = getPersonByPos(ctx, uri, word.start);
+	getPersonByPos(ctx, uri, word.start)
+	.then(function (p) {
+		if (!p || selected.length > 0) return;
 
-	if (!p || selected.length > 0) return;
-
-	selected.push(p);
-	formatTitle();
+		selected.push(p);
+		formatTitle();
+	});
 }
 
 /**
@@ -103,6 +104,10 @@ function formatTitle() {
 		return;
 	}
 
+	/**
+	 * @param {PathPerson} s
+	 * @return {string}
+	 */
 	const format = (s) => s.label + ' ' + s.description;
 
 	let title = format(selected[0]) + ' ➡️ ';
