@@ -131,9 +131,9 @@ function formatTitle() {
 async function getPath(ctx) {
 	const res = await ctx.lsp.sendRequest('svg/path', {
 		persons: selected.map(item => ({
-			uri: item.resourceUri,
-			position: item.position,
-		}))
+			uri: item.location.uri,
+			position: item.location.range.start,
+		})),
 	});
 
 	return res.path;

@@ -8,8 +8,11 @@ module.exports.findPerson = findPerson;
 module.exports.createSearchInput = createSearchInput;
 module.exports.symbolToQuickPick = symbolToQuickPick;
 
+/**
+ * @param {Ctx} ctx
+ */
 function findPerson(ctx) {
-	const qp = createSearchInput(ctx);
+	const qp = createSearchInput(ctx, {onlyMembers: false});
 
 	qp.onDidChangeSelection(function (items) {
 		if (items.length === 0) return;
@@ -19,8 +22,9 @@ function findPerson(ctx) {
 		const p = items[0];
 
 		open(ctx, {
-			uri: p.resourceUri.toString(true),
-			...p.position,
+			uri: p.location.uri.toString(true),
+			...p.location.range.start,
+			toCharacter: p.location.range.end.character,
 		});
 	});
 
@@ -28,13 +32,14 @@ function findPerson(ctx) {
 }
 
 /**
- * @typedef {import('vscode').QuickPickItem & {position: import('vscode').Position}} PathPerson
+ * @typedef {import('vscode').QuickPickItem & {location: import('vscode').Location}} PathPerson
  */
 
 /**
  * @param {Ctx} ctx
+ * @param {{onlyMembers?: boolean}} [searchParams]
  */
-function createSearchInput(ctx) {
+function createSearchInput(ctx, searchParams = {}) {
 	/** @type {PathPerson[]} */
 	const selected = [];
 
@@ -50,7 +55,7 @@ function createSearchInput(ctx) {
 	qp.onDidChangeValue(() => {
 		const id = requestId = Math.random();
 
-		searchSymbols(ctx, qp.value)
+		searchSymbols(ctx, qp.value, searchParams)
 		.then(function (list) {
 			if (id !== requestId) return;
 
@@ -61,9 +66,9 @@ function createSearchInput(ctx) {
 
 					for (const p of selected) {
 						if (
-							uri === p.resourceUri &&
-							pos.line === p.position.line &&
-							pos.character === p.position.character
+							uri === p.location.uri &&
+							pos.line === p.location.range.start.line &&
+							pos.character === p.location.range.start.character
 						) {
 							return false;
 						}
@@ -93,26 +98,33 @@ function createSearchInput(ctx) {
  * @return {PathPerson}
  */
 function symbolToQuickPick(symbol) {
-	return {
+	/** @type {PathPerson} */
+	const item = {
 		alwaysShow: true,
 		label: symbol.name,
-		description: symbol.containerName,
-		resourceUri: symbol.location.uri,
-		position: symbol.location.range.start,
+		location: symbol.location,
 	};
+
+	if (symbol.kind === 8 && symbol.containerName) {
+		item.description = symbol.containerName;
+	}
+
+	return item;
 }
 
 /**
  * @param {Ctx} ctx
  * @param {string} query
+ * @param {{onlyMembers?: boolean}} searchParams
  * @return {Promise<import('vscode').SymbolInformation[]>}
  */
-function searchSymbols(ctx, query) {
+function searchSymbols(ctx, query, searchParams) {
 	if (!query.trim()) return Promise.resolve([]);
 
 	return ctx.lsp.sendRequest("workspace/symbol", {
-		query,
 		exactMatch: true,
 		onlyMembers: true,
+		...searchParams,
+		query,
 	});
 }
