@@ -5,6 +5,6 @@ export default defineConfig({
 	plugins: [assetsListPlugin()],
 	build: {
 		outDir: './dist',
-		sourcemap: 'inline',
+		sourcemap: process.env.SRC_MAP,
 	},
 });
