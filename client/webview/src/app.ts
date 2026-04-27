@@ -20,8 +20,6 @@ export const zoom = createPanZoom(stage.node, {
 zoom.on('zoom', function() {
 	const {scale: value} = zoom.getTransform();
 
-	console.log('zoom', value);
-
 	send('zoom', {zoom: value});
 	zoomStep(value, stage);
 });
