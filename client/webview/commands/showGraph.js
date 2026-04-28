@@ -1,7 +1,8 @@
 const {commands, window, workspace, ViewColumn, Uri} = require('vscode');
+const {getUserTheme} = require('vscode-shiki-bridge');
 const assets = require('../assets.json');
 const {onHighlights} = require('../../middleware');
-const {getUserTheme} = require('vscode-shiki-bridge');
+const toUri = require('../../uri');
 
 exports.showGraph = showGraph;
 exports.start = start;
@@ -251,12 +252,11 @@ function handleWebViewEvent(ctx, e) {
 			if (!editor) return;
 
 			const doc = editor.document;
-			const uri = doc.uri.toString(true);
 			const selection = editor.selection;
 			const range = selection && doc.getWordRangeAtPosition(selection.active);
 
 			send('uri', {
-				uri,
+				uri: toUri(ctx, doc.uri),
 				selection: range && {
 					start: range.start,
 					end: range.end,
@@ -299,7 +299,13 @@ function updateFamilies(ctx, fontRatio) {
 	updateFamilies.pending = (
 		ctx.lsp
 		.sendRequest('svg/families', {fontRatio})
-		.then((data) => send('families', data))
+		.then((data) => {
+			for (const family of data.families) {
+				family.uri = toUri(ctx, family.uri).toString(true);
+			}
+
+			send('families', data);
+		})
 		.finally(() => {
 			updateFamilies.pending = null;
 		})

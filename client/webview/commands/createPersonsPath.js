@@ -1,6 +1,7 @@
 const {window, l10n} = require('vscode');
 const {showGraph, send} = require('./showGraph');
 const {createSearchInput, symbolToQuickPick} = require('../../commands/findPerson');
+const toUri = require('../../uri');
 
 exports.createPersonsPath = createPersonsPath;
 
@@ -118,7 +119,7 @@ function formatTitle() {
 	}
 	else {
 		title += '2️⃣ ';
-		qp.prompt = '2️⃣ Second person';
+		qp.prompt = '2️⃣ ' + l10n.t('Second person');
 	}
 
 	qp.title = title;
@@ -129,12 +130,17 @@ function formatTitle() {
  * @return {Promise<import('../src/types').SvgPathPerson[]>}
  */
 async function getPath(ctx) {
+	/** @type {{path: SvgPathPerson[]}} */
 	const res = await ctx.lsp.sendRequest('svg/path', {
 		persons: selected.map(item => ({
 			uri: item.location.uri,
 			position: item.location.range.start,
 		})),
 	});
+
+	for (const p of res.path) {
+		p.uri = toUri(ctx, p.uri).toString(true);
+	}
 
 	return res.path;
 }

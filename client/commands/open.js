@@ -1,4 +1,5 @@
 const {ViewColumn, commands, Selection} = require("vscode");
+const toUri = require('../uri');
 
 /**
  * @param {Ctx} ctx
@@ -6,10 +7,9 @@ const {ViewColumn, commands, Selection} = require("vscode");
  */
 module.exports = function open(ctx, params) {
 	const {line, character: from} = params;
-	const uri = ctx.lsp.protocol2CodeConverter.asUri(params.uri);
 	const to = params.toCharacter || from;
 
-	return commands.executeCommand('vscode.open', uri, {
+	return commands.executeCommand('vscode.open', toUri(ctx, params.uri), {
 		viewColumn: ViewColumn.One,
 		selection: new Selection(line, from, line, to),
 	});
