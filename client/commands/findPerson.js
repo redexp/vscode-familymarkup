@@ -33,6 +33,7 @@ function findPerson(ctx) {
 
 /**
  * @typedef {import('vscode').QuickPickItem & {location: import('vscode').Location}} PathPerson
+ * @typedef {import('vscode').SymbolInformation & {details?: string}} PersonSymbol
  */
 
 /**
@@ -94,7 +95,7 @@ function createSearchInput(ctx, searchParams = {}) {
 }
 
 /**
- * @param {import('vscode').SymbolInformation} symbol
+ * @param {PersonSymbol} symbol
  * @return {PathPerson}
  */
 function symbolToQuickPick(symbol) {
@@ -109,6 +110,10 @@ function symbolToQuickPick(symbol) {
 		item.description = symbol.containerName;
 	}
 
+	if (symbol.kind === 8 && symbol.details) {
+		item.detail = symbol.details;
+	}
+
 	return item;
 }
 
@@ -116,7 +121,7 @@ function symbolToQuickPick(symbol) {
  * @param {Ctx} ctx
  * @param {string} query
  * @param {{onlyMembers?: boolean}} searchParams
- * @return {Promise<import('vscode').SymbolInformation[]>}
+ * @return {Promise<PersonSymbol[]>}
  */
 function searchSymbols(ctx, query, searchParams) {
 	if (!query.trim()) return Promise.resolve([]);
