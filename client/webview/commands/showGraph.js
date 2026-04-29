@@ -256,7 +256,7 @@ function handleWebViewEvent(ctx, e) {
 			const range = selection && doc.getWordRangeAtPosition(selection.active);
 
 			send('uri', {
-				uri: toUri(ctx, doc.uri),
+				uri: doc.uri.toString(true),
 				selection: range && {
 					start: range.start,
 					end: range.end,

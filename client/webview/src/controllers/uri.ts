@@ -11,8 +11,9 @@ export default function uriHandler(docs: Docs, uri: string, selection?: Range) {
 
 	if (item) {
 		showItem(item);
+		item.group.addClass('highlight');
 	}
 	else {
-		showRect(doc.families[0].rect);
+		showRect(doc.families[0].title.rect);
 	}
 }
