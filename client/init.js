@@ -9,6 +9,8 @@ const {findPerson} = require('./commands/findPerson');
  * @param {import('vscode-languageclient').LanguageClient} lsp
  */
 module.exports = async function init(ext, lsp) {
+	commands.executeCommand('setContext', 'familymarkup.active', true);
+
 	await lsp.start();
 
 	/** @type {Ctx} */

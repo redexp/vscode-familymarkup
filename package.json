@@ -3,7 +3,7 @@
   "displayName": "FamilyMarkup",
   "description": "Full-featured support of FamilyMarkup language",
   "icon": "icon.png",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "repository": "github:redexp/vscode-familymarkup",
   "main": "./client/extension",
   "browser": "./dist/web.js",
@@ -22,6 +22,9 @@
   "l10n": "./l10n",
   "categories": [
     "Programming Languages"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/*.{fml,family}"
   ],
   "contributes": {
     "markdown.markdownItPlugins": false,
@@ -69,7 +72,8 @@
       "explorer": [
         {
           "id": "families",
-          "name": "%familymarkup.treeView.name%"
+          "name": "%familymarkup.treeView.name%",
+          "when": "familymarkup.active"
         }
       ]
     },
