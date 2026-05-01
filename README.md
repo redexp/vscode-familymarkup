@@ -33,9 +33,17 @@ Highlights the shortest genealogical connection between two selected individuals
 
 ## Themes support
 
-Graph View will automatically adapt to your VS Code color theme.
+Graph View will automatically adapt to your color theme.
 
 ![](docs/dark-theme.png)
+
+## Localization support
+
+Commands and Views automatically sync with your display language.
+
+- English
+- Українська
+- Русский
 
 ## Markdown support
 
