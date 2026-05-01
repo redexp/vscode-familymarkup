@@ -1,5 +1,19 @@
 # Change Log
 
+## [3.1.2] - 2026-05-01
+
+### Removed
+
+- Locale option
+
+### Added
+
+- Graph View
+- Commands:
+  - Find person
+  - Show path between two persons
+- l10n support
+
 ## [2.1.0] - 2025-06-28
 
 ### Changed
