@@ -1,5 +1,11 @@
 # Change Log
 
+## [3.2.0] - 2026-05-04
+
+### Added
+
+- `get_path_between_persons` (`#pathBetweenPersons`) Language Model Tool
+
 ## [3.1.2] - 2026-05-01
 
 ### Removed

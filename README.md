@@ -2,9 +2,9 @@
 
 This extension provides support for [FamilyMarkup Language](https://familymarkup.com).
 
-## Settings
+## Web support
 
-- **Children Without Relationships** (enabled by default). As family grow to a large number of persons, it is easy to forget to describe a specific person's branch. This option highlights all children who lack family connections.
+You can install this extension on web version of VSCode like on [github.dev](https://github.dev)
 
 ## Tree View
 
@@ -37,6 +37,16 @@ Graph View will automatically adapt to your color theme.
 
 ![](docs/dark-theme.png)
 
+## AI support
+
+### Find path between two persons
+
+Use chat tool `#pathBetweenPersons` and ask any relational questions between two persons by their name and surname. 
+This tool will generate for AI full path between two given persons so it will understand relations properly. 
+
+> [!TIP]
+> When you ask an AI about the relationship between two people, it often defaults to the English "1st/2nd cousin" system. To get the result in the Slavic "degree-based" format (e.g. двоюродный), or languages of the Baltic group (e.g. Pusseserė), or Turkic languages (e.g. Amca oğlu) add to your prompt reminder in which form should be result.
+
 ## Localization support
 
 Commands and Views automatically sync with your display language.
@@ -48,6 +58,10 @@ Commands and Views automatically sync with your display language.
 ## Markdown support
 
 Extension supports syntax highlighting in preview of Markdown files and in Markdown files code blocks with `fml` or `family` syntax name. 
+
+## Settings
+
+- **Children Without Relationships** (enabled by default). As family grow to a large number of persons, it is easy to forget to describe a specific person's branch. This option highlights all children who lack family connections.
 
 ## Syntax Example
 

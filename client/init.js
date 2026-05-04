@@ -3,6 +3,7 @@ const createTreeView = require("./treeview/create");
 const initWebView = require("./webview/init");
 const open = require('./commands/open');
 const {findPerson} = require('./commands/findPerson');
+const registerGetPathBetweenPersons = require('./ai/get_path_between_persons');
 
 /**
  * @param {import('vscode').ExtensionContext} ext
@@ -22,6 +23,7 @@ module.exports = async function init(ext, lsp) {
 	registerCommands(ctx);
 	createTreeView(ctx);
 	initWebView(ctx);
+	registerGetPathBetweenPersons(ctx);
 }
 
 /**

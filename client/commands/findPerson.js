@@ -33,6 +33,9 @@ function findPerson(ctx) {
 
 /**
  * @typedef {import('vscode').QuickPickItem & {location: import('vscode').Location}} PathPerson
+ */
+
+/**
  * @typedef {import('vscode').SymbolInformation & {details?: string}} PersonSymbol
  */
 

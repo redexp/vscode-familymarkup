@@ -3,7 +3,7 @@
   "displayName": "FamilyMarkup",
   "description": "Full-featured support of FamilyMarkup language",
   "icon": "icon.png",
-  "version": "3.1.2",
+  "version": "3.2.0",
   "repository": "github:redexp/vscode-familymarkup",
   "homepage": "https://familymarkup.com",
   "main": "./client/extension",
@@ -110,6 +110,49 @@
       {
         "command": "familymarkup.findPerson",
         "title": "%familymarkup.findPerson.title%"
+      }
+    ],
+    "languageModelTools": [
+      {
+        "name": "get_path_between_persons",
+        "displayName": "Create path between two persons",
+        "modelDescription": "When user ask about relationship between two persons then use this tool to get genealogical path between them by their name and surname. Path will help to answer questions like: Does persons are cousins? Who is their common grandfather?",
+        "canBeReferencedInPrompt": true,
+        "toolReferenceName": "pathBetweenPersons",
+        "icon": "$(type-hierarchy-sub)",
+        "userDescription": "Find path between two persons",
+        "inputSchema": {
+          "type": "object",
+          "required": ["person1", "person2"],
+          "properties": {
+            "person1": {
+              "type": "object",
+              "description": "Name and Surname of first person",
+              "required": ["name", "surname"],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "surname": {
+                  "type": "string"
+                }
+              }
+            },
+            "person2": {
+              "type": "object",
+              "description": "Name and Surname of second person",
+              "required": ["name", "surname"],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "surname": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     ],
     "menus": {
