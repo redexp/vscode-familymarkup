@@ -3,7 +3,7 @@
   "displayName": "FamilyMarkup",
   "description": "Full-featured support of FamilyMarkup language",
   "icon": "icon.png",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "repository": "github:redexp/vscode-familymarkup",
   "homepage": "https://familymarkup.com",
   "main": "./client/extension",

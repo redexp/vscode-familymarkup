@@ -31,6 +31,12 @@ Highlights the shortest genealogical connection between two selected individuals
 
 ![](docs/graph-path.png)
 
+## Go to Person Bio
+
+You can create Markdown files with person bio in same workspace with `.family` files. You can put them anywhere you like but in order to go from name in `.family` file to `.md` file you need to have folder structure with surname and name in the path to `.md` file. For example `Potter/bio/Harry.md` or `Potter/stories/Harry/bio.md`. Between Surname and Name could be any folder structure.
+
+Use `Go to Type Definition` context menu to go strait to `.md` file or `Find All References` and `.md` file will be in the list
+
 ## Themes support
 
 Graph View will automatically adapt to your color theme.
