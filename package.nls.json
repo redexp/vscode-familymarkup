@@ -1,7 +1,9 @@
 {
   "familymarkup.treeView.name": "Families",
   "familymarkup.childrenWithoutRelationships.description": "As family grow to a large number of persons, it is easy to forget to describe a specific person's branch. This option highlights all children who lack family connections.",
-  "familymarkup.showGraph.title": "Open Family Graph View",
-  "familymarkup.createPersonsPath.title": "Show Path Between Two Persons",
-  "familymarkup.findPerson.title": "Find person"
+  "familymarkup.inlineMarkdownLink.description": "Show \uD83D\uDCDD button above names with an associated Markdown file",
+  "familymarkup.inlineMarkdownLink.toggle": "FamilyMarkup: Toggle \uD83D\uDCDD Inline Markdown Link button",
+  "familymarkup.showGraph.title": "FamilyMarkup: Open Graph View",
+  "familymarkup.createPersonsPath.title": "FamilyMarkup: Show Path Between Two Persons",
+  "familymarkup.findPerson.title": "FamilyMarkup: Find person"
 }

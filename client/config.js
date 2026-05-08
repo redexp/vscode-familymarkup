@@ -2,7 +2,7 @@ const {workspace, env} = require('vscode');
 
 module.exports = {
 	getSettings,
-	onConfiguration,
+	toggleSetting,
 };
 
 function getConfig() {
@@ -14,16 +14,22 @@ function getLocale() {
 }
 
 function getSettings() {
-	return {
+	const c = getConfig();
+
+	const data = {
 		locale: getLocale(),
-		warnChildrenWithoutRelations: getConfig().get('childrenWithoutRelationships'),
+		warnChildrenWithoutRelations: c.get('childrenWithoutRelationships'),
+		inlineMarkdownLink: c.get('inlineMarkdownLink'),
 	};
+
+	console.log(data)
+
+	return data;
 }
 
-function onConfiguration(selector, cb) {
-	workspace.onDidChangeConfiguration(e => {
-		if (!e.affectsConfiguration('familymarkup.' + selector)) return;
+function toggleSetting(name) {
+	const c = getConfig();
+	const v = c.get(name);
 
-		cb();
-	});
+	return c.update(name, !v);
 }

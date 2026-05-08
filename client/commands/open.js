@@ -3,10 +3,10 @@ const toUri = require('../uri');
 
 /**
  * @param {Ctx} ctx
- * @param {{uri: string, line: number, character: number, toCharacter?: number}} params
+ * @param {{uri: string, line?: number, character?: number, toCharacter?: number}} params
  */
 module.exports = function open(ctx, params) {
-	const {line, character: from} = params;
+	const {line = 0, character: from = 0} = params;
 	const to = params.toCharacter || from;
 
 	return commands.executeCommand('vscode.open', toUri(ctx, params.uri), {

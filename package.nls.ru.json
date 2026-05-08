@@ -1,7 +1,9 @@
 {
   "familymarkup.treeView.name": "Семъи",
   "familymarkup.childrenWithoutRelationships.description": "Когда семья разрастается, то легко пропустить описание определенного лица. Эта опция подчеркнет всех детей, не имеющих семейных связей, что позволит вам проверить, действительно ли человек не продлил род или вы просто забыли описать его ветвь.",
-  "familymarkup.showGraph.title": "Открыть семейное дерево",
-  "familymarkup.createPersonsPath.title": "Построить путь между двумя людьми",
-  "familymarkup.findPerson.title": "Найти человека"
+  "familymarkup.inlineMarkdownLink.description": "Показывать кнопку \uD83D\uDCDD над именами которые имеют связанные Markdown файлы",
+  "familymarkup.inlineMarkdownLink.toggle": "FamilyMarkup: Переключить кнопку \uD83D\uDCDD Inline Markdown Link",
+  "familymarkup.showGraph.title": "FamilyMarkup: Открыть семейное дерево",
+  "familymarkup.createPersonsPath.title": "FamilyMarkup: Построить путь между двумя людьми",
+  "familymarkup.findPerson.title": "FamilyMarkup: Найти человека"
 }

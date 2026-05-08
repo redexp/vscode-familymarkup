@@ -1,5 +1,12 @@
 # Change Log
 
+## [3.3.0] - 2026-05-08
+
+### Added
+
+- Settings: **Inline Markdown Link** - Show 📝 button above names with an associated Markdown file
+- Command: **Toggle 📝 Inline Markdown Link button**
+
 ## [3.2.0] - 2026-05-04
 
 ### Added

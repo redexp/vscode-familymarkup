@@ -3,7 +3,7 @@
   "displayName": "FamilyMarkup",
   "description": "Full-featured support of FamilyMarkup language",
   "icon": "icon.png",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "repository": "github:redexp/vscode-familymarkup",
   "homepage": "https://familymarkup.com",
   "main": "./client/extension",
@@ -85,6 +85,11 @@
           "type": "boolean",
           "default": true,
           "description": "%familymarkup.childrenWithoutRelationships.description%"
+        },
+        "familymarkup.inlineMarkdownLink": {
+          "type": "boolean",
+          "default": true,
+          "description": "%familymarkup.inlineMarkdownLink.description%"
         }
       }
     },
@@ -110,6 +115,10 @@
       {
         "command": "familymarkup.findPerson",
         "title": "%familymarkup.findPerson.title%"
+      },
+      {
+        "command": "familymarkup.toggleInlineMarkdownLink",
+        "title": "%familymarkup.inlineMarkdownLink.toggle%"
       }
     ],
     "languageModelTools": [

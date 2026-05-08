@@ -28,20 +28,20 @@ module.exports = function createLspNode(ext) {
 		};
 		break;
 
-	case 'bin':
-		const {platform, arch} = process;
-
-		const filename = platform + '-' + arch + (platform === 'win32' ? '.exe' : '');
-
-		const binPath = ext.asAbsolutePath(
-			join('server', filename)
-		);
-
-		serverOptions.debug = {
-			command: binPath,
-			transport: TransportKind.stdio,
-		};
-		break;
+	// case 'bin':
+	// 	const {platform, arch} = process;
+	//
+	// 	const filename = platform + '-' + arch + (platform === 'win32' ? '.exe' : '');
+	//
+	// 	const binPath = ext.asAbsolutePath(
+	// 		join('server', filename)
+	// 	);
+	//
+	// 	serverOptions.debug = {
+	// 		command: binPath,
+	// 		transport: TransportKind.stdio,
+	// 	};
+	// 	break;
 
 	default: // wasm
 		serverOptions = () => wasmOptions(ext);

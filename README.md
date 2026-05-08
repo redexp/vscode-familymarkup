@@ -33,9 +33,14 @@ Highlights the shortest genealogical connection between two selected individuals
 
 ## Go to Person Bio
 
-You can create Markdown files with person bio in same workspace with `.family` files. You can put them anywhere you like but in order to go from name in `.family` file to `.md` file you need to have folder structure with surname and name in the path to `.md` file. For example `Potter/bio/Harry.md` or `Potter/stories/Harry/bio.md`. Between Surname and Name could be any folder structure.
+You can create Markdown files with person bio (or cool stories) in same workspace with `.family` files. You can put them anywhere you like but in order to go from name in `.family` file to `.md` file you need to have folder structure with surname and name in the path to `.md` file. For example `Potter/bio/Harry.md` or `Potter/stories/Harry/Chamber of Secrets.md`. Between Surname and Name could be any folder structure.
 
-Use `Go to Type Definition` context menu to go strait to `.md` file or `Find All References` and `.md` file will be in the list
+**Navigation:**
+- By click on 📝 button above names with `.md` files
+  - You can switch it off in extension settings (Inline Markdown Link)
+  - You can quickly toggle it with Command Palette `Toggle 📝 Inline Markdown Link button`
+- `Go to Type Definition` context menu to go strait to `.md` file
+- `Find All References` context menu and `.md` files will be in the list
 
 ## Themes support
 
